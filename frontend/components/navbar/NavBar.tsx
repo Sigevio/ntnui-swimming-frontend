@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import LanguageButton from './content/LanguageButton';
+import LanguageButton from './content/LanguageSelect';
 import Nav from './content/Nav';
 import DarkModeButton from './content/DarkModeButton';
 
@@ -40,8 +40,8 @@ const NavBar = () => {
       else {
         setNavColor(`${theme.palette.background.paper}c3`);
       }
-      if (window.scrollY <= 85) {
-        setTextColor(`rgb(${255-window.scrollY*3}, ${255-window.scrollY*3}, ${255-window.scrollY*3})`);
+      if (window.scrollY <= 17) {
+        setTextColor(`rgb(${255-window.scrollY*15}, ${255-window.scrollY*15}, ${255-window.scrollY*15})`);
       }
       else {
         setTextColor('#000');
