@@ -130,6 +130,7 @@ const AdminNav = () => {
           <Divider />
           {hrefs.members.map((href, index) => (
             <Link
+              key={index}
               href={`/admin/${href.url}`}
               passHref
             >

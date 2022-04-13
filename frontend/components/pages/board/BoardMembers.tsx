@@ -1,4 +1,4 @@
-import { Card, CardContent, CardMedia, Divider, Slide, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Card, CardContent, CardMedia, Divider, Fade, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import no from '../../../public/translations/no';
@@ -23,11 +23,11 @@ const BoardMembers = () => {
       gap='2rem'
     >
       {Object.entries(translation.board).slice(1).map((member, i) => (<>
-        <Slide
+        <Fade
+          key={i}
           appear={false}
           in={showCards}
           timeout={1000}
-          direction={i % 2 === 0 ? 'left' : 'right'}
         >
           <Card
             elevation={3}
@@ -86,7 +86,7 @@ const BoardMembers = () => {
               null}
             </Stack>
           </Card>
-        </Slide>
+        </Fade>
       </>))}
     </Stack>
   );

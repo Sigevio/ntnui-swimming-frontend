@@ -1,13 +1,20 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import NavButton from './styled/NavButton';
 import no from '../../../public/translations/no';
 import en from '../../../public/translations/en';
-import CustomRouteSelect from './styled/CustomRouteSelect';
+import CustomRouteSelect from './styled/desktop/CustomRouteSelect';
+import { NavText } from './styled/desktop/NavText';
+import { useMediaQuery, useTheme } from '@mui/material';
+import DrawerButton from './styled/mobile/DrawerButton';
+import { DrawerAccordion, DrawerAccordionDetails, DrawerAccordionSummary } from './styled/mobile/DrawerAccordion';
+import { ArrowForwardIosSharp } from '@mui/icons-material';
 
 const Nav = () => {
   const { locale } = useRouter();
   const translation = locale === 'no' ? no : en;
+
+  const theme = useTheme();
+  const mobileQuery = useMediaQuery(theme.breakpoints.down('md'));
 
   const options = [
     {
@@ -23,45 +30,87 @@ const Nav = () => {
   return (
     <>
     
+      {mobileQuery ?
+      <DrawerAccordion>
+        <DrawerAccordionSummary>
+          <DrawerButton>
+            {translation.nav.offers}
+          </DrawerButton>
+        </DrawerAccordionSummary>
+        <DrawerAccordionDetails>
+          <Link
+            href='/activities'
+            passHref
+          >
+            <DrawerButton>
+              {translation.nav.activities}
+            </DrawerButton>
+          </Link>
+          <Link
+            href='/practices'
+            passHref
+          >
+            <DrawerButton>
+              {translation.nav.practices}
+            </DrawerButton>
+          </Link>
+        </DrawerAccordionDetails>
+      </DrawerAccordion> :
       <CustomRouteSelect
         placeholder={translation.nav.offers}
         options={options}
-      />
+      />}
 
       <Link
         href='/enrollment'
         passHref
       >
-        <NavButton>
+        {mobileQuery ?
+        <DrawerButton>
           {translation.nav.enrollment}
-        </NavButton>
+        </DrawerButton> :
+        <NavText>
+          {translation.nav.enrollment}
+        </NavText>}
       </Link>
 
       <Link
         href='/board'
         passHref
       >
-        <NavButton>
+        {mobileQuery ?
+        <DrawerButton>
           {translation.nav.board}
-        </NavButton>
+        </DrawerButton> :
+        <NavText>
+          {translation.nav.board}
+        </NavText>}
       </Link>
 
       <Link
         href='/faq'
         passHref
       >
-        <NavButton>
+        {mobileQuery ?
+        <DrawerButton>
           {translation.nav.faq}
-        </NavButton>
+        </DrawerButton> :
+        <NavText>
+          {translation.nav.faq}
+        </NavText>}
       </Link>
 
       <Link
         href='/store'
         passHref
       >
-        <NavButton>
+        {mobileQuery ?
+        <DrawerButton>
           {translation.nav.store}
-        </NavButton>
+        </DrawerButton> :
+        <NavText>
+          {translation.nav.store}
+        </NavText>}
       </Link>
 
     </>

@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { useSelect, SelectOption } from '@mui/base';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { Typography, styled } from '@mui/material';
+import { styled } from '@mui/material';
+import { NavSelectText } from './NavText';
 
-const darkPaper = '#2f2f2f';
-const lightPaper = '#e2e2e2';
-const darkDefault = '#292929';
-const lightDefault = '#eaeaea';
+const darkBackground = '#2f2f2f';
+const lightBackground = '#e2e2e2';
+const darkBackgroundHover = '#292929';
+const lightBackgroundHover = '#eaeaea';
 
 const Root = styled('div')`
   position: relative;
@@ -16,7 +16,7 @@ const Root = styled('div')`
 const Toggle = styled('div')`
   box-sizing: border-box;
   min-height: 2.25rem;
-  min-width: 6rem;
+  min-width: 2rem;
   text-align: left;
   line-height: 1.5;
   color: inherit;
@@ -25,14 +25,11 @@ const Toggle = styled('div')`
   justify-content: center;
   cursor: default;
   text-transform: uppercase;
-`;
 
-const ButtonText = styled(Typography)`
-  font-weight: 500;
-  font-size: 0.875rem;
-  line-height: 1.75;
-  letter-spacing: 0.02857em;
-  text-transform: uppercase;
+  & > p {
+    padding-inline: 0.45rem;
+  }
+
 `;
 
 const Listbox = styled('ul')(
@@ -47,7 +44,7 @@ const Listbox = styled('ul')(
   transition: opacity 0.1s ease;
   minWidth: 100%;
   box-shadow: 0 5px 13px -3px rgba(0,0,0,0.4);
-  background-color: ${theme.palette.mode === 'dark' ? darkPaper : lightPaper};
+  background-color: ${theme.palette.mode === 'dark' ? darkBackground : lightBackground};
   border-radius: 0.75em;
   color: ${theme.palette.text.primary};
   overflow: auto;
@@ -67,10 +64,17 @@ const Listbox = styled('ul')(
     border-radius: 0.75em;
     text-align: center;
     text-transform: uppercase;
+    transition: background 0.3s ease;
 
     &:hover {
-      background: ${theme.palette.mode === 'dark' ? darkDefault : lightDefault};
+      background: ${theme.palette.mode === 'dark' ? darkBackgroundHover : lightBackgroundHover};
     }
+
+    &:hover p {
+      transition: opacity 0.3s ease;
+      opacity: 0.25;
+    }
+
   }
   `,
 );
@@ -80,11 +84,9 @@ interface Props {
   placeholder?: string;
 }
 
-function CustomLanguageSelect({ options, placeholder }: Props) {
+function CustomRouteSelect({ options, placeholder }: Props) {
   const listboxRef = React.useRef<HTMLUListElement>(null);
   const [listboxVisible, setListboxVisible] = React.useState(false);
-
-  const { asPath } = useRouter();
 
   const { getButtonProps, getListboxProps, value } = useSelect({
     listboxRef,
@@ -105,22 +107,21 @@ function CustomLanguageSelect({ options, placeholder }: Props) {
       onBlur={() => setListboxVisible(false)}
     >
       <Toggle {...getButtonProps()} style={{ '--color': value } as any}>
-        <ButtonText>
+        <NavSelectText>
           {placeholder}
-        </ButtonText>
+        </NavSelectText>
       </Toggle>
       <Listbox {...getListboxProps()} className={listboxVisible ? '' : 'hidden'}>
         {options.map((option) => (
           <Link
             key={option.value}
-            href={asPath}
-            locale={option.value}
+            href={`/${option.value}`}
             passHref
           >
             <li>
-              <ButtonText>
+              <NavSelectText>
                 {option.label}
-              </ButtonText>
+              </NavSelectText>
             </li>
           </Link>
         ))}
@@ -129,4 +130,4 @@ function CustomLanguageSelect({ options, placeholder }: Props) {
   );
 }
 
-export default CustomLanguageSelect;
+export default CustomRouteSelect;
