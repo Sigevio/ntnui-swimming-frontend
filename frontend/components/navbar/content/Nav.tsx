@@ -2,16 +2,17 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import no from '../../../public/translations/no';
 import en from '../../../public/translations/en';
+import fr from '../../../public/translations/fr';
+import de from '../../../public/translations/de';
 import CustomRouteSelect from './styled/desktop/CustomRouteSelect';
 import { NavText } from './styled/desktop/NavText';
 import { useMediaQuery, useTheme } from '@mui/material';
 import DrawerButton from './styled/mobile/DrawerButton';
 import { DrawerAccordion, DrawerAccordionDetails, DrawerAccordionSummary } from './styled/mobile/DrawerAccordion';
-import { ArrowForwardIosSharp } from '@mui/icons-material';
 
 const Nav = () => {
   const { locale } = useRouter();
-  const translation = locale === 'no' ? no : en;
+  const translation = locale === 'en' ? en : locale === 'fr' ? fr : locale === 'de' ? de : no;
 
   const theme = useTheme();
   const mobileQuery = useMediaQuery(theme.breakpoints.down('md'));

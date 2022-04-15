@@ -6,6 +6,8 @@ import EnrollmentType from './enrollmentType';
 import clubs from '../../../public/clubs';
 import no from '../../../public/translations/no';
 import en from '../../../public/translations/en';
+import fr from '../../../public/translations/fr';
+import de from '../../../public/translations/de';
 
 interface InputProps {
   onChange: (event: { target: { name: string; value: string } }) => void;
@@ -125,7 +127,7 @@ const EnrollmentForm = () => {
   const [emailError, setEmailError] = useState<false | true>(false);
 
   const { locale } = useRouter();
-  const translation = locale === 'no' ? no : en;
+  const translation = locale === 'en' ? en : locale === 'fr' ? fr : locale === 'de' ? de : no;
   const theme = useTheme();
   const mobileQuery = useMediaQuery(theme.breakpoints.down('sm'));
 

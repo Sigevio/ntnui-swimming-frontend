@@ -5,6 +5,8 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import no from '../../../public/translations/no';
 import en from '../../../public/translations/en';
+import fr from '../../../public/translations/fr';
+import de from '../../../public/translations/de';
 
 const Img = styled('img')({
   margin: 'auto',
@@ -101,7 +103,7 @@ interface ImageState {
 
 const StoreItems = () => {
   const { locale } = useRouter();
-  const translation = locale === 'no' ? no : en;
+  const translation = locale === 'en' ? en : locale === 'fr' ? fr : locale === 'de' ? de : no;
 
   const [shoppingCart, setShoppingCart] = useState<Array<ShoppingCartState>>([]);
   const [imageState, setImageState] = useState<ImageState>({

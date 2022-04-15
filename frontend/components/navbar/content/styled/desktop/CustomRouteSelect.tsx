@@ -64,15 +64,29 @@ const Listbox = styled('ul')(
     border-radius: 0.75em;
     text-align: center;
     text-transform: uppercase;
-    transition: background 0.3s ease;
+    transition: background 0.25s ease;
 
     &:hover {
       background: ${theme.palette.mode === 'dark' ? darkBackgroundHover : lightBackgroundHover};
     }
 
     &:hover p {
-      transition: opacity 0.3s ease;
+      transition: opacity 0.25s ease;
       opacity: 0.25;
+    }
+
+    &:first-of-type {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &:last-of-type {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    &:not(:first-of-type):not(:last-of-type) {
+      border-radius: 0;
     }
 
   }

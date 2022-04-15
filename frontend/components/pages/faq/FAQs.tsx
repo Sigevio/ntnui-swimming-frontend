@@ -5,12 +5,14 @@ import { useState } from 'react';
 import { TheAccordion, TheAccordionDetails, TheAccordionSummary } from './styled/TheAccordion';
 import no from '../../../public/translations/no';
 import en from '../../../public/translations/en';
+import fr from '../../../public/translations/fr';
+import de from '../../../public/translations/de';
 
 const FAQs = () => {
   const [accordionExpanded, setAccordionExpanded] = useState<string | false>('false');
 
   const { locale } = useRouter();
-  const translation = locale === 'no' ? no : en;
+  const translation = locale === 'en' ? en : locale === 'fr' ? fr : locale === 'de' ? de : no;
 
   const handleChangeAccordion = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
     setAccordionExpanded(newExpanded ? panel : false);

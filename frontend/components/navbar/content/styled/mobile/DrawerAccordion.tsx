@@ -19,6 +19,7 @@ const DrawerAccordionSummary = styled(AccordionSummary)(({ theme }) => ({
   flexDirection: 'row-reverse',
   padding: '0',
   '& .MuiAccordionSummary-content.Mui-expanded': {
+    transition: 'opacity 0.25s ease',
     opacity: '0.25'
   }
 }));

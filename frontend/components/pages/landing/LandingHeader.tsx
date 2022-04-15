@@ -1,14 +1,13 @@
-import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import no from '../../../public/translations/no';
 import en from '../../../public/translations/en';
+import fr from '../../../public/translations/fr';
+import de from '../../../public/translations/de';
 
 const LandingHeader = () => {
   const { locale } = useRouter();
-  const translation = locale === 'no' ? no : en;
-
-  const theme = useTheme();
-  const mobileQuery = useMediaQuery(theme.breakpoints.down('sm'));
+  const translation = locale === 'en' ? en : locale === 'fr' ? fr : locale === 'de' ? de : no;
 
   return (
     <Box
@@ -26,9 +25,6 @@ const LandingHeader = () => {
           textAlign='center'
           fontWeight='bold'
           color='#fff'
-          sx={{
-            textShadow: '0 0 1rem #000'
-          }}
         >
           {translation.home.header}
         </Typography>
@@ -37,9 +33,6 @@ const LandingHeader = () => {
           color='#fff'
           fontWeight='bold'
           fontSize='large'
-          sx={{
-            textShadow: '0 0 1rem #000'
-          }}
         >
           {translation.home.headerDescription}
         </Typography>

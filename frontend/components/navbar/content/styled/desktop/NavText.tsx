@@ -10,7 +10,7 @@ const NavText = styled(Typography)(({ theme }) => ({
   cursor: 'pointer',
   userSelect: 'none',
   paddingInline: '0.45rem',
-  transition: 'opacity 0.3s ease',
+  transition: 'opacity 0.25s ease',
   '&:hover': {
     opacity: '0.25'
   }

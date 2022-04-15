@@ -9,10 +9,12 @@ import {
 import { useRouter } from 'next/router';
 import no from '../../../public/translations/no';
 import en from '../../../public/translations/en';
+import fr from '../../../public/translations/fr';
+import de from '../../../public/translations/de';
 
 const PracticeHours = () => {
   const { locale } = useRouter();
-  const translation = locale === 'no' ? no : en;
+  const translation = locale === 'en' ? en : locale === 'fr' ? fr : locale === 'de' ? de : no;
 
   return (
     <Box

@@ -25,7 +25,7 @@ const LandingHero = () => {
     <Fade
       appear={false}
       in={showImage}
-      timeout={3000}
+      timeout={4000}
     >
       <ImageHeight>
       <HeroWrapper>

@@ -3,12 +3,14 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import no from '../../../public/translations/no';
 import en from '../../../public/translations/en';
+import fr from '../../../public/translations/fr';
+import de from '../../../public/translations/de';
 
 const BoardMembers = () => {
   const [showCards, setShowCards] = useState(false);
 
   const { locale } = useRouter();
-  const translation = locale === 'no' ? no : en;
+  const translation = locale === 'en' ? en : locale === 'fr' ? fr : locale === 'de' ? de : no;
 
   const theme = useTheme();
   const mobileQuery = useMediaQuery(theme.breakpoints.down('sm'));
