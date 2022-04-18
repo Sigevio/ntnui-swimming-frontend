@@ -680,6 +680,11 @@
   "resolved" "https://registry.npmjs.org/chownr/-/chownr-1.1.4.tgz"
   "version" "1.1.4"
 
+"classnames@^2.2.6":
+  "integrity" "sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA=="
+  "resolved" "https://registry.npmjs.org/classnames/-/classnames-2.3.1.tgz"
+  "version" "2.3.1"
+
 "clsx@^1.1.1":
   "integrity" "sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA=="
   "resolved" "https://registry.npmjs.org/clsx/-/clsx-1.1.1.tgz"
@@ -1647,10 +1652,30 @@
     "p-locate" "^2.0.0"
     "path-exists" "^3.0.0"
 
+"lodash.debounce@^4.0.8":
+  "integrity" "sha1-gteb/zCmfEAF/9XiUVMArZyk168="
+  "resolved" "https://registry.npmjs.org/lodash.debounce/-/lodash.debounce-4.0.8.tgz"
+  "version" "4.0.8"
+
+"lodash.memoize@^4.1.2":
+  "integrity" "sha1-vMbEmkKihA7Zl/Mj6tpezRguC/4="
+  "resolved" "https://registry.npmjs.org/lodash.memoize/-/lodash.memoize-4.1.2.tgz"
+  "version" "4.1.2"
+
 "lodash.merge@^4.6.2":
   "integrity" "sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ=="
   "resolved" "https://registry.npmjs.org/lodash.merge/-/lodash.merge-4.6.2.tgz"
   "version" "4.6.2"
+
+"lodash.reduce@^4.6.0":
+  "integrity" "sha1-8atrg5KZrUj3hKu/R2WW8DuRTTs="
+  "resolved" "https://registry.npmjs.org/lodash.reduce/-/lodash.reduce-4.6.0.tgz"
+  "version" "4.6.0"
+
+"lodash.startswith@^4.2.1":
+  "integrity" "sha1-xZjErc4YiiflMUVzHNxsDnF3YAw="
+  "resolved" "https://registry.npmjs.org/lodash.startswith/-/lodash.startswith-4.2.1.tgz"
+  "version" "4.2.1"
 
 "loose-envify@^1.1.0", "loose-envify@^1.4.0":
   "integrity" "sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q=="
@@ -2023,7 +2048,7 @@
     "react-intersection-observer" "^8.32.0"
     "react-is" "^17.0.2"
 
-"react-dom@^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react-dom@^17.0.0", "react-dom@^17.0.0 || ^18.0.0", "react-dom@^17.0.2 || ^18.0.0-0", "react-dom@^18.0.0", "react-dom@>=16.6.0":
+"react-dom@^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react-dom@^16.12.0 || ^17.0.0", "react-dom@^17.0.0", "react-dom@^17.0.0 || ^18.0.0", "react-dom@^17.0.2 || ^18.0.0-0", "react-dom@^18.0.0", "react-dom@>=16.6.0":
   "integrity" "sha512-XqX7uzmFo0pUceWFCt7Gff6IyIMzFUn7QMZrbrQfGxtaxXZIcGQzoNpRLE3fQLnS4XzLLPMZX2T9TRcSrasicw=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-18.0.0.tgz"
   "version" "18.0.0"
@@ -2053,6 +2078,18 @@
   dependencies:
     "prop-types" "^15.7.2"
 
+"react-phone-input-2@^2.15.0":
+  "integrity" "sha512-60EOJSgmRFl9Ar89/JznaDsdB9FNf5T6nvQf0sN1t3X7exrKHbUT3ij7HZn2Y7jigcPv9EkdyzVr0MiOk1FKmw=="
+  "resolved" "https://registry.npmjs.org/react-phone-input-2/-/react-phone-input-2-2.15.0.tgz"
+  "version" "2.15.0"
+  dependencies:
+    "classnames" "^2.2.6"
+    "lodash.debounce" "^4.0.8"
+    "lodash.memoize" "^4.1.2"
+    "lodash.reduce" "^4.6.0"
+    "lodash.startswith" "^4.2.1"
+    "prop-types" "^15.7.2"
+
 "react-transition-group@^4.4.2":
   "integrity" "sha512-/RNYfRAMlZwDSr6z4zNKV6xu53/e2BuaBbGhbyYIXTrmgu/bGHzmqOs7mJSJBHy9Ud+ApHx3QjrkKSp1pxvlFg=="
   "resolved" "https://registry.npmjs.org/react-transition-group/-/react-transition-group-4.4.2.tgz"
@@ -2063,7 +2100,7 @@
     "loose-envify" "^1.4.0"
     "prop-types" "^15.6.2"
 
-"react@^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@^15.0.0 || ^16.0.0 || ^17.0.0|| ^18.0.0", "react@^17.0.0", "react@^17.0.0 || ^18.0.0", "react@^17.0.2 || ^18.0.0-0", "react@^18.0.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@>=16.14.0", "react@>=16.6.0", "react@>=16.8.0":
+"react@^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@^15.0.0 || ^16.0.0 || ^17.0.0|| ^18.0.0", "react@^16.12.0 || ^17.0.0", "react@^17.0.0", "react@^17.0.0 || ^18.0.0", "react@^17.0.2 || ^18.0.0-0", "react@^18.0.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@>=16.14.0", "react@>=16.6.0", "react@>=16.8.0":
   "integrity" "sha512-x+VL6wbT4JRVPm7EGxXhZ8w8LTROaxPXOqhlGyVSrv0sB1jkyFGgXxJ8LVoPRLvPR6/CIZGFmfzqUa2NYeMr2A=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.0.0.tgz"
   "version" "18.0.0"

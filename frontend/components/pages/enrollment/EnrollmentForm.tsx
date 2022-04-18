@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 import React, { forwardRef, useState } from 'react';
 import NumberFormat from 'react-number-format';
 import EnrollmentType from './enrollmentType';
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/material.css'
 import clubs from '../../../public/clubs';
 import no from '../../../public/translations/no';
 import en from '../../../public/translations/en';
@@ -14,6 +16,7 @@ interface InputProps {
   name: string;
 }
 
+/*
 const PhoneMask = forwardRef<NumberFormat<any>, InputProps>(
   function PhoneMask(props, ref) {
     const { onChange, ...other } = props;
@@ -38,6 +41,7 @@ const PhoneMask = forwardRef<NumberFormat<any>, InputProps>(
     );
   }
 );
+*/
 
 const ZIPMask = forwardRef<NumberFormat<any>, InputProps>(
   function ZIPMask(props, ref) {
@@ -88,29 +92,6 @@ const DateMask = forwardRef<NumberFormat<any>, InputProps>(
     );
   }
 );
-
-const currencies = [
-  {
-    value: 'Empty',
-    label: ''
-  },
-  {
-    value: 'USD',
-    label: '$'
-  },
-  {
-    value: 'EUR',
-    label: '€'
-  },
-  {
-    value: 'BTC',
-    label: '฿'
-  },
-  {
-    value: 'JPY',
-    label: '¥'
-  },
-];
 
 const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
@@ -262,7 +243,21 @@ const EnrollmentForm = () => {
                   onChange={handleChange}
                 />
 
-                <TextField
+                <PhoneInput
+                  country='no'
+                  value={values.phone}
+                  onChange={() => handleChange}
+                  inputStyle={{
+                    width: '100%',
+                    backgroundColor: 'transparent',
+                    height: '3.5375rem'
+                  }}
+                  inputProps={{
+                    name: 'phone',
+                    required: true,
+                  }}
+                />
+                {/*<TextField
                   required
                   fullWidth
                   name='phone'
@@ -275,7 +270,7 @@ const EnrollmentForm = () => {
                     shrink: true
                   }}
                   onChange={handleChange}
-                />
+                />*/}
               </Stack>
 
               <Stack
