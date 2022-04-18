@@ -1,4 +1,5 @@
 import { Container, Divider, Stack, Typography } from '@mui/material';
+import { Fade } from 'react-awesome-reveal';
 import { useRouter } from 'next/router';
 import no from '../../../public/translations/no';
 import en from '../../../public/translations/en';
@@ -21,18 +22,32 @@ const EnrollmentHeader = () => {
           wordWrap: 'break-word'
         }}
       >
-        <Typography
-          variant='h2'
-          textAlign='center'
-          fontWeight='bold'
-          color='primary'
+        <Fade
+          duration={1000}
+          cascade
+          triggerOnce
+          direction='down'
         >
-          {translation.enrollment.header[0]}
-        </Typography>
-        <Divider />
-        <Typography>
-          {translation.enrollment.header[1]}
-        </Typography>
+          <Typography
+            variant='h2'
+            textAlign='center'
+            fontWeight='bold'
+            color='primary'
+          >
+            {translation.enrollment.header[0]}
+          </Typography>
+          <Divider />
+        </Fade>
+        <Fade
+          duration={1000}
+          triggerOnce
+          direction='up'
+          delay={1000}
+        >
+          <Typography>
+            {translation.enrollment.header[1]}
+          </Typography>
+        </Fade>
       </Stack>
     </Container>
   );

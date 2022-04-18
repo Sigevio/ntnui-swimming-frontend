@@ -1,4 +1,5 @@
 import { Container, Divider, Stack, Typography } from '@mui/material';
+import { Fade } from 'react-awesome-reveal';
 import { useRouter } from 'next/router';
 import no from '../../../public/translations/no';
 import en from '../../../public/translations/en';
@@ -18,21 +19,36 @@ const BoardHeader = () => {
       <Stack
         gap='1rem'
       >
-        <Typography
-          variant='h2'
-          textAlign='center'
-          fontWeight='bold'
-          color='primary'
+        <Fade
+          duration={1000}
+          cascade
+          triggerOnce
+          direction='down'
         >
-          {translation.board.header[0]}
-        </Typography>
-        <Divider />
-        <Typography>
-          {translation.board.header[1]}
-        </Typography>
-        <Typography>
-          {translation.board.header[2]}
-        </Typography>
+          <Typography
+            variant='h2'
+            textAlign='center'
+            fontWeight='bold'
+            color='primary'
+          >
+            {translation.board.header[0]}
+          </Typography>
+          <Divider />
+        </Fade>
+        <Fade
+          duration={1000}
+          cascade
+          triggerOnce
+          direction='up'
+          delay={1000}
+        >
+          <Typography>
+            {translation.board.header[1]}
+          </Typography>
+          <Typography>
+            {translation.board.header[2]}
+          </Typography>
+        </Fade>
       </Stack>
     </Container>
   );

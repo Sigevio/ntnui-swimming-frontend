@@ -24,72 +24,71 @@ const BoardMembers = () => {
     <Stack
       gap='2rem'
     >
-      {Object.entries(translation.board).slice(1).map((member, i) => (<>
-        <Fade
-          key={i}
-          appear={false}
-          in={showCards}
-          timeout={1000}
+      {Object.entries(translation.board).slice(1).map((member, i) => (
+      <Fade
+        key={i}
+        appear={false}
+        in={showCards}
+        timeout={1000}
+      >
+        <Card
+          elevation={3}
+          sx={{
+            width: '95vw',
+            maxWidth: '50rem',
+            marginRight: !marginQuery && i % 2 === 0 ? '6rem': '0',
+            marginLeft: !marginQuery && i % 2 !== 0 ? '6rem': '0'
+          }}
         >
-          <Card
-            elevation={3}
-            sx={{
-              width: '95vw',
-              maxWidth: '50rem',
-              marginRight: !marginQuery && i % 2 === 0 ? '6rem': '0',
-              marginLeft: !marginQuery && i % 2 !== 0 ? '6rem': '0'
-            }}
+          <Stack
+            direction={mobileQuery ? 'column' : 'row'}
           >
-            <Stack
-              direction={mobileQuery ? 'column' : 'row'}
-            >
-              {i % 2 === 0 && !mobileQuery ?
-              <CardMedia
-                component='img'
-                image={`/board/${member[0]}.jpg`}
-                alt={`${member[0]}`}
-                sx={{
-                  width: '15rem'
-                }}
-              /> :
-              null}
-              <CardContent>
-                <Stack
-                  gap='0.5rem'
+            {i % 2 === 0 && !mobileQuery ?
+            <CardMedia
+              component='img'
+              image={`/board/${member[0]}.jpg`}
+              alt={`${member[0]}`}
+              sx={{
+                width: '15rem'
+              }}
+            /> :
+            null}
+            <CardContent>
+              <Stack
+                gap='0.5rem'
+              >
+                <Typography
+                  variant='h4'
+                  textAlign='center'
+                  color='primary'
                 >
-                  <Typography
-                    variant='h4'
-                    textAlign='center'
-                    color='primary'
-                  >
-                    {member[1][0]}
-                  </Typography>
-                  <Divider
-                    sx={{
-                      color: theme.palette.text.primary
-                    }}
-                  />
-                  <Typography
-                    color='text.secondary'
-                  >
-                    {member[1][1]}
-                  </Typography>
-                </Stack>
-              </CardContent>
-              {i % 2 !== 0 || mobileQuery ?
-              <CardMedia
-                component='img'
-                image={`/board/${member[0]}.jpg`}
-                alt={`${member[0]}`}
-                sx={{
-                  width: mobileQuery ? '100%' : '15rem'
-                }}
-              /> :
-              null}
-            </Stack>
-          </Card>
-        </Fade>
-      </>))}
+                  {member[1][0]}
+                </Typography>
+                <Divider
+                  sx={{
+                    color: theme.palette.text.primary
+                  }}
+                />
+                <Typography
+                  color='text.secondary'
+                >
+                  {member[1][1]}
+                </Typography>
+              </Stack>
+            </CardContent>
+            {i % 2 !== 0 || mobileQuery ?
+            <CardMedia
+              component='img'
+              image={`/board/${member[0]}.jpg`}
+              alt={`${member[0]}`}
+              sx={{
+                width: mobileQuery ? '100%' : '15rem'
+              }}
+            /> :
+            null}
+          </Stack>
+        </Card>
+      </Fade>))}
     </Stack>
   );
 }

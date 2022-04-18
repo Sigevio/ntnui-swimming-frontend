@@ -34,15 +34,17 @@ const MyApp = (props: MyAppProps) => {
     [],
   );
 
+  const resposiveTheme = responsiveFontSizes(mode === 'dark' ? darkTheme : lightTheme, { breakpoints: ['sm', 'md', 'lg', 'xl'], factor: 2 });
+
   return (
     <CacheProvider value={emotionCache}>
       <Head>
         <title>NTNUI Svømming</title>
         <meta name='viewport' content='initial-scale=1, width=device-width' />
-        <link rel='icon' href='/ntnui-logo.png' />
+        <link rel='icon' href='/ntnui-svomming.ico' />
       </Head>
       <ColorModeContext.Provider value={colorMode}>
-        <ThemeProvider theme={responsiveFontSizes(mode === 'dark' ? darkTheme : lightTheme, { breakpoints: ['sm', 'md', 'lg', 'xl'], factor: 2 })}>
+        <ThemeProvider theme={resposiveTheme}>
           <CssBaseline />
             <Component {...pageProps} />
         </ThemeProvider>

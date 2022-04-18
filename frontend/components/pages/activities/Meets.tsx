@@ -40,9 +40,15 @@ const Meets = () => {
         />
         <Divider
           orientation={mobileQuery ? 'horizontal' : 'vertical'}
-          sx={{
-            height: '8rem'
-          }}
+          sx={
+            mobileQuery ?
+            {
+              width: '95vw'
+            } :
+            {
+              height: '8rem'
+            }
+          }
         />
         <Typography>
           {translation.activities.meets[1]}

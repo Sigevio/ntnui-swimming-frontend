@@ -1,4 +1,5 @@
 import { Box, Typography } from '@mui/material';
+import { Fade } from 'react-awesome-reveal';
 import { useRouter } from 'next/router';
 import no from '../../../public/translations/no';
 import en from '../../../public/translations/en';
@@ -19,12 +20,20 @@ const LandingHeader = () => {
         zIndex: '1'
       }}
     >
-
+      <Fade
+        duration={1000}
+        cascade
+        triggerOnce
+        direction='up'
+      >
         <Typography
           variant='h2'
           textAlign='center'
           fontWeight='bold'
           color='#fff'
+          sx={{
+            textShadow: '0 0 1rem #000'
+          }}
         >
           {translation.home.header}
         </Typography>
@@ -33,10 +42,13 @@ const LandingHeader = () => {
           color='#fff'
           fontWeight='bold'
           fontSize='large'
+          sx={{
+            textShadow: '0 0 1rem #000'
+          }}
         >
           {translation.home.headerDescription}
         </Typography>
-
+      </Fade>
     </Box>
   );
 }

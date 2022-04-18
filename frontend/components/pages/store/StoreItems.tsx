@@ -23,7 +23,8 @@ const CheckoutBox = styled(Card)(({ theme }) => ({
   width: '98vw',
   maxWidth: '20rem',
   borderRadius: '1rem',
-  backgroundColor: theme.palette.primary.main
+  backgroundColor: theme.palette.primary.main,
+  zIndex: '10'
 }));
 
 const items = [
@@ -148,8 +149,9 @@ const StoreItems = () => {
         maxWidth='50rem'
         gap='2rem'
       >
-        {items.map(item => (
+        {items.map((item, i) => (
           <Card
+            key={i}
             elevation={3}
             sx={{
               padding: '0.5rem'

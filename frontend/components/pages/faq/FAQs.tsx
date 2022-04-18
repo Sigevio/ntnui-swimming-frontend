@@ -56,6 +56,7 @@ const FAQs = () => {
             <List>
               {translation.faq.faq1.slice(1).map((faq, i) => (<>
                 <Slide
+                  key={i}
                   appear={false}
                   in={accordionExpanded === 'panel1'}
                   timeout={(i+1)*200+150}

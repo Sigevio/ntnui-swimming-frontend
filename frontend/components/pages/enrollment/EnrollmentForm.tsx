@@ -118,6 +118,7 @@ const EnrollmentForm = () => {
   const [values, setValues] = useState<EnrollmentType>({
     gender: '',
     name: '',
+    birthdate: '',
     phone: '',
     zip: '',
     address: '',
@@ -250,7 +251,7 @@ const EnrollmentForm = () => {
                 <TextField
                   required
                   fullWidth
-                  name='date'
+                  name='birthdate'
                   InputProps={{
                     inputComponent: DateMask as any
                   }}

@@ -6,18 +6,20 @@ const DrawerAccordion = styled((props: AccordionProps) => (
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
-  minHeight: '3.5rem',
   padding: '0',
   transition: 'max-width 0.3s ease',
+  backgroundColor: 'transparent',
   boxShadow: 'none',
   '&:before': {
     display: 'none'
-  }
+  },
 }));
 
 const DrawerAccordionSummary = styled(AccordionSummary)(({ theme }) => ({
   flexDirection: 'row-reverse',
   padding: '0',
+  backgroundColor: 'transparent',
+  height: '3.5rem',
   '& .MuiAccordionSummary-content.Mui-expanded': {
     transition: 'opacity 0.25s ease',
     opacity: '0.25'
@@ -27,7 +29,8 @@ const DrawerAccordionSummary = styled(AccordionSummary)(({ theme }) => ({
 const DrawerAccordionDetails = styled(AccordionDetails)(({ theme }) => ({
   padding: '0',
   borderTop: '1px solid rgba(0, 0, 0, .125)',
-  borderBottom: '1px solid rgba(0, 0, 0, .125)'
+  borderBottom: '1px solid rgba(0, 0, 0, .125)',
+  backgroundColor: theme.palette.background.paper
 }));
 
 export {
