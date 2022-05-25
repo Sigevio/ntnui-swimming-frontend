@@ -39,7 +39,6 @@ const StoreHeader = () => {
         <Fade
           duration={1000}
           triggerOnce
-          direction='up'
           delay={1000}
         >
           <Typography

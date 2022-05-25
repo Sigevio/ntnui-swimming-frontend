@@ -39,7 +39,6 @@ const BoardHeader = () => {
           duration={1000}
           cascade
           triggerOnce
-          direction='up'
           delay={1000}
         >
           <Typography>
