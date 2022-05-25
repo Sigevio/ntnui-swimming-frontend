@@ -1,6 +1,7 @@
 import { AddShoppingCart, RemoveShoppingCart, ShoppingCartCheckout } from '@mui/icons-material';
 import { ButtonBase, Card, CardContent, Dialog, DialogContent, Grid, IconButton, Slide, Stack, styled, Tooltip, Typography } from '@mui/material';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import no from '../../../public/translations/no';
 import en from '../../../public/translations/en';
@@ -102,7 +103,8 @@ interface ImageState {
 }
 
 const StoreItems = () => {
-  const translation = en;
+  const { locale } = useRouter();
+  const translation = locale === 'en' ? en : locale === 'fr' ? fr : locale === 'de' ? de : no;
 
   const [shoppingCart, setShoppingCart] = useState<Array<ShoppingCartState>>([]);
   const [imageState, setImageState] = useState<ImageState>({
@@ -198,13 +200,13 @@ const StoreItems = () => {
                       variant='subtitle1'
                       component='div'
                     >
-                      {item.header[0]}
+                      {item.header[locale === 'no' ? 0 : 1]}
                     </Typography>
                     <Typography
                       variant='body2'
                       gutterBottom
                     >
-                      {item.description[0]}
+                      {item.description[locale === 'no' ? 0 : 1]}
                     </Typography>
                   </Grid>
                 </Grid>

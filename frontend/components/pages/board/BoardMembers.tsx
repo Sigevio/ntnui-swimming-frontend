@@ -1,4 +1,5 @@
 import { Card, CardContent, CardMedia, Divider, Fade, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import no from '../../../public/translations/no';
 import en from '../../../public/translations/en';
@@ -8,7 +9,8 @@ import de from '../../../public/translations/de';
 const BoardMembers = () => {
   const [showCards, setShowCards] = useState(false);
 
-  const translation = en;
+  const { locale } = useRouter();
+  const translation = locale === 'en' ? en : locale === 'fr' ? fr : locale === 'de' ? de : no;
 
   const theme = useTheme();
   const mobileQuery = useMediaQuery(theme.breakpoints.down('sm'));
