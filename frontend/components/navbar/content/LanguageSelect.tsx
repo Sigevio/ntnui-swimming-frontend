@@ -25,7 +25,8 @@ const options = [
 ]
 
 const LanguageButton = () => {
-  const { locale, asPath } = useRouter();
+  const { asPath } = useRouter();
+  const locale = 'en';
 
   const theme = useTheme();
 

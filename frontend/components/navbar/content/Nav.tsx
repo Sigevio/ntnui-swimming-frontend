@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import no from '../../../public/translations/no';
 import en from '../../../public/translations/en';
 import fr from '../../../public/translations/fr';
@@ -11,8 +10,7 @@ import DrawerButton from './styled/mobile/DrawerButton';
 import { DrawerAccordion, DrawerAccordionDetails, DrawerAccordionSummary } from './styled/mobile/DrawerAccordion';
 
 const Nav = () => {
-  const { locale } = useRouter();
-  const translation = locale === 'en' ? en : locale === 'fr' ? fr : locale === 'de' ? de : no;
+  const translation = en;
 
   const theme = useTheme();
   const mobileQuery = useMediaQuery(theme.breakpoints.down('md'));

@@ -1,5 +1,4 @@
 import { Button, Card, CardActions, CardContent, Container, FormControl, FormControlLabel, FormGroup, FormLabel, MenuItem, Radio, RadioGroup, Stack, TextField, Typography, useMediaQuery, useTheme } from '@mui/material';
-import { useRouter } from 'next/router';
 import React, { forwardRef, useState } from 'react';
 import NumberFormat from 'react-number-format';
 import EnrollmentType from './enrollmentType';
@@ -108,8 +107,7 @@ const EnrollmentForm = () => {
   });
   const [emailError, setEmailError] = useState<false | true>(false);
 
-  const { locale } = useRouter();
-  const translation = locale === 'en' ? en : locale === 'fr' ? fr : locale === 'de' ? de : no;
+  const translation = en;
   const theme = useTheme();
   const mobileQuery = useMediaQuery(theme.breakpoints.down('sm'));
 

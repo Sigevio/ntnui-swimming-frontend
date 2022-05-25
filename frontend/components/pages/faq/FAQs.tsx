@@ -1,6 +1,5 @@
 import { ArrowForwardIosSharp, Looks3, LooksOne, LooksTwo } from '@mui/icons-material';
 import { Box, Container, List, ListItem, ListItemIcon, ListItemText, Slide, Stack, Typography } from '@mui/material';
-import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { TheAccordion, TheAccordionDetails, TheAccordionSummary } from './styled/TheAccordion';
 import no from '../../../public/translations/no';
@@ -11,8 +10,7 @@ import de from '../../../public/translations/de';
 const FAQs = () => {
   const [accordionExpanded, setAccordionExpanded] = useState<string | false>('false');
 
-  const { locale } = useRouter();
-  const translation = locale === 'en' ? en : locale === 'fr' ? fr : locale === 'de' ? de : no;
+  const translation = en;
 
   const handleChangeAccordion = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
     setAccordionExpanded(newExpanded ? panel : false);

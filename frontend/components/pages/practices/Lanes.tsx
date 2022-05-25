@@ -1,14 +1,12 @@
 import { AccessibleForward, DirectionsRun, DirectionsWalk } from '@mui/icons-material';
 import { Container, Stack, Typography } from '@mui/material';
-import { useRouter } from 'next/router';
 import no from '../../../public/translations/no';
 import en from '../../../public/translations/en';
 import fr from '../../../public/translations/fr';
 import de from '../../../public/translations/de';
 
 const Lanes = () => {
-  const { locale } = useRouter();
-  const translation = locale === 'en' ? en : locale === 'fr' ? fr : locale === 'de' ? de : no;
+  const translation = en;
 
   return (
     <Container>
