@@ -39,7 +39,7 @@ const BoardHeader = () => {
           duration={1000}
           cascade
           triggerOnce
-          delay={1000}
+          delay={500}
         >
           <Typography>
             {translation.board.header[1]}

@@ -59,6 +59,7 @@ const no = {
       'Ugyldig kjønn!'],
     'genderMale': 'Mann',
     'genderFemale': 'Kvinne',
+    'countryCode': 'Landskode',
     'phone': ['Telefonnummer',
       'Ugyldig telefonnummer!'],
     'birth': ['Fødselsdato',

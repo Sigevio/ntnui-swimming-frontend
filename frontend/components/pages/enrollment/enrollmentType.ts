@@ -6,5 +6,6 @@ export default interface IEnrollmentType {
   zip: string;
   address: string;
   email: string;
+  countryCode: string;
   licence: string;
 }

@@ -3,9 +3,8 @@ import { useRouter } from 'next/router';
 import React, { forwardRef, useState } from 'react';
 import NumberFormat from 'react-number-format';
 import EnrollmentType from './enrollmentType';
-import PhoneInput from 'react-phone-input-2'
-import 'react-phone-input-2/lib/material.css'
 import clubs from '../../../public/clubs';
+import countryCodes from '../../../public/countryCodes';
 import no from '../../../public/translations/no';
 import en from '../../../public/translations/en';
 import fr from '../../../public/translations/fr';
@@ -15,33 +14,6 @@ interface InputProps {
   onChange: (event: { target: { name: string; value: string } }) => void;
   name: string;
 }
-
-/*
-const PhoneMask = forwardRef<NumberFormat<any>, InputProps>(
-  function PhoneMask(props, ref) {
-    const { onChange, ...other } = props;
-
-    return (
-      <NumberFormat
-        {...other}
-        getInputRef={ref}
-        onValueChange={(values) => {
-          onChange({
-            target: {
-              name: props.name,
-              value: values.value,
-            },
-          });
-        }}
-        format='### ## ###'
-        placeholder='### ## ###'
-        mask={['#', '#', '#', '#', '#', '#', '#', '#']}
-        isNumericString
-      />
-    );
-  }
-);
-*/
 
 const ZIPMask = forwardRef<NumberFormat<any>, InputProps>(
   function ZIPMask(props, ref) {
@@ -59,9 +31,6 @@ const ZIPMask = forwardRef<NumberFormat<any>, InputProps>(
             },
           });
         }}
-        format='####'
-        placeholder='####'
-        mask={['#', '#', '#', '#']}
         isNumericString
       />
     );
@@ -85,8 +54,31 @@ const DateMask = forwardRef<NumberFormat<any>, InputProps>(
           });
         }}
         format='##/##/####'
-        placeholder='dd/mm/yyyy'
+        placeholder={'dd/mm/yyyy'}
         mask={['d', 'd', 'm', 'm', 'y', 'y', 'y', 'y']}
+        isNumericString
+      />
+    );
+  }
+);
+
+const PhoneMask = forwardRef<NumberFormat<any>, InputProps>(
+  function PhoneMask(props, ref) {
+    const { onChange, ...other } = props;
+
+    return (
+      <NumberFormat
+        {...other}
+        getInputRef={ref}
+        onValueChange={(values) => {
+          onChange({
+            target: {
+              name: props.name,
+              value: values.value,
+            },
+          });
+        }}
+        format='### ## ### ## ## ## ## ## ## ## ## ## ## ##'
         isNumericString
       />
     );
@@ -104,6 +96,7 @@ const EnrollmentForm = () => {
     zip: '',
     address: '',
     email: '',
+    countryCode: '',
     licence: ''
   });
   const [emailError, setEmailError] = useState<false | true>(false);
@@ -118,7 +111,7 @@ const EnrollmentForm = () => {
       ...values,
       [event.target.name]: event.target.value
     });
-    if (emailRegex.test(values.email)) {
+    if (emailError) {
       setEmailError(false);
     }
   };
@@ -206,6 +199,25 @@ const EnrollmentForm = () => {
                   }}
                   onChange={handleChange}
                 />
+              </Stack>
+
+              <Stack
+                direction={mobileQuery ? 'column' : 'row'}
+                gap={mobileQuery ? '2rem' : '1rem'}
+              >
+                <TextField
+                  required
+                  fullWidth
+                  name='birthdate'
+                  InputProps={{
+                    inputComponent: DateMask as any
+                  }}
+                  label={translation.enrollment.birth[0]}
+                  InputLabelProps={{
+                    shrink: true
+                  }}
+                  onChange={handleChange}
+                />
 
                 <TextField
                   required
@@ -232,54 +244,6 @@ const EnrollmentForm = () => {
                 <TextField
                   required
                   fullWidth
-                  name='birthdate'
-                  InputProps={{
-                    inputComponent: DateMask as any
-                  }}
-                  label={translation.enrollment.birth[0]}
-                  InputLabelProps={{
-                    shrink: true
-                  }}
-                  onChange={handleChange}
-                />
-
-                <PhoneInput
-                  country='no'
-                  value={values.phone}
-                  onChange={() => handleChange}
-                  inputStyle={{
-                    width: '100%',
-                    backgroundColor: 'transparent',
-                    height: '3.5375rem'
-                  }}
-                  inputProps={{
-                    name: 'phone',
-                    required: true,
-                  }}
-                />
-                {/*<TextField
-                  required
-                  fullWidth
-                  name='phone'
-                  type='tel'
-                  InputProps={{
-                    inputComponent: PhoneMask as any
-                  }}
-                  label={translation.enrollment.phone[0]}
-                  InputLabelProps={{
-                    shrink: true
-                  }}
-                  onChange={handleChange}
-                />*/}
-              </Stack>
-
-              <Stack
-                direction={mobileQuery ? 'column' : 'row'}
-                gap={mobileQuery ? '2rem' : '1rem'}
-              >
-                <TextField
-                  required
-                  fullWidth
                   name='address'
                   placeholder='Gate Gatesen 69A'
                   label={translation.enrollment.address[0]}
@@ -297,6 +261,71 @@ const EnrollmentForm = () => {
                     inputComponent: ZIPMask as any
                   }}
                   label={translation.enrollment.zip[0]}
+                  InputLabelProps={{
+                    shrink: true
+                  }}
+                  onChange={handleChange}
+                />
+              </Stack>
+
+              <Stack
+                direction={mobileQuery ? 'column' : 'row'}
+                gap={mobileQuery ? '2rem' : '1rem'}
+              >
+                <TextField
+                required
+                name='countryCode'
+                fullWidth
+                value={values.countryCode}
+                select
+                label={translation.enrollment.countryCode}
+                InputLabelProps={{
+                  shrink: true
+                }}
+                onChange={handleChange}
+                SelectProps={{
+                  MenuProps: {
+                    PaperProps: {
+                      style: {
+                        maxHeight: '14rem'
+                      }
+                    }
+                  }
+                }}
+              >
+                {countryCodes.map((countryCode) => (
+                  <MenuItem
+                    key={countryCode[0]}
+                    value={countryCode[1]}
+                    sx={{
+                      height: '2.5rem'
+                    }}
+                  >
+                    <Stack
+                      direction='row'
+                      gap='1rem'
+                    >
+                      <Typography>
+                        {countryCode[1]}
+                      </Typography>
+                      <Typography
+                        color='text.secondary'
+                      >
+                        {'(' + countryCode[0] + ')'}
+                      </Typography>
+                    </Stack>
+                  </MenuItem>
+                ))}
+              </TextField>
+
+                <TextField
+                  required
+                  fullWidth
+                  name='phone'
+                  InputProps={{
+                    inputComponent: PhoneMask as any
+                  }}
+                  label={translation.enrollment.phone[0]}
                   InputLabelProps={{
                     shrink: true
                   }}
@@ -367,11 +396,13 @@ const EnrollmentForm = () => {
               type='submit'
               disabled={
                 values.gender === ''
-                  || values.name === ''
+                  || values.name === ''
                   || values.phone === ''
                   || values.zip === ''
                   || values.address === ''
                   || values.email === ''
+                  || values.countryCode === ''
+                  || values.birthdate.length !== 8
               }
             >
               {translation.enrollment.button}

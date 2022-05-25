@@ -39,7 +39,7 @@ const StoreHeader = () => {
         <Fade
           duration={1000}
           triggerOnce
-          delay={1000}
+          delay={500}
         >
           <Typography
             textAlign='center'

@@ -59,6 +59,7 @@ const en = {
       'Invalid gender!'],
     'genderMale': 'Male',
     'genderFemale': 'Female',
+    'countryCode': 'Country code',
     'phone': ['Phone number',
       'Invalid phone number!'],
     'birth': ['Date of birth',
