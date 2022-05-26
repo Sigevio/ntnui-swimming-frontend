@@ -29,27 +29,29 @@ const NavBar = () => {
   useEffect(() => {
     if (window.scrollY <= 65) {
       setNavColor(`${theme.palette.background.paper}${(window.scrollY*3 | 0) <= 15 ? '0' : ''}${(window.scrollY*3 | 0).toString(16)}`);
-    }
-    else {
+    } else {
       setNavColor(`${theme.palette.background.paper}c3`);
     }
     window.addEventListener('scroll', () => {
-      if (window.scrollY <= 65) {
+      if (window.scrollY <= 0) {
+        setNavColor(`${theme.palette.background.paper}00`);
+      } else if (window.scrollY <= 65) {
         setNavColor(`${theme.palette.background.paper}${(window.scrollY*3 | 0) <= 15 ? '0' : ''}${(window.scrollY*3 | 0).toString(16)}`);
-      }
-      else {
+      } else {
         setNavColor(`${theme.palette.background.paper}c3`);
       }
-      if (window.scrollY <= 17) {
+      if (window.scrollY <= 0) {
+        setTextColor('rgb(255, 255, 255)');
+      } else if (window.scrollY <= 17) {
         setTextColor(`rgb(${255-window.scrollY*15}, ${255-window.scrollY*15}, ${255-window.scrollY*15})`);
-      }
-      else {
+      } else {
         setTextColor('#000');
       }
-      if (window.scrollY <= 25) {
+      if (window.scrollY <= 0) {
+        setBlur(0);
+      } else if (window.scrollY <= 25) {
         setBlur(window.scrollY/100);
-      }
-      else {
+      } else {
         setBlur(0.25);
       }
     });
