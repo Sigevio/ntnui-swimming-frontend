@@ -43,6 +43,7 @@ const ActivitiesHeader = () => {
           <Typography
             textAlign='center'
             marginBottom='2rem'
+            color='text.secondary'
           >
             {translation.activities.header[1]}
           </Typography>

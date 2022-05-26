@@ -5,6 +5,7 @@ import no from '../../../public/translations/no';
 import en from '../../../public/translations/en';
 import fr from '../../../public/translations/fr';
 import de from '../../../public/translations/de';
+import { motion } from 'framer-motion';
 
 const BoardMembers = () => {
   const [showCards, setShowCards] = useState(false);
@@ -23,13 +24,24 @@ const BoardMembers = () => {
   return (
     <Stack
       gap='2rem'
+      minHeight='100vh'
     >
+      {showCards ? <>
       {Object.entries(translation.board).slice(1).map((member, i) => (
-      <Fade
-        key={i}
-        appear={false}
-        in={showCards}
-        timeout={1000}
+      <motion.div
+        initial={{
+          opacity: 0,
+          translateX: mobileQuery ? 0 : i % 2 === 0 ? '2rem' : '-2rem'
+        }}
+        whileInView={{
+          opacity: 1,
+          translateX: 0
+        }}
+        viewport={{ once: true }}
+        transition={{
+          delay: mobileQuery ? 0.2 : i === 0 || i === 1 ? 0.5 : 0.2,
+          duration: 0.5
+        }}
       >
         <Card
           elevation={3}
@@ -81,7 +93,7 @@ const BoardMembers = () => {
                 </Typography>
               </Stack>
                 <Box
-                  color='primary.dark'
+                  color={theme.palette.mode === 'dark' ? 'primary.light' : 'primary.dark'}
                 >
                   <Typography
                     fontWeight='bold'
@@ -109,7 +121,8 @@ const BoardMembers = () => {
             null}
           </Stack>
         </Card>
-      </Fade>))}
+      </motion.div>))} </> :
+      null}
     </Stack>
   );
 }

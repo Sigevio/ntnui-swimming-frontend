@@ -41,10 +41,14 @@ const BoardHeader = () => {
           triggerOnce
           delay={500}
         >
-          <Typography>
+          <Typography
+            color='text.secondary'
+          >
             {translation.board.header[1]}
           </Typography>
-          <Typography>
+          <Typography
+            color='text.secondary'
+          >
             {translation.board.header[2]}
           </Typography>
         </Fade>

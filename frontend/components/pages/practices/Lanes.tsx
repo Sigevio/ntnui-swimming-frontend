@@ -25,7 +25,9 @@ const Lanes = () => {
           >
             {translation.practices.lanes[0]}
           </Typography>
-          <Typography>
+          <Typography
+            color='text.secondary'
+          >
             {translation.practices.lanes[1]}
           </Typography>
         </Stack>
@@ -48,6 +50,7 @@ const Lanes = () => {
           </Stack>
           <Typography
             marginLeft='2rem'
+            color='text.secondary'
           >
             {translation.practices.lanes[3]}
           </Typography>
@@ -71,6 +74,7 @@ const Lanes = () => {
           </Stack>
           <Typography
             marginLeft='2rem'
+            color='text.secondary'
           >
             {translation.practices.lanes[5]}
           </Typography>
@@ -93,12 +97,16 @@ const Lanes = () => {
           </Stack>
           <Typography
             marginLeft='2rem'
+            color='text.secondary'
           >
             {translation.practices.lanes[7]}
           </Typography>
         </Stack>
 
-        <Typography>
+        <Typography
+          marginTop='2.5rem'
+          textAlign='center'
+        >
           {translation.practices.choice}
         </Typography>
       </Stack>

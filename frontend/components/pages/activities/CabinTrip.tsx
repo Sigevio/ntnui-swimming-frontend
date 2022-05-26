@@ -5,6 +5,7 @@ import no from '../../../public/translations/no';
 import en from '../../../public/translations/en';
 import fr from '../../../public/translations/fr';
 import de from '../../../public/translations/de';
+import { motion } from 'framer-motion';
 
 const CabinTrip = () => {
   const { locale } = useRouter();
@@ -19,41 +20,53 @@ const CabinTrip = () => {
         marginBottom: '2rem'
       }}
     >
-      <Typography
-        variant='h3'
-        textAlign='center'
-        marginBottom='0.5rem'
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{
+          delay: 0.2,
+          duration: 0.5
+        }}
       >
-        {translation.activities.cabin[0]}
-      </Typography>
-      <Stack
-        direction={mobileQuery ? 'column' : 'row'}
-        alignItems='center'
-        gap='1rem'
-      >
-        <Typography>
-          {translation.activities.cabin[1]}
+        <Typography
+          variant='h3'
+          textAlign='center'
+          marginBottom='0.5rem'
+        >
+          {translation.activities.cabin[0]}
         </Typography>
-        <Divider
-          orientation={mobileQuery ? 'horizontal' : 'vertical'}
-          sx={
-            mobileQuery ?
-            {
-              width: '95vw'
-            } :
-            {
-              height: '8rem'
+        <Stack
+          direction={mobileQuery ? 'column' : 'row'}
+          alignItems='center'
+          gap='1rem'
+        >
+          <Typography
+            color='text.secondary'
+          >
+            {translation.activities.cabin[1]}
+          </Typography>
+          <Divider
+            orientation={mobileQuery ? 'horizontal' : 'vertical'}
+            sx={
+              mobileQuery ?
+              {
+                width: '95vw'
+              } :
+              {
+                height: '8rem'
+              }
             }
-          }
-        />
-        <Cabin
-          color='primary'
-          sx={{
-            height: '8rem',
-            width: '8rem'
-          }}
-        />
-      </Stack>
+          />
+          <Cabin
+            color='primary'
+            sx={{
+              height: '8rem',
+              width: '8rem'
+            }}
+          />
+        </Stack>
+      </motion.div>
     </Container>
   );
 }

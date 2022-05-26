@@ -43,7 +43,9 @@ const EnrollmentHeader = () => {
           triggerOnce
           delay={500}
         >
-          <Typography>
+          <Typography
+            color='text.secondary'
+          >
             {translation.enrollment.header[1]}
           </Typography>
         </Fade>

@@ -34,7 +34,9 @@ const PracticeHours = () => {
             -
           </ListItemIcon>
           <ListItemText>
-            <Typography>
+            <Typography
+              color='text.secondary'
+            >
               {translation.practices.practiceHours[1]}
             </Typography>
           </ListItemText>
@@ -44,7 +46,9 @@ const PracticeHours = () => {
             -
           </ListItemIcon>
           <ListItemText>
-            <Typography>
+            <Typography
+              color='text.secondary'
+            >
               {translation.practices.practiceHours[2]}
             </Typography>
           </ListItemText>
@@ -54,7 +58,9 @@ const PracticeHours = () => {
             -
           </ListItemIcon>
           <ListItemText>
-            <Typography>
+            <Typography
+              color='text.secondary'
+            >
               {translation.practices.practiceHours[3]}
             </Typography>
           </ListItemText>
@@ -64,7 +70,9 @@ const PracticeHours = () => {
             -
           </ListItemIcon>
           <ListItemText>
-            <Typography>
+            <Typography
+              color='text.secondary'
+            >
               {translation.practices.practiceHours[4]}
             </Typography>
           </ListItemText>

@@ -43,6 +43,7 @@ const PracticesHeader = () => {
           <Typography
             textAlign='center'
             marginBottom='2rem'
+            color='text.secondary'
           >
             {translation.practices.header[1]}
           </Typography>
