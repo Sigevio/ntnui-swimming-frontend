@@ -6,7 +6,7 @@ import { responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
 import Head from 'next/head';
 import CssBaseline from '@mui/material/CssBaseline';
 import { useMediaQuery } from '@mui/material';
-import { createContext, useMemo, useState } from 'react';
+import { createContext, useEffect, useMemo, useState } from 'react';
 import darkTheme from '../src/darkTheme';
 import lightTheme from '../src/lightTheme';
 
@@ -35,6 +35,10 @@ const MyApp = (props: MyAppProps) => {
   );
 
   const resposiveTheme = responsiveFontSizes(mode === 'dark' ? darkTheme : lightTheme, { breakpoints: ['sm', 'md', 'lg', 'xl'], factor: 2 });
+
+  useEffect(() => {
+    document.body.style.backgroundColor = resposiveTheme.palette.background.default
+  }, [resposiveTheme])
 
   return (
     <CacheProvider value={emotionCache}>
