@@ -1,4 +1,4 @@
-import { Card, CardContent, CardMedia, Divider, Fade, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Card, CardContent, CardMedia, Divider, Fade, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import no from '../../../public/translations/no';
@@ -46,7 +46,7 @@ const BoardMembers = () => {
             {i % 2 === 0 && !mobileQuery ?
             <CardMedia
               component='img'
-              image={`/board/${member[0]}.jpg`}
+              image={`/board/${member[0]}.jpeg`}
               alt={`${member[0]}`}
               sx={{
                 width: '15rem'
@@ -54,6 +54,11 @@ const BoardMembers = () => {
             /> :
             null}
             <CardContent>
+              <Stack
+                height='100%'
+                gap='3rem'
+                justifyContent='space-between'
+              >
               <Stack
                 gap='0.5rem'
               >
@@ -72,14 +77,30 @@ const BoardMembers = () => {
                 <Typography
                   color='text.secondary'
                 >
-                  {member[1][1]}
+                  {member[1][3]}
                 </Typography>
+              </Stack>
+                <Box
+                  color='primary.dark'
+                >
+                  <Typography
+                    fontWeight='bold'
+                    textAlign={i % 2 === 0 ? 'right' : 'left'}
+                  >
+                    {member[1][1]}
+                  </Typography>
+                  <Typography
+                    textAlign={i % 2 === 0 ? 'right' : 'left'}
+                  >
+                    {member[1][2]}
+                  </Typography>
+                </Box>
               </Stack>
             </CardContent>
             {i % 2 !== 0 || mobileQuery ?
             <CardMedia
               component='img'
-              image={`/board/${member[0]}.jpg`}
+              image={`/board/${member[0]}.jpeg`}
               alt={`${member[0]}`}
               sx={{
                 width: mobileQuery ? '100%' : '15rem'
