@@ -36,15 +36,14 @@ const MyApp = (props: MyAppProps) => {
 
   const resposiveTheme = responsiveFontSizes(mode === 'dark' ? darkTheme : lightTheme, { breakpoints: ['sm', 'md', 'lg', 'xl'], factor: 2 });
 
-  useEffect(() => {
-    document.body.style.backgroundColor = resposiveTheme.palette.background.default
-  }, [resposiveTheme])
-
   return (
     <CacheProvider value={emotionCache}>
       <Head>
         <title>NTNUI Svømming</title>
         <meta name='viewport' content='initial-scale=1, width=device-width' />
+        <meta name='theme-color' content={resposiveTheme.palette.background.default} />
+        <meta name='msapplication-navbutton-color' content={resposiveTheme.palette.background.default} />
+        <meta name='apple-mobile-web-app-status-bar-style' content={resposiveTheme.palette.background.default} />
         <link rel='icon' href='/ntnui-svomming.ico' />
       </Head>
       <ColorModeContext.Provider value={colorMode}>
