@@ -44,6 +44,7 @@ const StoreHeader = () => {
           <Typography
             textAlign='center'
             marginBottom='2rem'
+            color='text.secondary'
           >
             {translation.store.header[1]}
           </Typography>
