@@ -23,7 +23,7 @@ const PracticesHeader = () => {
           duration={1000}
           cascade
           triggerOnce
-          direction='down'
+          direction='up'
         >
           <Typography
             variant='h2'

@@ -20,7 +20,6 @@ const NavBar = () => {
   const [navColor, setNavColor] = useState<string>('#ffffff00');
   const [textColor, setTextColor] = useState<string>('#fff');
   const [blur, setBlur] = useState<number>(0);
-  const [showLogo, setShowLogo] = useState<false | true>(false);
   
   const theme = useTheme();
   const mobileQuery = useMediaQuery(theme.breakpoints.down('md'));
@@ -98,15 +97,12 @@ const NavBar = () => {
           href='/'
           passHref
         >
-          <LogoWrapper
-            display={showLogo ? 'default' : 'none'}
-          >
+          <LogoWrapper>
             <Image
               src='/ntnui-logo.png'
               alt='ntnui-logo'
               layout='fill'
               priority
-              onLoadingComplete={() => setShowLogo(true)}
             />
           </LogoWrapper>
         </Link>

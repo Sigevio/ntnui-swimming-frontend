@@ -22,7 +22,6 @@ const LandingHeader = () => {
     >
       <Fade
         duration={1000}
-        cascade
         triggerOnce
         direction='up'
       >
@@ -37,6 +36,13 @@ const LandingHeader = () => {
         >
           {translation.home.header}
         </Typography>
+      </Fade>
+      <Fade
+        duration={1000}
+        triggerOnce
+        direction='down'
+        delay={500}
+      >
         <Typography
           textAlign='center'
           color='#fff'

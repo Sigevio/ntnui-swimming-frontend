@@ -23,7 +23,7 @@ const BoardHeader = () => {
           duration={1000}
           cascade
           triggerOnce
-          direction='down'
+          direction='up'
         >
           <Typography
             variant='h2'

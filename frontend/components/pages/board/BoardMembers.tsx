@@ -1,6 +1,6 @@
-import { Box, Card, CardContent, CardMedia, Divider, Fade, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Card, CardContent, CardMedia, Divider, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import no from '../../../public/translations/no';
 import en from '../../../public/translations/en';
 import fr from '../../../public/translations/fr';
@@ -8,8 +8,6 @@ import de from '../../../public/translations/de';
 import { motion } from 'framer-motion';
 
 const BoardMembers = () => {
-  const [showCards, setShowCards] = useState(false);
-
   const { locale } = useRouter();
   const translation = locale === 'en' ? en : locale === 'fr' ? fr : locale === 'de' ? de : no;
 
@@ -17,16 +15,11 @@ const BoardMembers = () => {
   const mobileQuery = useMediaQuery(theme.breakpoints.down('sm'));
   const marginQuery = useMediaQuery(theme.breakpoints.down('lg'));
 
-  useEffect(() => {
-    setShowCards(true);
-  }, []);
-
   return (
     <Stack
       gap='2rem'
       minHeight='100vh'
     >
-      {showCards ? <>
       {Object.entries(translation.board).slice(1).map((member, i) => (
       <motion.div
         key={member[0]}
@@ -122,8 +115,7 @@ const BoardMembers = () => {
             null}
           </Stack>
         </Card>
-      </motion.div>))} </> :
-      null}
+      </motion.div>))}
     </Stack>
   );
 }
