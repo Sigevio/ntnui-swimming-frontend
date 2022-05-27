@@ -2,6 +2,10 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Sigurd Holten Bøen",
+    "email": "sigurd.boen@ntnui.no"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

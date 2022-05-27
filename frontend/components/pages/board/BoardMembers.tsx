@@ -29,6 +29,7 @@ const BoardMembers = () => {
       {showCards ? <>
       {Object.entries(translation.board).slice(1).map((member, i) => (
       <motion.div
+        key={member[0]}
         initial={{
           opacity: 0,
           translateX: mobileQuery ? 0 : i % 2 === 0 ? '2rem' : '-2rem'

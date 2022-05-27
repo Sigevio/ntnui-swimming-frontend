@@ -17,10 +17,6 @@ const HeroWrapper = styled(Box)(({ theme }) => ({
 const LandingHero = () => {
   const [showImage, setShowImage] = useState(false);
 
-  useEffect(() => {
-    setShowImage(true);
-  }, []);
-
   return (
     <Fade
       appear={false}
@@ -28,15 +24,18 @@ const LandingHero = () => {
       timeout={2000}
     >
       <ImageHeight>
-      <HeroWrapper>
-        <Image
-          src='/hero.jpeg'
-          alt='hero'
-          layout='fill'
-          objectFit='cover'
-          priority
-        />
-      </HeroWrapper>
+        <HeroWrapper
+          display={showImage ? 'default' : 'none'}
+        >
+          <Image
+            src='/hero.jpeg'
+            alt='hero'
+            layout='fill'
+            objectFit='cover'
+            priority
+            onLoadingComplete={() => setShowImage(true)}
+          />
+        </HeroWrapper>
       </ImageHeight>
     </Fade>
   );
