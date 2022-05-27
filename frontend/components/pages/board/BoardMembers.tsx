@@ -77,7 +77,7 @@ const BoardMembers = () => {
                 <Typography
                   variant='h4'
                   textAlign='center'
-                  color='primary'
+                  color={theme.palette.mode === 'dark' ? 'primary.light' : 'primary.dark'}
                 >
                   {member[1][0]}
                 </Typography>
@@ -93,7 +93,7 @@ const BoardMembers = () => {
                 </Typography>
               </Stack>
                 <Box
-                  color={theme.palette.mode === 'dark' ? 'primary.light' : 'primary.dark'}
+                  color='primary.main'
                 >
                   <Typography
                     fontWeight='bold'
