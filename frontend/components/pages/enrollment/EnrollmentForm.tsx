@@ -1,89 +1,20 @@
-import { Button, Card, CardActions, CardContent, Container, FormControl, FormControlLabel, FormGroup, FormLabel, MenuItem, Radio, RadioGroup, Stack, TextField, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Button, Card, CardActions, CardContent, Container, FormGroup, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { useRouter } from 'next/router';
-import React, { forwardRef, useState } from 'react';
-import NumberFormat from 'react-number-format';
+import React, { useState } from 'react';
 import EnrollmentType from './enrollmentType';
-import clubs from '../../../public/clubs';
-import countryCodes from '../../../public/countryCodes';
 import no from '../../../public/translations/no';
 import en from '../../../public/translations/en';
 import fr from '../../../public/translations/fr';
 import de from '../../../public/translations/de';
-
-interface InputProps {
-  onChange: (event: { target: { name: string; value: string } }) => void;
-  name: string;
-}
-
-const ZIPMask = forwardRef<NumberFormat<any>, InputProps>(
-  function ZIPMask(props, ref) {
-    const { onChange, ...other } = props;
-
-    return (
-      <NumberFormat
-        {...other}
-        getInputRef={ref}
-        onValueChange={(values) => {
-          onChange({
-            target: {
-              name: props.name,
-              value: values.value,
-            },
-          });
-        }}
-        isNumericString
-      />
-    );
-  }
-);
-
-const DateMask = forwardRef<NumberFormat<any>, InputProps>(
-  function DateMask(props, ref) {
-    const { onChange, ...other } = props;
-
-    return (
-      <NumberFormat
-        {...other}
-        getInputRef={ref}
-        onValueChange={(values) => {
-          onChange({
-            target: {
-              name: props.name,
-              value: values.value,
-            },
-          });
-        }}
-        format='##/##/####'
-        placeholder={'dd/mm/yyyy'}
-        mask={['d', 'd', 'm', 'm', 'y', 'y', 'y', 'y']}
-        isNumericString
-      />
-    );
-  }
-);
-
-const PhoneMask = forwardRef<NumberFormat<any>, InputProps>(
-  function PhoneMask(props, ref) {
-    const { onChange, ...other } = props;
-
-    return (
-      <NumberFormat
-        {...other}
-        getInputRef={ref}
-        onValueChange={(values) => {
-          onChange({
-            target: {
-              name: props.name,
-              value: values.value,
-            },
-          });
-        }}
-        format='### ## ### ## ## ## ## ## ## ## ## ## ## ##'
-        isNumericString
-      />
-    );
-  }
-);
+import GenderButtons from './content/inputs/GenderButtons';
+import NameInput from './content/inputs/NameInput';
+import BirthdateInput from './content/inputs/BirthdateInput';
+import EmailInput from './content/inputs/EmailInput';
+import AddressInput from './content/inputs/AddressInput';
+import ZIPInput from './content/inputs/ZIPInput';
+import CountryCodeInput from './content/inputs/CountryCodeInput';
+import PhoneInput from './content/inputs/PhoneInput';
+import LicenceInput from './content/inputs/LicenceInput';
 
 const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
@@ -111,7 +42,7 @@ const EnrollmentForm = () => {
       ...values,
       [event.target.name]: event.target.value
     });
-    if (emailError) {
+    if (emailError) {
       setEmailError(false);
     }
   };
@@ -146,58 +77,29 @@ const EnrollmentForm = () => {
               }}
             >
 
-              <FormControl
-                margin='dense'
-                sx={{
-                  marginLeft: '1rem'
-                }}
-              >
-                <FormLabel
-                  required
-                  id='gender-buttons-label'
-                  sx={{
-                    fontSize: '0.75rem'
-                  }}
-                >
-                  {translation.enrollment.gender[0]}
-                </FormLabel>
-                <RadioGroup
-                  row
-                  aria-labelledby='gender-buttons-label'
-                  name='gender'
-                  onChange={handleChange}
-                >
-                  <FormControlLabel
-                    value='male'
-                    control={
-                      <Radio />
-                    }
-                    label={translation.enrollment.genderMale}
-                  />
-                  <FormControlLabel
-                    value='female'
-                    control={
-                      <Radio />
-                    }
-                    label={translation.enrollment.genderFemale}
-                  />
-                </RadioGroup>
-              </FormControl>
+              <GenderButtons
+                handleChangeToParent={handleChange}
+                translation={translation}
+              />
+
+              <NameInput
+                handleChangeToParent={handleChange}
+                translation={translation}
+              />
 
               <Stack
                 direction={mobileQuery ? 'column' : 'row'}
                 gap={mobileQuery ? '2rem' : '1rem'}
               >
-                <TextField
-                  required
-                  fullWidth
-                  name='name'
-                  placeholder='Ola Normann'
-                  label={translation.enrollment.fullName[0]}
-                  InputLabelProps={{
-                    shrink: true
-                  }}
-                  onChange={handleChange}
+                <BirthdateInput
+                  handleChangeToParent={handleChange}
+                  translation={translation}
+                />
+
+                <EmailInput
+                  handleChangeToParent={handleChange}
+                  translation={translation}
+                  emailError={emailError}
                 />
               </Stack>
 
@@ -205,35 +107,14 @@ const EnrollmentForm = () => {
                 direction={mobileQuery ? 'column' : 'row'}
                 gap={mobileQuery ? '2rem' : '1rem'}
               >
-                <TextField
-                  required
-                  fullWidth
-                  name='birthdate'
-                  InputProps={{
-                    inputComponent: DateMask as any
-                  }}
-                  label={translation.enrollment.birth[0]}
-                  InputLabelProps={{
-                    shrink: true
-                  }}
-                  onChange={handleChange}
+                <AddressInput
+                  handleChangeToParent={handleChange}
+                  translation={translation}
                 />
 
-                <TextField
-                  required
-                  fullWidth
-                  error={emailError}
-                  name='email'
-                  placeholder='ola.normann@ntnui.no'
-                  label={translation.enrollment.email[0]}
-                  InputLabelProps={{
-                    shrink: true
-                  }}
-                  helperText={translation.enrollment.email[1]}
-                  FormHelperTextProps={{
-                    hidden: !emailError
-                  }}
-                  onChange={handleChange}
+                <ZIPInput
+                  handleChangeToParent={handleChange}
+                  translation={translation}
                 />
               </Stack>
 
@@ -241,135 +122,23 @@ const EnrollmentForm = () => {
                 direction={mobileQuery ? 'column' : 'row'}
                 gap={mobileQuery ? '2rem' : '1rem'}
               >
-                <TextField
-                  required
-                  fullWidth
-                  name='address'
-                  placeholder='Gate Gatesen 69A'
-                  label={translation.enrollment.address[0]}
-                  InputLabelProps={{
-                    shrink: true
-                  }}
-                  onChange={handleChange}
+                <CountryCodeInput
+                  handleChangeToParent={handleChange}
+                  translation={translation}
+                  value={values.countryCode}
                 />
 
-                <TextField
-                  required
-                  fullWidth
-                  name='zip'
-                  InputProps={{
-                    inputComponent: ZIPMask as any
-                  }}
-                  label={translation.enrollment.zip[0]}
-                  InputLabelProps={{
-                    shrink: true
-                  }}
-                  onChange={handleChange}
+                <PhoneInput
+                  handleChangeToParent={handleChange}
+                  translation={translation}
                 />
               </Stack>
 
-              <Stack
-                direction={mobileQuery ? 'column' : 'row'}
-                gap={mobileQuery ? '2rem' : '1rem'}
-              >
-                <TextField
-                required
-                name='countryCode'
-                fullWidth
-                value={values.countryCode}
-                select
-                label={translation.enrollment.countryCode}
-                InputLabelProps={{
-                  shrink: true
-                }}
-                onChange={handleChange}
-                SelectProps={{
-                  MenuProps: {
-                    PaperProps: {
-                      style: {
-                        maxHeight: '14rem'
-                      }
-                    }
-                  }
-                }}
-              >
-                {countryCodes.map((countryCode) => (
-                  <MenuItem
-                    key={countryCode[0]}
-                    value={countryCode[1]}
-                    sx={{
-                      height: '2.5rem'
-                    }}
-                  >
-                    <Stack
-                      direction='row'
-                      gap='1rem'
-                    >
-                      <Typography>
-                        {countryCode[1]}
-                      </Typography>
-                      <Typography
-                        color='text.secondary'
-                      >
-                        {'(' + countryCode[0] + ')'}
-                      </Typography>
-                    </Stack>
-                  </MenuItem>
-                ))}
-              </TextField>
-
-                <TextField
-                  required
-                  fullWidth
-                  name='phone'
-                  InputProps={{
-                    inputComponent: PhoneMask as any
-                  }}
-                  label={translation.enrollment.phone[0]}
-                  InputLabelProps={{
-                    shrink: true
-                  }}
-                  onChange={handleChange}
-                />
-              </Stack>
-
-              <TextField
-                name='licence'
+              <LicenceInput
+                handleChangeToParent={handleChange}
+                translation={translation}
                 value={values.licence}
-                select
-                label={translation.enrollment.licence[0]}
-                InputLabelProps={{
-                  shrink: true
-                }}
-                onChange={handleChange}
-                helperText={translation.enrollment.licence[1]}
-                FormHelperTextProps={{
-                  style: {
-                    color: theme.palette.warning.dark
-                  }
-                }}
-                SelectProps={{
-                  MenuProps: {
-                    PaperProps: {
-                      style: {
-                        maxHeight: '14rem'
-                      }
-                    }
-                  }
-                }}
-              >
-                {clubs.map((club) => (
-                  <MenuItem
-                    key={club}
-                    value={club}
-                    sx={{
-                      height: '2.5rem'
-                    }}
-                  >
-                    {club}
-                  </MenuItem>
-                ))}
-              </TextField>
+              />
 
               <Container>
                 <Typography>

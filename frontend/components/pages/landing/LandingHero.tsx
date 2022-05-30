@@ -1,6 +1,6 @@
 import { Box, Fade, styled } from '@mui/material';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const ImageHeight = styled(Box)({
   height: '60rem',
@@ -15,7 +15,7 @@ const HeroWrapper = styled(Box)(({ theme }) => ({
 }));
 
 const LandingHero = () => {
-  const [showImage, setShowImage] = useState(false);
+  const [showImage, setShowImage] = useState<false | true>(false);
 
   return (
     <Fade
