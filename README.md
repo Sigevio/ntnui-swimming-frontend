@@ -33,23 +33,3 @@ npm run start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser and be amazed.
-
-## Getting Started - Backend
-
-First, install Django and setup virtual environment:
-
-```bash
-pip3 install django
-cd backend
-pipenv install django
-```
-
-Then, run the virtual environment and run the server:
-
-```bash
-pipenv shell
-python3 manage.py runserver
-```
-
-Open [http://localhost:8000](http://localhost:8000) with your browser to see the result.
-
