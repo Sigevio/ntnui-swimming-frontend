@@ -8,7 +8,7 @@ const ContentWrapper = styled('div')({
   alignItems: 'center',
   gap: '4rem',
   marginBottom: '6rem'
-})
+});
 
 const Layout: React.FC = ({ children }) => {  
   return (

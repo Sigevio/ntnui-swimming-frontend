@@ -1,5 +1,4 @@
 import { styled, Typography } from '@mui/material';
-import { fontWeight } from '@mui/system';
 
 const NavText = styled(Typography)(({ theme }) => ({
   fontWeight: '500',

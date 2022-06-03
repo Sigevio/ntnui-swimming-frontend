@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { styled } from '@mui/material';
 import { NavSelectText } from './NavText';
+import { KeyboardArrowLeft } from '@mui/icons-material';
 
 const darkBackground = '#2f2f2f';
 const lightBackground = '#e2e2e2';
@@ -122,6 +123,14 @@ function CustomLanguageSelect({ options, placeholder }: Props) {
         <NavSelectText>
           {placeholder}
         </NavSelectText>
+        <KeyboardArrowLeft
+          sx={{
+            color: 'inherit',
+            transition: 'transform 0.25s ease',
+            transform: listboxVisible ? 'rotate(-90deg)' : 'none',
+            filter: 'invert(0.2)'
+          }}
+        />
       </Toggle>
       <Listbox {...getListboxProps()} className={listboxVisible ? '' : 'hidden'}>
         {options.map((option) => (

@@ -3,8 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "author": {
-    "name": "Sigurd Holten Bøen",
-    "email": "sigurd.boen@ntnui.no"
+    "name": "Sigurd Holten Bøen"
   },
   "scripts": {
     "dev": "next dev",

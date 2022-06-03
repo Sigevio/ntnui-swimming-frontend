@@ -42,7 +42,7 @@ const EnrollmentForm = () => {
       ...values,
       [event.target.name]: event.target.value
     });
-    if (emailError) {
+    if (emailError) {
       setEmailError(false);
     }
   };
