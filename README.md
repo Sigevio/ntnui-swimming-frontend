@@ -1,4 +1,8 @@
-## Getting Started - Frontend
+## About the project
+
+The future frontend of the NTNUI Svømming website ([https://org.ntnu.no/svommer/](https://org.ntnu.no/svommer/)).
+
+## Getting started
 
 First, install all dependencies:
 
@@ -23,7 +27,7 @@ All pages are located in the `frontend/pages` directory. Every page is composed 
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as API routes instead of React pages.
 
-## Make the page fast as F%@*
+## Build project
 
 Make sure you operate in the `frontend` directory. Then run:
 
