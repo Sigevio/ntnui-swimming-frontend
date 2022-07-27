@@ -2,6 +2,12 @@
 
 The future frontend of the NTNUI Svømming website ([https://org.ntnu.no/svommer/](https://org.ntnu.no/svommer/)).
 
+### Built with
+
+* Next.js
+  * React.js
+* Material UI
+
 ## Getting started
 
 First, install all dependencies:
