@@ -11,7 +11,7 @@ const ZIPInput = (props: IInputType) => {
       InputProps={{
         inputComponent: ZIPMask as any
       }}
-      label={props.translation.enrollment.zip[0]}
+      label={props.translation('enrollment.zip')[0]}
       InputLabelProps={{
         shrink: true
       }}

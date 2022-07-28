@@ -10,12 +10,12 @@ const LicenceInput = (props: IDropdownInputType) => {
       name='licence'
       value={props.value}
       select
-      label={props.translation.enrollment.licence[0]}
+      label={props.translation('enrollment.licence')[0]}
       InputLabelProps={{
         shrink: true
       }}
       onChange={event => props.handleChangeToParent(event)}
-      helperText={props.translation.enrollment.licence[1]}
+      helperText={props.translation('enrollment.licence')[1]}
       FormHelperTextProps={{
         style: {
           color: theme.palette.warning.dark

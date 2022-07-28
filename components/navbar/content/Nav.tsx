@@ -1,29 +1,25 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import no from '../../../public/translations/no';
-import en from '../../../public/translations/en';
-import fr from '../../../public/translations/fr';
-import de from '../../../public/translations/de';
 import CustomRouteSelect from './styled/desktop/CustomRouteSelect';
 import { NavText } from './styled/desktop/NavText';
 import { useMediaQuery, useTheme } from '@mui/material';
 import DrawerButton from './styled/mobile/DrawerButton';
 import { DrawerAccordion, DrawerAccordionDetails, DrawerAccordionSummary } from './styled/mobile/DrawerAccordion';
+import { useTranslation, useLanguageQuery, LanguageSwitcher } from 'next-export-i18n';
 
 const Nav = () => {
-  const { locale } = useRouter();
-  const translation = locale === 'en' ? en : locale === 'fr' ? fr : locale === 'de' ? de : no;
+  const { t } = useTranslation();
+	const [query] = useLanguageQuery();
 
   const theme = useTheme();
   const mobileQuery = useMediaQuery(theme.breakpoints.down('md'));
 
   const options = [
     {
-      label: translation.nav.activities,
+      label: t('nav.activities'),
       value: 'activities'
     },
     {
-      label: translation.nav.practices,
+      label: t('nav.practices'),
       value: 'practices'
     }
   ]
@@ -35,82 +31,82 @@ const Nav = () => {
       <DrawerAccordion>
         <DrawerAccordionSummary>
           <DrawerButton>
-            {translation.nav.offers}
+            {t('nav.offers')}
           </DrawerButton>
         </DrawerAccordionSummary>
         <DrawerAccordionDetails>
           <Link
-            href='/activities'
+            href={{ pathname: 'activities', query: query }}
             passHref
           >
             <DrawerButton>
-              {translation.nav.activities}
+              {t('nav.activities')}
             </DrawerButton>
           </Link>
           <Link
-            href='/practices'
+            href={{ pathname: 'practices', query: query }}
             passHref
           >
             <DrawerButton>
-              {translation.nav.practices}
+              {t('nav.practices')}
             </DrawerButton>
           </Link>
         </DrawerAccordionDetails>
       </DrawerAccordion> :
       <CustomRouteSelect
-        placeholder={translation.nav.offers}
+        placeholder={t('nav.offers')}
         options={options}
       />}
 
       <Link
-        href='/enrollment'
+        href={{ pathname: 'enrollment', query: query }}
         passHref
       >
         {mobileQuery ?
         <DrawerButton>
-          {translation.nav.enrollment}
+          {t('nav.enrollment')}
         </DrawerButton> :
         <NavText>
-          {translation.nav.enrollment}
+          {t('nav.enrollment')}
         </NavText>}
       </Link>
 
       <Link
-        href='/board'
+        href={{ pathname: 'board', query: query }}
         passHref
       >
         {mobileQuery ?
         <DrawerButton>
-          {translation.nav.board}
+          {t('nav.board')}
         </DrawerButton> :
         <NavText>
-          {translation.nav.board}
+          {t('nav.board')}
         </NavText>}
       </Link>
 
       <Link
-        href='/faq'
+        href={{ pathname: 'faq', query: query }}
         passHref
       >
         {mobileQuery ?
         <DrawerButton>
-          {translation.nav.faq}
+          {t('nav.faq')}
         </DrawerButton> :
         <NavText>
-          {translation.nav.faq}
+          {t('nav.faq')}
         </NavText>}
       </Link>
 
       <Link
-        href='/store'
+        href={{ pathname: 'store', query: query }}
         passHref
       >
         {mobileQuery ?
         <DrawerButton>
-          {translation.nav.store}
+          {t('nav.store')}
         </DrawerButton> :
         <NavText>
-          {translation.nav.store}
+          {t('nav.store')}
         </NavText>}
       </Link>
 

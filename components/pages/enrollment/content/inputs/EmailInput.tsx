@@ -9,11 +9,11 @@ const EmailInput = (props: IEmailInputType) => {
       error={props.emailError}
       name='email'
       placeholder='ola.normann@ntnui.no'
-      label={props.translation.enrollment.email[0]}
+      label={props.translation('enrollment.email')[0]}
       InputLabelProps={{
         shrink: true
       }}
-      helperText={props.translation.enrollment.email[1]}
+      helperText={props.translation('enrollment.email')[1]}
       FormHelperTextProps={{
         hidden: !props.emailError
       }}

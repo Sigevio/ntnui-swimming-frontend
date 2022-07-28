@@ -1,14 +1,9 @@
 import { EmojiEvents } from '@mui/icons-material';
 import { Container, Divider, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
-import { useRouter } from 'next/router';
-import no from '../../../public/translations/no';
-import en from '../../../public/translations/en';
-import fr from '../../../public/translations/fr';
-import de from '../../../public/translations/de';
+import { useTranslation } from 'next-export-i18n';
 
 const Meets = () => {
-  const { locale } = useRouter();
-  const translation = locale === 'en' ? en : locale === 'fr' ? fr : locale === 'de' ? de : no;
+  const { t } = useTranslation();
 
   const theme = useTheme();
   const mobileQuery = useMediaQuery(theme.breakpoints.down('md'));
@@ -24,7 +19,7 @@ const Meets = () => {
         textAlign='center'
         marginBottom='0.5rem'
       >
-        {translation.activities.meets[0]}
+        {t('activities.meets')[0]}
       </Typography>
       <Stack
         direction={mobileQuery ? 'column-reverse' : 'row'}
@@ -53,7 +48,7 @@ const Meets = () => {
         <Typography
           color='text.secondary'
         >
-          {translation.activities.meets[1]}
+          {t('activities.meets')[1]}
         </Typography>
       </Stack>
     </Container>

@@ -1,14 +1,9 @@
 import { Box, Typography } from '@mui/material';
 import { Fade } from 'react-awesome-reveal';
-import { useRouter } from 'next/router';
-import no from '../../../public/translations/no';
-import en from '../../../public/translations/en';
-import fr from '../../../public/translations/fr';
-import de from '../../../public/translations/de';
+import { useTranslation } from 'next-export-i18n';
 
 const LandingHeader = () => {
-  const { locale } = useRouter();
-  const translation = locale === 'en' ? en : locale === 'fr' ? fr : locale === 'de' ? de : no;
+  const { t } = useTranslation();
 
   return (
     <Box
@@ -34,7 +29,7 @@ const LandingHeader = () => {
             textShadow: '0 0 1rem #000'
           }}
         >
-          {translation.home.header}
+          {t('home.header')}
         </Typography>
       </Fade>
       <Fade
@@ -52,7 +47,7 @@ const LandingHeader = () => {
             textShadow: '0 0 1rem #000'
           }}
         >
-          {translation.home.headerDescription}
+          {t('home.headerDescription')}
         </Typography>
       </Fade>
     </Box>

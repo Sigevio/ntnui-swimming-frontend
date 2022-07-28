@@ -1,14 +1,9 @@
 import { Container, Stack, Typography } from '@mui/material';
-import { useRouter } from 'next/router';
-import { motion } from "framer-motion"
-import no from '../../../public/translations/no';
-import en from '../../../public/translations/en';
-import fr from '../../../public/translations/fr';
-import de from '../../../public/translations/de';
+import { motion } from 'framer-motion';
+import { useTranslation } from 'next-export-i18n';
 
 const LandingContent = () => {
-  const { locale, asPath } = useRouter();
-  const translation = locale === 'en' ? en : locale === 'fr' ? fr : locale === 'de' ? de : no;
+  const { t } = useTranslation();
 
   return (
     <Container
@@ -32,17 +27,17 @@ const LandingContent = () => {
             variant='h2'
             color='text.primary'
           >
-            {translation.home.whoHeader}
+            {t('home.whoHeader')}
           </Typography>
           <Typography
             color='text.secondary'
           >
-            {translation.home.whoDescription[0]}
+            {t('home.whoDescription')[0]}
           </Typography>
           <Typography
             color='text.secondary'
           >
-            {translation.home.whoDescription[1]}
+            {t('home.whoDescription')[1]}
           </Typography>
         </Stack>
       </motion.div>

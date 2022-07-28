@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { styled } from '@mui/material';
 import { NavSelectText } from './NavText';
 import { KeyboardArrowLeft } from '@mui/icons-material';
+import { useTranslation, useLanguageQuery, LanguageSwitcher } from 'next-export-i18n';
 
 const darkBackground = '#2f2f2f';
 const lightBackground = '#e2e2e2';
@@ -108,6 +109,8 @@ function CustomRouteSelect({ options, placeholder }: Props) {
     options,
   });
 
+  const [query] = useLanguageQuery();
+
   React.useEffect(() => {
     if (listboxVisible) {
       listboxRef.current?.focus();
@@ -139,7 +142,7 @@ function CustomRouteSelect({ options, placeholder }: Props) {
         {options.map((option) => (
           <Link
             key={option.value}
-            href={`/${option.value}`}
+            href={{ pathname: `/${option.value}`, query: query }}
             passHref
           >
             <li>

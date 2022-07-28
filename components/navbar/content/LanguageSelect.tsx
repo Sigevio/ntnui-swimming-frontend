@@ -1,9 +1,9 @@
 import { useMediaQuery, useTheme } from '@mui/material';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import CustomLanguageSelect from './styled/desktop/CustomLanguageSelect';
 import { DrawerAccordion, DrawerAccordionDetails, DrawerAccordionSummary } from './styled/mobile/DrawerAccordion';
 import DrawerButton from './styled/mobile/DrawerButton';
+import { useTranslation, useLanguageQuery } from 'next-export-i18n';
 
 const options = [
   {
@@ -25,7 +25,8 @@ const options = [
 ]
 
 const LanguageButton = () => {
-  const { locale, asPath } = useRouter();
+  const { t } = useTranslation();
+	const [query] = useLanguageQuery();
 
   const theme = useTheme();
 
@@ -37,15 +38,14 @@ const LanguageButton = () => {
       <DrawerAccordion>
         <DrawerAccordionSummary>
           <DrawerButton>
-            {options.filter(option => option.value === locale)[0].label}
+            {options.filter(option => option.value === t('language'))[0].label}
           </DrawerButton>
         </DrawerAccordionSummary>
         <DrawerAccordionDetails>
-          {options.filter(option => option.value !== locale).map(option => (
+          {options.filter(option => option.value !== t('language')).map(option => (
             <Link
               key={option.value}
-              href={asPath}
-              locale={option.value}
+              href={{ pathname: t('/'), query: query }}
               passHref
             >
               <DrawerButton>
@@ -56,8 +56,8 @@ const LanguageButton = () => {
         </DrawerAccordionDetails>
       </DrawerAccordion> :
       <CustomLanguageSelect
-        placeholder={options.filter(option => option.value === locale)[0].label}
-        options={options.filter(option => option.value !== locale)}
+        placeholder={options.filter(option => option.value === t('language'))[0].label}
+        options={options.filter(option => option.value !== t('language'))}
       />}
     </>
   );

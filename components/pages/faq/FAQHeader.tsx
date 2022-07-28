@@ -1,15 +1,10 @@
 import { Container, Divider, Stack, Typography } from '@mui/material';
+import { useTranslation } from 'next-export-i18n';
 import { Fade } from 'react-awesome-reveal';
-import { useRouter } from 'next/router';
-import no from '../../../public/translations/no';
-import en from '../../../public/translations/en';
-import fr from '../../../public/translations/fr';
-import de from '../../../public/translations/de';
 
 
 const FAQHeader = () => {
-  const { locale } = useRouter();
-  const translation = locale === 'en' ? en : locale === 'fr' ? fr : locale === 'de' ? de : no;
+  const { t } = useTranslation();
 
   return (
     <Container
@@ -32,7 +27,7 @@ const FAQHeader = () => {
             fontWeight='bold'
             color='primary'
           >
-            {translation.faq.header}
+            {t('faq.header')}
           </Typography>
           <Divider
             sx={{

@@ -1,14 +1,9 @@
 import { AccessibleForward, DirectionsRun, DirectionsWalk } from '@mui/icons-material';
 import { Container, Stack, Typography } from '@mui/material';
-import { useRouter } from 'next/router';
-import no from '../../../public/translations/no';
-import en from '../../../public/translations/en';
-import fr from '../../../public/translations/fr';
-import de from '../../../public/translations/de';
+import { useTranslation } from 'next-export-i18n';
 
 const Lanes = () => {
-  const { locale } = useRouter();
-  const translation = locale === 'en' ? en : locale === 'fr' ? fr : locale === 'de' ? de : no;
+  const { t } = useTranslation();
 
   return (
     <Container>
@@ -23,12 +18,12 @@ const Lanes = () => {
             variant='h3'
             textAlign='center'
           >
-            {translation.practices.lanes[0]}
+            {t('practices.lanes')[0]}
           </Typography>
           <Typography
             color='text.secondary'
           >
-            {translation.practices.lanes[1]}
+            {t('practices.lanes')[1]}
           </Typography>
         </Stack>
 
@@ -44,7 +39,7 @@ const Lanes = () => {
               variant='h4'
               textAlign='center'
             >
-              {translation.practices.lanes[2]}
+              {t('practices.lanes')[2]}
             </Typography>
             <AccessibleForward />
           </Stack>
@@ -52,7 +47,7 @@ const Lanes = () => {
             marginLeft='2rem'
             color='text.secondary'
           >
-            {translation.practices.lanes[3]}
+            {t('practices.lanes')[3]}
           </Typography>
         </Stack>
 
@@ -68,7 +63,7 @@ const Lanes = () => {
               variant='h4'
               textAlign='center'
             >
-              {translation.practices.lanes[4]}
+              {t('practices.lanes')[4]}
             </Typography>
             <DirectionsWalk />
           </Stack>
@@ -76,7 +71,7 @@ const Lanes = () => {
             marginLeft='2rem'
             color='text.secondary'
           >
-            {translation.practices.lanes[5]}
+            {t('practices.lanes')[5]}
           </Typography>
         </Stack>
 
@@ -91,7 +86,7 @@ const Lanes = () => {
             <Typography
               variant='h4'
             >
-              {translation.practices.lanes[6]}
+              {t('practices.lanes')[6]}
             </Typography>
             <DirectionsRun />
           </Stack>
@@ -99,7 +94,7 @@ const Lanes = () => {
             marginLeft='2rem'
             color='text.secondary'
           >
-            {translation.practices.lanes[7]}
+            {t('practices.lanes')[7]}
           </Typography>
         </Stack>
 
@@ -107,7 +102,7 @@ const Lanes = () => {
           marginTop='2.5rem'
           textAlign='center'
         >
-          {translation.practices.choice}
+          {t('practices.choice')}
         </Typography>
       </Stack>
       

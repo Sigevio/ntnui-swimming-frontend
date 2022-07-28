@@ -1,6 +1,6 @@
 import { Box, Divider, List, ListItem, ListItemText, Typography } from '@mui/material';
+import { useTranslation } from 'next-export-i18n';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
 const hrefs = {
   web: [
@@ -60,7 +60,7 @@ const hrefs = {
 }
 
 const AdminNav = () => {
-  const { locale } = useRouter();
+  const { t } = useTranslation();
 
   return (
     <Box
@@ -72,7 +72,7 @@ const AdminNav = () => {
         paddingTop: '3.5rem'
       }}
     >
-      <Box
+      {/*<Box
         sx={{
           backgroundColor: 'background.paper',
           minHeight: '100%'
@@ -151,7 +151,7 @@ const AdminNav = () => {
             </Link>
           ))}
         </List>
-      </Box>
+      </Box>*/}
     </Box>
   );
 }

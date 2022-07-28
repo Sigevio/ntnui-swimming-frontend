@@ -16,7 +16,7 @@ const GenderButtons = (props: IInputType) => {
           fontSize: '0.75rem'
         }}
       >
-        {props.translation.enrollment.gender[0]}
+        {props.translation('enrollment.gender')[0]}
       </FormLabel>
       <RadioGroup
         row
@@ -29,14 +29,14 @@ const GenderButtons = (props: IInputType) => {
           control={
             <Radio />
           }
-          label={props.translation.enrollment.genderMale}
+          label={props.translation('enrollment.genderMale')}
         />
         <FormControlLabel
           value='female'
           control={
             <Radio />
           }
-          label={props.translation.enrollment.genderFemale}
+          label={props.translation('enrollment.genderFemale')}
         />
       </RadioGroup>
     </FormControl>

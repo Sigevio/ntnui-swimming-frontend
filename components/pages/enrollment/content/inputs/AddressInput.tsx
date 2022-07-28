@@ -8,7 +8,7 @@ const AddressInput = (props: IInputType) => {
       fullWidth
       name='address'
       placeholder='Gate Gatesen 69A'
-      label={props.translation.enrollment.address[0]}
+      label={props.translation('enrollment.address')[0]}
       InputLabelProps={{
         shrink: true
       }}

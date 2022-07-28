@@ -1,18 +1,13 @@
 import { ArrowForwardIosSharp, Looks3, LooksOne, LooksTwo } from '@mui/icons-material';
 import { Box, Container, List, ListItem, ListItemIcon, ListItemText, Slide, Stack, Typography } from '@mui/material';
-import { useRouter } from 'next/router';
+import { useTranslation } from 'next-export-i18n';
 import { useState } from 'react';
 import { TheAccordion, TheAccordionDetails, TheAccordionSummary } from './styled/TheAccordion';
-import no from '../../../public/translations/no';
-import en from '../../../public/translations/en';
-import fr from '../../../public/translations/fr';
-import de from '../../../public/translations/de';
 
 const FAQs = () => {
   const [accordionExpanded, setAccordionExpanded] = useState<string | false>('false');
 
-  const { locale } = useRouter();
-  const translation = locale === 'en' ? en : locale === 'fr' ? fr : locale === 'de' ? de : no;
+  const { t } = useTranslation();
 
   const handleChangeAccordion = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
     setAccordionExpanded(newExpanded ? panel : false);
@@ -50,11 +45,11 @@ const FAQs = () => {
               fontWeight: accordionExpanded === 'panel1' ? 'bold' : null
             }}
           >
-            {translation.faq.faq1[0]}
+            {t('faq.faq1')[0]}
           </TheAccordionSummary>
           <TheAccordionDetails>
             <List>
-              {translation.faq.faq1.slice(1).map((faq, i) => (<>
+              {t('faq.faq1').slice(1).map((faq: string, i: number) => (<>
                 <Slide
                   key={i}
                   appear={false}
@@ -97,7 +92,7 @@ const FAQs = () => {
           </TheAccordionDetails>
         </TheAccordion>
 
-        {Object.values(translation.faq).slice(2, -1).map((faq, i) => (
+        {Object.values(t('faq')).slice(2, -1).map((faq: any, i) => (
           <TheAccordion
             elevation={5}
             key={`panel${i+2}`}
@@ -157,7 +152,7 @@ const FAQs = () => {
         <Typography
           textAlign='center'
         >
-          {translation.faq.footer}
+          {t('faq.footer')}
         </Typography>
       </Container>
 

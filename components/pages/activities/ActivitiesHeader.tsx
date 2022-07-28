@@ -1,14 +1,9 @@
 import { Container, Divider, Stack, Typography } from '@mui/material';
-import { useRouter } from 'next/router';
-import no from '../../../public/translations/no';
-import en from '../../../public/translations/en';
-import fr from '../../../public/translations/fr';
-import de from '../../../public/translations/de';
 import { Fade } from 'react-awesome-reveal';
+import { useTranslation } from 'next-export-i18n';
 
 const ActivitiesHeader = () => {
-  const { locale } = useRouter();
-  const translation = locale === 'en' ? en : locale === 'fr' ? fr : locale === 'de' ? de : no;
+  const { t } = useTranslation();
 
   return (
     <Container
@@ -31,7 +26,7 @@ const ActivitiesHeader = () => {
             fontWeight='bold'
             color='primary'
           >
-            {translation.activities.header[0]}
+            {t('activities.header')[0]}
           </Typography>
           <Divider />
         </Fade>
@@ -45,7 +40,7 @@ const ActivitiesHeader = () => {
             marginBottom='2rem'
             color='text.secondary'
           >
-            {translation.activities.header[1]}
+            {t('activities.header')[1]}
           </Typography>
         </Fade>
       </Stack>
