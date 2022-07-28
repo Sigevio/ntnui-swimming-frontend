@@ -13,7 +13,6 @@ The future frontend of the NTNUI Svømming website ([https://org.ntnu.no/svommer
 First, install all dependencies:
 
 ```bash
-cd frontend
 npm i
 ```
 
@@ -27,7 +26,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Pages
 
-All pages are located in the `frontend/pages` directory. Every page is composed of components located in the `frontend/components` directory.
+All pages are located in the `pages` directory. Every page is composed of components located in the `components` directory.
 
 ## API
 
@@ -35,7 +34,7 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 ## Build project
 
-Make sure you operate in the `frontend` directory. Then run:
+Run the following:
 
 ```bash
 npm run build
