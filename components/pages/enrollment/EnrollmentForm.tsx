@@ -1,11 +1,6 @@
 import { Button, Card, CardActions, CardContent, Container, FormGroup, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
-import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import EnrollmentType from './enrollmentType';
-import no from '../../../public/translations/no';
-import en from '../../../public/translations/en';
-import fr from '../../../public/translations/fr';
-import de from '../../../public/translations/de';
 import GenderButtons from './content/inputs/GenderButtons';
 import NameInput from './content/inputs/NameInput';
 import BirthdateInput from './content/inputs/BirthdateInput';
@@ -15,6 +10,7 @@ import ZIPInput from './content/inputs/ZIPInput';
 import CountryCodeInput from './content/inputs/CountryCodeInput';
 import PhoneInput from './content/inputs/PhoneInput';
 import LicenceInput from './content/inputs/LicenceInput';
+import { useTranslation } from 'next-export-i18n';
 
 const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
@@ -32,8 +28,7 @@ const EnrollmentForm = () => {
   });
   const [emailError, setEmailError] = useState<false | true>(false);
 
-  const { locale } = useRouter();
-  const translation = locale === 'en' ? en : locale === 'fr' ? fr : locale === 'de' ? de : no;
+  const { t } = useTranslation();
   const theme = useTheme();
   const mobileQuery = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -79,12 +74,12 @@ const EnrollmentForm = () => {
 
               <GenderButtons
                 handleChangeToParent={handleChange}
-                translation={translation}
+                translation={t}
               />
 
               <NameInput
                 handleChangeToParent={handleChange}
-                translation={translation}
+                translation={t}
               />
 
               <Stack
@@ -93,12 +88,12 @@ const EnrollmentForm = () => {
               >
                 <BirthdateInput
                   handleChangeToParent={handleChange}
-                  translation={translation}
+                  translation={t}
                 />
 
                 <EmailInput
                   handleChangeToParent={handleChange}
-                  translation={translation}
+                  translation={t}
                   emailError={emailError}
                 />
               </Stack>
@@ -109,12 +104,12 @@ const EnrollmentForm = () => {
               >
                 <AddressInput
                   handleChangeToParent={handleChange}
-                  translation={translation}
+                  translation={t}
                 />
 
                 <ZIPInput
                   handleChangeToParent={handleChange}
-                  translation={translation}
+                  translation={t}
                 />
               </Stack>
 
@@ -124,25 +119,25 @@ const EnrollmentForm = () => {
               >
                 <CountryCodeInput
                   handleChangeToParent={handleChange}
-                  translation={translation}
+                  translation={t}
                   value={values.countryCode}
                 />
 
                 <PhoneInput
                   handleChangeToParent={handleChange}
-                  translation={translation}
+                  translation={t}
                 />
               </Stack>
 
               <LicenceInput
                 handleChangeToParent={handleChange}
-                translation={translation}
+                translation={t}
                 value={values.licence}
               />
 
               <Container>
                 <Typography>
-                  {translation.enrollment.disclaimer}
+                  {t('enrollment.disclaimer')}
                 </Typography>
               </Container>
 
@@ -174,7 +169,7 @@ const EnrollmentForm = () => {
                   || values.birthdate.length !== 8
               }
             >
-              {translation.enrollment.button}
+              {t('enrollment.button')}
             </Button>
           </CardActions>
         </form>

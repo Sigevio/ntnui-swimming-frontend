@@ -2,7 +2,6 @@ import { Menu } from '@mui/icons-material';
 import { AppBar, Box, Drawer, IconButton, Stack, styled, useMediaQuery, useTheme } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import LanguageButton from './content/LanguageSelect';
 import Nav from './content/Nav';
@@ -23,8 +22,6 @@ const NavBar = () => {
   
   const theme = useTheme();
   const mobileQuery = useMediaQuery(theme.breakpoints.down('md'));
-
-  const { pathname } = useRouter();
 
   useEffect(() => {
     if (window.scrollY <= 65) {
@@ -86,7 +83,7 @@ const NavBar = () => {
         alignItems='center'
         height='inherit'
         color={
-          pathname === '/' ?
+          typeof window !== 'undefined' && window.location.href === '/' ?
           theme.palette.mode === 'light' ?
           textColor :
           'text.primary' :
@@ -112,7 +109,7 @@ const NavBar = () => {
               position: 'fixed',
               right: '1rem',
               color:
-                pathname === '/' ?
+                typeof window !== 'undefined' && window.location.href === '/' ?
                 theme.palette.mode === 'light' ?
                 textColor :
                 'text.primary' :

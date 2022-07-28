@@ -24,6 +24,7 @@
     "axios": "^0.26.1",
     "framer-motion": "^6.3.4",
     "next": "^12.1.4",
+    "next-export-i18n": "^2.0.3",
     "react": "^18.0.0",
     "react-awesome-reveal": "^3.8.1",
     "react-dom": "^18.0.0",

@@ -1,15 +1,9 @@
 import { Box, Card, CardContent, CardMedia, Divider, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
-import { useRouter } from 'next/router';
-import { useState } from 'react';
-import no from '../../../public/translations/no';
-import en from '../../../public/translations/en';
-import fr from '../../../public/translations/fr';
-import de from '../../../public/translations/de';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'next-export-i18n';
 
 const BoardMembers = () => {
-  const { locale } = useRouter();
-  const translation = locale === 'en' ? en : locale === 'fr' ? fr : locale === 'de' ? de : no;
+  const { t } = useTranslation();
 
   const theme = useTheme();
   const mobileQuery = useMediaQuery(theme.breakpoints.down('sm'));
@@ -20,7 +14,7 @@ const BoardMembers = () => {
       gap='2rem'
       minHeight='100vh'
     >
-      {Object.entries(translation.board).slice(1).map((member, i) => (
+      {Object.entries(t('board')).slice(1).map((member: any, i) => (
       <motion.div
         key={member[0]}
         initial={{

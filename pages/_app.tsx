@@ -6,7 +6,7 @@ import { responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
 import Head from 'next/head';
 import CssBaseline from '@mui/material/CssBaseline';
 import { useMediaQuery } from '@mui/material';
-import { createContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useMemo, useState } from 'react';
 import darkTheme from '../src/darkTheme';
 import lightTheme from '../src/lightTheme';
 

@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { useSelect, SelectOption } from '@mui/base';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { styled } from '@mui/material';
 import { NavSelectText } from './NavText';
 import { KeyboardArrowLeft } from '@mui/icons-material';
+import { LanguageSwitcher } from 'next-export-i18n';
 
 const darkBackground = '#2f2f2f';
 const lightBackground = '#e2e2e2';
@@ -99,8 +98,6 @@ function CustomLanguageSelect({ options, placeholder }: Props) {
   const listboxRef = React.useRef<HTMLUListElement>(null);
   const [listboxVisible, setListboxVisible] = React.useState(false);
 
-  const { asPath } = useRouter();
-
   const { getButtonProps, getListboxProps, value } = useSelect({
     listboxRef,
     options,
@@ -134,18 +131,16 @@ function CustomLanguageSelect({ options, placeholder }: Props) {
       </Toggle>
       <Listbox {...getListboxProps()} className={listboxVisible ? '' : 'hidden'}>
         {options.map((option) => (
-          <Link
+          <LanguageSwitcher
             key={option.value}
-            href={asPath}
-            locale={option.value}
-            passHref
+            lang={option.value}
           >
             <li>
               <NavSelectText>
                 {option.label}
               </NavSelectText>
             </li>
-          </Link>
+          </LanguageSwitcher>
         ))}
       </Listbox>
     </Root>

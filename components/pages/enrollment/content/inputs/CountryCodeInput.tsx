@@ -10,7 +10,7 @@ const CountryCodeInput = (props: IDropdownInputType) => {
       fullWidth
       value={props.value}
       select
-      label={props.translation.enrollment.countryCode}
+      label={props.translation('enrollment.countryCode')}
       InputLabelProps={{
         shrink: true
       }}

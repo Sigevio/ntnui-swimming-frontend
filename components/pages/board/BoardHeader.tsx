@@ -1,14 +1,9 @@
 import { Container, Divider, Stack, Typography } from '@mui/material';
+import { useTranslation } from 'next-export-i18n';
 import { Fade } from 'react-awesome-reveal';
-import { useRouter } from 'next/router';
-import no from '../../../public/translations/no';
-import en from '../../../public/translations/en';
-import fr from '../../../public/translations/fr';
-import de from '../../../public/translations/de';
 
 const BoardHeader = () => {
-  const { locale } = useRouter();
-  const translation = locale === 'en' ? en : locale === 'fr' ? fr : locale === 'de' ? de : no;
+  const { t } = useTranslation();
 
   return (
     <Container
@@ -31,7 +26,7 @@ const BoardHeader = () => {
             fontWeight='bold'
             color='primary'
           >
-            {translation.board.header[0]}
+            {t('board.header')[0]}
           </Typography>
           <Divider />
         </Fade>
@@ -44,12 +39,12 @@ const BoardHeader = () => {
           <Typography
             color='text.secondary'
           >
-            {translation.board.header[1]}
+            {t('board.header')[1]}
           </Typography>
           <Typography
             color='text.secondary'
           >
-            {translation.board.header[2]}
+            {t('board.header')[2]}
           </Typography>
         </Fade>
       </Stack>

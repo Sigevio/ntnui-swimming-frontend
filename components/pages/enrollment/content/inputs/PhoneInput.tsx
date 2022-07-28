@@ -11,7 +11,7 @@ const PhoneInput = (props: IInputType) => {
       InputProps={{
         inputComponent: PhoneMask as any
       }}
-      label={props.translation.enrollment.phone[0]}
+      label={props.translation('enrollment.phone')[0]}
       InputLabelProps={{
         shrink: true
       }}

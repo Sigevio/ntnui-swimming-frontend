@@ -11,7 +11,7 @@ const BirthdateInput = (props: IInputType) => {
       InputProps={{
         inputComponent: DateMask as any
       }}
-      label={props.translation.enrollment.birth[0]}
+      label={props.translation('enrollment.birth')[0]}
       InputLabelProps={{
         shrink: true
       }}

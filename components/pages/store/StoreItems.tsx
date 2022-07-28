@@ -1,12 +1,8 @@
 import { AddShoppingCart, RemoveShoppingCart, ShoppingCartCheckout } from '@mui/icons-material';
 import { ButtonBase, Card, CardContent, Dialog, DialogContent, Grid, IconButton, Slide, Stack, styled, Tooltip, Typography } from '@mui/material';
+import { useTranslation } from 'next-export-i18n';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import { useState } from 'react';
-import no from '../../../public/translations/no';
-import en from '../../../public/translations/en';
-import fr from '../../../public/translations/fr';
-import de from '../../../public/translations/de';
 
 const Img = styled('img')({
   margin: 'auto',
@@ -103,8 +99,7 @@ interface ImageState {
 }
 
 const StoreItems = () => {
-  const { locale } = useRouter();
-  const translation = locale === 'en' ? en : locale === 'fr' ? fr : locale === 'de' ? de : no;
+  const { t } = useTranslation();
 
   const [shoppingCart, setShoppingCart] = useState<Array<ShoppingCartState>>([]);
   const [imageState, setImageState] = useState<ImageState>({
@@ -113,7 +108,7 @@ const StoreItems = () => {
   })
 
   const handleChangeCart = (item: ShoppingCartState) => {
-    if (shoppingCart.includes(item)) {
+    if (shoppingCart.includes(item)) {
       setShoppingCart(shoppingCart.filter(i => i !== item))
     }
     else {
@@ -200,13 +195,13 @@ const StoreItems = () => {
                       variant='subtitle1'
                       component='div'
                     >
-                      {item.header[locale === 'no' ? 0 : 1]}
+                      {item.header[t('language') === 'no' ? 0 : 1]}
                     </Typography>
                     <Typography
                       variant='body2'
                       gutterBottom
                     >
-                      {item.description[locale === 'no' ? 0 : 1]}
+                      {item.description[t('language') === 'no' ? 0 : 1]}
                     </Typography>
                   </Grid>
                 </Grid>
@@ -229,7 +224,7 @@ const StoreItems = () => {
                       disableInteractive
                       title={
                         <Typography>
-                          {translation.store.modifyCart[0]}
+                          {t('store.modifyCart')[0]}
                         </Typography>
                       }
                     >
@@ -247,7 +242,7 @@ const StoreItems = () => {
                     disableInteractive
                     title={
                       <Typography>
-                        {translation.store.modifyCart[1]}
+                        {t('store.modifyCart')[1]}
                       </Typography>
                     }
                     >
@@ -307,8 +302,8 @@ const StoreItems = () => {
                     color='text.secondary'
                   >
                     {shoppingCart.length} {shoppingCart.length === 1 ? 
-                    translation.store.items[0] :
-                    translation.store.items[1]} á
+                    t('store.items')[0] :
+                    t('store.items')[1]} á
                   </Typography>
                   <Typography
                     color='text.primary'
@@ -322,7 +317,7 @@ const StoreItems = () => {
                   disableInteractive
                   title={
                     <Typography>
-                      {translation.store.checkout}
+                      {t('store.checkout')}
                     </Typography>
                   }
                 >

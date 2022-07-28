@@ -1,20 +1,8 @@
-import {
-  Box,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Typography,
-} from '@mui/material';
-import { useRouter } from 'next/router';
-import no from '../../../public/translations/no';
-import en from '../../../public/translations/en';
-import fr from '../../../public/translations/fr';
-import de from '../../../public/translations/de';
+import { Box, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
+import { useTranslation } from 'next-export-i18n';
 
 const PracticeHours = () => {
-  const { locale } = useRouter();
-  const translation = locale === 'en' ? en : locale === 'fr' ? fr : locale === 'de' ? de : no;
+  const { t } = useTranslation();
 
   return (
     <Box
@@ -26,7 +14,7 @@ const PracticeHours = () => {
         variant='h3'
         textAlign='center'
       >
-        {translation.practices.practiceHours[0]}
+        {t('practices.practiceHours')[0]}
       </Typography>
       <List>
         <ListItem>
@@ -37,7 +25,7 @@ const PracticeHours = () => {
             <Typography
               color='text.secondary'
             >
-              {translation.practices.practiceHours[1]}
+              {t('practices.practiceHours')[1]}
             </Typography>
           </ListItemText>
         </ListItem>
@@ -49,7 +37,7 @@ const PracticeHours = () => {
             <Typography
               color='text.secondary'
             >
-              {translation.practices.practiceHours[2]}
+              {t('practices.practiceHours')[2]}
             </Typography>
           </ListItemText>
         </ListItem>
@@ -61,7 +49,7 @@ const PracticeHours = () => {
             <Typography
               color='text.secondary'
             >
-              {translation.practices.practiceHours[3]}
+              {t('practices.practiceHours')[3]}
             </Typography>
           </ListItemText>
         </ListItem>
@@ -73,7 +61,7 @@ const PracticeHours = () => {
             <Typography
               color='text.secondary'
             >
-              {translation.practices.practiceHours[4]}
+              {t('practices.practiceHours')[4]}
             </Typography>
           </ListItemText>
         </ListItem>
