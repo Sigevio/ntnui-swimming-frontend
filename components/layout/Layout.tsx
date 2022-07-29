@@ -10,7 +10,7 @@ const ContentWrapper = styled('div')({
   marginBottom: '6rem'
 });
 
-const Layout: React.FC = ({ children }, t) => {  
+const Layout: React.FC = ({ children }) => {  
   return (
     <>
       <NavBar />
