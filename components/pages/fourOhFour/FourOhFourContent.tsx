@@ -26,12 +26,10 @@ const FourOhFourContent = () => {
       marginBottom='-6rem'
       justifyContent='center'
       alignItems='center'
-      padding='1rem'
     >
       <Container
         sx={{
-          width: '100vw',
-          maxWidth: '100vh',
+          width: 'min(100vw, 90vh)',
           aspectRatio: '1/1'
         }}
       >
