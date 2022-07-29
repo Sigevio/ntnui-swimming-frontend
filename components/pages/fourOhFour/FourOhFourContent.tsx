@@ -10,6 +10,7 @@ const ImageWrapper = styled(Box)({
 const Credits = styled('a')(({ theme }) => ({
   color: theme.palette.text.secondary,
   opacity: '0.25',
+  textDecoration: 'none',
   transition: 'opacity 0.25s ease-in-out',
   '&:hover': {
     opacity: '1'
