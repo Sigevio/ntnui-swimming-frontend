@@ -42,3 +42,11 @@ npm run start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser and be amazed.
+
+## Create static output
+
+Run:
+
+```bash
+npm run export
+```
