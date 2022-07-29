@@ -1,11 +1,11 @@
 import AdminLayout from "../../components/pages/admin/layout/AdminLayout";
 
-const MembershipRequests = () => {
+const Profile = () => {
   return (
     <AdminLayout>
-
+      
     </AdminLayout>
   );
 }
 
-export default MembershipRequests;
+export default Profile;

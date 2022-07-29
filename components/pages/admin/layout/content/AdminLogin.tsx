@@ -3,7 +3,7 @@ import { Button, Card, CardContent, FormControl, FormGroup, IconButton, InputAdo
 import { useTranslation } from 'next-export-i18n';
 import { useState } from 'react';
 
-const AdminLogin = ({ handleChangeToParent, loginFailed }: { handleChangeToParent: Function, loginFailed: boolean }) => {
+const AdminLogin = ({ loginFailed }: { loginFailed: boolean }) => {
   const { t } = useTranslation();
 
   const [values, setValues] = useState({
@@ -21,7 +21,6 @@ const AdminLogin = ({ handleChangeToParent, loginFailed }: { handleChangeToParen
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    handleChangeToParent(values);
   }
 
   const handleClickShowPassword = () => {

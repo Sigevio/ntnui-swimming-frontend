@@ -1,6 +1,6 @@
 import AdminLayout from "../../components/pages/admin/layout/AdminLayout";
 
-const FreeWorkForce = () => {
+const Members = () => {
   return (
     <AdminLayout>
 
@@ -8,4 +8,4 @@ const FreeWorkForce = () => {
   );
 }
 
-export default FreeWorkForce;
+export default Members;

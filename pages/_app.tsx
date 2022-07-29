@@ -29,9 +29,9 @@ const MyApp = (props: MyAppProps) => {
     () => ({
       toggleColorMode: () => {
         setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
-      },
+      }
     }),
-    [],
+    []
   );
 
   const resposiveTheme = responsiveFontSizes(mode === 'dark' ? darkTheme : lightTheme, { breakpoints: ['sm', 'md', 'lg', 'xl'], factor: 2 });
