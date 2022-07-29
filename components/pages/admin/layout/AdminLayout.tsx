@@ -3,36 +3,30 @@ import { useState } from 'react';
 import Footer from '../../../footer/Footer';
 import NavBar from '../../../navbar/NavBar';
 import AdminLogin from './content/AdminLogin';
-import AdminNav from './content/AdminNav';
 
 const ContentWrapper = styled('div')({
-  display: 'flex'
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: '4rem',
+  marginBottom: '6rem'
 });
 
 const AdminLayout: React.FC = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true); // CHANGE TO FALSE FOR ADMIN LOGIN
   const [loginFailed, setLoginFailed] = useState<boolean>(false);
-
-  const handleLogin = ({ username, password }: { username: string, password: string }) => {
-    if (username === 'username' && password === 'password') {
-      setIsLoggedIn(true);
-    } else {
-      setLoginFailed(true);
-    }
-  };
 
   return (
     <>
-      <NavBar />
+      <NavBar isAdmin={isLoggedIn} />
       {isLoggedIn ?
         <>
           <ContentWrapper>
-            <AdminNav />
             {children}
           </ContentWrapper>
-          <Footer />
         </> :
-        <AdminLogin handleChangeToParent={handleLogin} loginFailed={loginFailed} />}
+        <AdminLogin loginFailed={loginFailed} />}
+      <Footer />
     </>
   );
 }

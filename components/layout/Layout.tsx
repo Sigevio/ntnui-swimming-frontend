@@ -1,6 +1,7 @@
 import Footer from '../footer/Footer';
 import NavBar from '../navbar/NavBar';
 import { styled } from '@mui/material/styles';
+import { useContext } from 'react';
 
 const ContentWrapper = styled('div')({
   display: 'flex',
@@ -10,10 +11,12 @@ const ContentWrapper = styled('div')({
   marginBottom: '6rem'
 });
 
-const Layout: React.FC = ({ children }) => {  
+const Layout: React.FC = ({ children }) => {
   return (
     <>
-      <NavBar />
+      <NavBar
+        isAdmin={true} // CHANGE TO FALSE TO HIDE ADMIN NAV
+      />
       <ContentWrapper>
         {children}
       </ContentWrapper>

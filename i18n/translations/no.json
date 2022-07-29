@@ -7,6 +7,12 @@
       "password": "Passord",
       "loginFailed": "Innlogging feilet!",
       "button": "Send"
+    },
+    "nav": {
+      "profile": "Min profil",
+      "users": "Brukere",
+      "members": "Medlemmer",
+      "store": "Nettbutikk"
     }
   },
   "nav": {

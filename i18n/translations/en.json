@@ -7,6 +7,12 @@
       "password": "Password",
       "loginFailed": "Login failed!",
       "button": "Send"
+    },
+    "nav": {
+      "profile": "My profile",
+      "users": "Users",
+      "members": "Members",
+      "store": "Store"
     }
   },
   "nav": {
