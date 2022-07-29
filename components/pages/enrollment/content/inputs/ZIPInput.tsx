@@ -2,7 +2,7 @@ import { TextField } from '@mui/material';
 import { IInputType } from '../inputType';
 import { ZIPMask } from '../Masks';
 
-const ZIPInput = (props: IInputType) => {
+const ZIPInput = ({ translation, handleChangeToParent }: IInputType) => {
   return (
     <TextField
       required
@@ -11,11 +11,11 @@ const ZIPInput = (props: IInputType) => {
       InputProps={{
         inputComponent: ZIPMask as any
       }}
-      label={props.translation('enrollment.zip')[0]}
+      label={translation('enrollment.zip')[0]}
       InputLabelProps={{
         shrink: true
       }}
-      onChange={event => props.handleChangeToParent(event)}
+      onChange={event => handleChangeToParent(event)}
     />
   );
 }

@@ -1,5 +1,14 @@
 {
   "language": "no",
+  "admin": {
+    "login": {
+      "header": "Admin",
+      "username": "Brukernavn",
+      "password": "Passord",
+      "loginFailed": "Innlogging feilet!",
+      "button": "Send"
+    }
+  },
   "nav": {
     "offers": "Tilbud",
     "practices": "Svømmetreninger",

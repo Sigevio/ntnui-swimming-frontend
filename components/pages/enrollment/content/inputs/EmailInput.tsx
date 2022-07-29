@@ -1,23 +1,23 @@
 import { TextField } from '@mui/material';
 import { IEmailInputType } from '../inputType';
 
-const EmailInput = (props: IEmailInputType) => {
+const EmailInput = ({ emailError, translation, handleChangeToParent }: IEmailInputType) => {
   return (
     <TextField
       required
       fullWidth
-      error={props.emailError}
+      error={emailError}
       name='email'
       placeholder='ola.normann@ntnui.no'
-      label={props.translation('enrollment.email')[0]}
+      label={translation('enrollment.email')[0]}
       InputLabelProps={{
         shrink: true
       }}
-      helperText={props.translation('enrollment.email')[1]}
+      helperText={translation('enrollment.email')[1]}
       FormHelperTextProps={{
-        hidden: !props.emailError
+        hidden: !emailError
       }}
-      onChange={event => props.handleChangeToParent(event)}
+      onChange={event => handleChangeToParent(event)}
     />
   );
 }

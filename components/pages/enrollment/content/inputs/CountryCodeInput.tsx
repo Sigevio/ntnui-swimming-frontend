@@ -2,19 +2,19 @@ import { MenuItem, Stack, TextField, Typography } from '@mui/material';
 import { IDropdownInputType } from '../inputType';
 import countryCodes from '../../../../../public/countryCodes';
 
-const CountryCodeInput = (props: IDropdownInputType) => {
+const CountryCodeInput = ({ value, translation, handleChangeToParent }: IDropdownInputType) => {
   return (
     <TextField
       required
       name='countryCode'
       fullWidth
-      value={props.value}
+      value={value}
       select
-      label={props.translation('enrollment.countryCode')}
+      label={translation('enrollment.countryCode')}
       InputLabelProps={{
         shrink: true
       }}
-      onChange={event => props.handleChangeToParent(event)}
+      onChange={event => handleChangeToParent(event)}
       SelectProps={{
         MenuProps: {
           PaperProps: {

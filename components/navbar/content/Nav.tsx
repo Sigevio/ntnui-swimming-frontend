@@ -4,7 +4,7 @@ import { NavText } from './styled/desktop/NavText';
 import { useMediaQuery, useTheme } from '@mui/material';
 import DrawerButton from './styled/mobile/DrawerButton';
 import { DrawerAccordion, DrawerAccordionDetails, DrawerAccordionSummary } from './styled/mobile/DrawerAccordion';
-import { useTranslation, useLanguageQuery, LanguageSwitcher } from 'next-export-i18n';
+import { useTranslation, useLanguageQuery } from 'next-export-i18n';
 
 const Nav = () => {
   const { t } = useTranslation();

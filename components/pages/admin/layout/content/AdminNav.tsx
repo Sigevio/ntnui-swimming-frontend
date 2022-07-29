@@ -1,5 +1,5 @@
 import { Box, Divider, List, ListItem, ListItemText, Typography } from '@mui/material';
-import { useTranslation } from 'next-export-i18n';
+import { useLanguageQuery, useTranslation } from 'next-export-i18n';
 import Link from 'next/link';
 
 const hrefs = {
@@ -23,11 +23,6 @@ const hrefs = {
       url: 'store',
       displayNO: 'Nettbutikk',
       displayEN: 'Store'
-    },
-    {
-      url: 'fridayBeer',
-      displayNO: 'Fredagspils',
-      displayEN: 'Friday beer'
     },
     {
       url: 'testRange',
@@ -61,6 +56,7 @@ const hrefs = {
 
 const AdminNav = () => {
   const { t } = useTranslation();
+  const [query] = useLanguageQuery();
 
   return (
     <Box
@@ -72,7 +68,7 @@ const AdminNav = () => {
         paddingTop: '3.5rem'
       }}
     >
-      {/*<Box
+      <Box
         sx={{
           backgroundColor: 'background.paper',
           minHeight: '100%'
@@ -96,7 +92,8 @@ const AdminNav = () => {
           <Divider />
           {hrefs.web.map((href, index) => (
             <Link
-              href={`/admin/${href.url}`}
+              key={`web${index}`}
+              href={{ pathname: `/admin/${href.url}`, query: query }}
               passHref
             >
               <ListItem
@@ -105,7 +102,7 @@ const AdminNav = () => {
                 <ListItemText
                   primary={
                     <Typography>
-                      {locale === 'no' ? href.displayNO : href.displayEN}
+                      {t('language') === 'no' ? href.displayNO : href.displayEN}
                     </Typography>
                   }
                   sx={{
@@ -122,7 +119,7 @@ const AdminNav = () => {
                   variant='h5'
                   fontWeight='bold'
                 >
-                  {locale === 'no' ? 'Medlemmer' : 'Members'}
+                  {t('language') === 'no' ? 'Medlemmer' : 'Members'}
                 </Typography>
               }
             />
@@ -130,8 +127,8 @@ const AdminNav = () => {
           <Divider />
           {hrefs.members.map((href, index) => (
             <Link
-              key={index}
-              href={`/admin/${href.url}`}
+              key={`members${index}`}
+              href={{ pathname: `/admin/${href.url}`, query: query }}
               passHref
             >
               <ListItem
@@ -140,7 +137,7 @@ const AdminNav = () => {
                 <ListItemText
                   primary={
                     <Typography>
-                      {locale === 'no' ? href.displayNO : href.displayEN}
+                      {t('language') === 'no' ? href.displayNO : href.displayEN}
                     </Typography>
                   }
                   sx={{
@@ -151,7 +148,7 @@ const AdminNav = () => {
             </Link>
           ))}
         </List>
-      </Box>*/}
+      </Box>
     </Box>
   );
 }

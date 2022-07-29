@@ -2,7 +2,7 @@ import { TextField } from '@mui/material';
 import { IInputType } from '../inputType';
 import { PhoneMask } from '../Masks';
 
-const PhoneInput = (props: IInputType) => {
+const PhoneInput = ({ translation, handleChangeToParent }: IInputType) => {
   return (
     <TextField
       required
@@ -11,11 +11,11 @@ const PhoneInput = (props: IInputType) => {
       InputProps={{
         inputComponent: PhoneMask as any
       }}
-      label={props.translation('enrollment.phone')[0]}
+      label={translation('enrollment.phone')[0]}
       InputLabelProps={{
         shrink: true
       }}
-      onChange={event => props.handleChangeToParent(event)}
+      onChange={event => handleChangeToParent(event)}
     />
   );
 }

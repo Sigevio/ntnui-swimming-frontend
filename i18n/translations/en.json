@@ -1,13 +1,13 @@
 {
   "language": "en",
-  "routes": {
-    "offers": "offers",
-    "practices": "practices",
-    "activities": "activities",
-    "enrollment": "enrollment",
-    "board": "board",
-    "faq": "faq",
-    "store": "store"
+  "admin": {
+    "login": {
+      "header": "Admin",
+      "username": "Username",
+      "password": "Password",
+      "loginFailed": "Login failed!",
+      "button": "Send"
+    }
   },
   "nav": {
     "offers": "Offers",

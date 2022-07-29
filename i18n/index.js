@@ -7,8 +7,8 @@ const i18n = {
   translations: {
     no: no,
     en: en,
-    fr: fr,
-    de: de
+    /*fr: fr,
+    de: de*/
   },
   defaultLang: 'no',
   useBrowserDefault: true
