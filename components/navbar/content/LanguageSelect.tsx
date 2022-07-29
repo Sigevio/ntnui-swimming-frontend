@@ -14,14 +14,14 @@ const options = [
     label: 'English',
     value: 'en'
   },
-  {
+  /*{
     label: 'Français',
     value: 'fr'
   },
   {
     label: 'Deutsch',
     value: 'de'
-  }
+  }*/
 ]
 
 const LanguageButton = () => {

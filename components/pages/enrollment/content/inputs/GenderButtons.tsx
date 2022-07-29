@@ -1,7 +1,7 @@
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material';
 import { IInputType } from '../inputType';
 
-const GenderButtons = (props: IInputType) => {
+const GenderButtons = ({ translation, handleChangeToParent }: IInputType) => {
   return (
     <FormControl
       margin='dense'
@@ -16,27 +16,27 @@ const GenderButtons = (props: IInputType) => {
           fontSize: '0.75rem'
         }}
       >
-        {props.translation('enrollment.gender')[0]}
+        {translation('enrollment.gender')[0]}
       </FormLabel>
       <RadioGroup
         row
         aria-labelledby='gender-buttons-label'
         name='gender'
-        onChange={event => props.handleChangeToParent(event)}
+        onChange={event => handleChangeToParent(event)}
       >
         <FormControlLabel
           value='male'
           control={
             <Radio />
           }
-          label={props.translation('enrollment.genderMale')}
+          label={translation('enrollment.genderMale')}
         />
         <FormControlLabel
           value='female'
           control={
             <Radio />
           }
-          label={props.translation('enrollment.genderFemale')}
+          label={translation('enrollment.genderFemale')}
         />
       </RadioGroup>
     </FormControl>

@@ -77,12 +77,12 @@ const Listbox = styled('ul')(
       opacity: 0.25;
     }
 
-    &:first-of-type {
+    &:first-of-type:not(:last-of-type) {
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
     }
 
-    &:last-of-type {
+    &:last-of-type:not(:first-of-type) {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
     }

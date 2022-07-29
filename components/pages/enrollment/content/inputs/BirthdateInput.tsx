@@ -1,8 +1,8 @@
 import { TextField } from '@mui/material';
-import { IInputType } from '../inputType';
+import { IInputType } from '../inputType';
 import { DateMask } from '../Masks';
 
-const BirthdateInput = (props: IInputType) => {
+const BirthdateInput = ({ translation, handleChangeToParent }: IInputType) => {
   return (
     <TextField
       required
@@ -11,11 +11,11 @@ const BirthdateInput = (props: IInputType) => {
       InputProps={{
         inputComponent: DateMask as any
       }}
-      label={props.translation('enrollment.birth')[0]}
+      label={translation('enrollment.birth')[0]}
       InputLabelProps={{
         shrink: true
       }}
-      onChange={event => props.handleChangeToParent(event)}
+      onChange={event => handleChangeToParent(event)}
     />
   );
 }
