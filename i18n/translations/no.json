@@ -13,6 +13,16 @@
       "users": "Brukere",
       "members": "Medlemmer",
       "store": "Nettbutikk"
+    },
+    "profile": {
+      "header": "Min profil",
+      "passwordHeader": "Endre passord",
+      "currentPassword": "Nåværende passord",
+      "newPassword": "Nytt passord",
+      "repeatNewPassword": "Gjenta nytt passord",
+      "submitButton": "Send",
+      "submitFailed": "Noe ble skrevet feil...",
+      "signOutButton": "Logg ut"
     }
   },
   "nav": {

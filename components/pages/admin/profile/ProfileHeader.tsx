@@ -1,9 +1,8 @@
-import { Container, Divider, Stack, Typography } from '@mui/material';
+import { Stack, Divider, Typography } from '@mui/material';
 import { useTranslation } from 'next-export-i18n';
 import { Fade } from 'react-awesome-reveal';
 
-
-const FAQHeader = () => {
+const ProfileHeader = () => {
   const { t } = useTranslation();
 
   return (
@@ -14,16 +13,17 @@ const FAQHeader = () => {
     >
       <Fade
         duration={1000}
-        cascade
         triggerOnce
+        cascade
         direction='up'
       >
         <Typography
           variant='h2'
+          textAlign='center'
           fontWeight='bold'
           color='primary'
         >
-          {t('faq.header')}
+          {t('admin.profile.header')}
         </Typography>
         <Divider
           sx={{
@@ -36,4 +36,4 @@ const FAQHeader = () => {
   );
 }
 
-export default FAQHeader;
+export default ProfileHeader;

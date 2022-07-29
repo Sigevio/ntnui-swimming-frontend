@@ -13,6 +13,16 @@
       "users": "Users",
       "members": "Members",
       "store": "Store"
+    },
+    "profile": {
+      "header": "My profile",
+      "passwordHeader": "Change password",
+      "currentPassword": "Current password",
+      "newPassword": "New password",
+      "repeatNewPassword": "Repeat new password",
+      "submitButton": "Submit",
+      "submitFailed": "Something was typed wrong...",
+      "signOutButton": "Sign out"
     }
   },
   "nav": {
