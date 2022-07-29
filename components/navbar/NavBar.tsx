@@ -15,15 +15,20 @@ const LogoWrapper = styled(Box)({
 });
 
 const NavBar = () => {
-  const [drawerOpen, setDrawerOpen] = useState<true | false>(false);
+  const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
   const [navColor, setNavColor] = useState<string>('#ffffff00');
   const [textColor, setTextColor] = useState<string>('#fff');
   const [blur, setBlur] = useState<number>(0);
+
+  const [isMainPage, setIsMainPage] = useState<boolean>(false);
   
   const theme = useTheme();
   const mobileQuery = useMediaQuery(theme.breakpoints.down('md'));
 
   useEffect(() => {
+    if (window.location.pathname === '/' ) {
+      setIsMainPage(true);
+    }
     if (window.scrollY <= 65) {
       setNavColor(`${theme.palette.background.paper}${(window.scrollY*3 | 0) <= 15 ? '0' : ''}${(window.scrollY*3 | 0).toString(16)}`);
     } else {
@@ -83,7 +88,7 @@ const NavBar = () => {
         alignItems='center'
         height='inherit'
         color={
-          typeof window !== 'undefined' && window.location.href === '/' ?
+          isMainPage ?
           theme.palette.mode === 'light' ?
           textColor :
           'text.primary' :
@@ -109,7 +114,7 @@ const NavBar = () => {
               position: 'fixed',
               right: '1rem',
               color:
-                typeof window !== 'undefined' && window.location.href === '/' ?
+                isMainPage ?
                 theme.palette.mode === 'light' ?
                 textColor :
                 'text.primary' :
