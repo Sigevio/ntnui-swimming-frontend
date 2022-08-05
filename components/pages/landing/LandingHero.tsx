@@ -1,21 +1,20 @@
-import { Box, Fade, styled } from '@mui/material';
-import Image from 'next/image';
+import { Fade, styled, useMediaQuery, useTheme } from '@mui/material';
 import { useState } from 'react';
 
-const ImageHeight = styled(Box)({
-  height: '60rem',
-  width: '100vw'
-});
-
-const HeroWrapper = styled(Box)(({ theme }) => ({
-  position: 'relative',
-  height: '100%',
-  width: '100%',
-  filter: theme.palette.mode === 'dark' ? 'brightness(0.75)' : ''
+const Hero = styled('div')(({ theme }) => ({
+  backgroundImage: `linear-gradient(to top, ${theme.palette.background.default}, ${theme.palette.background.default}60, ${theme.palette.background.default}20, ${theme.palette.background.default}80, ${theme.palette.background.default}), url(hero.jpeg)`,
+  width: '100vw',
+  aspectRatio: '5120 / 3413',
+  backgroundSize: 'cover',
+  color: 'white',
+  padding: '20px'
 }));
 
 const LandingHero = () => {
-  const [showImage, setShowImage] = useState<false | true>(false);
+  const [showImage, setShowImage] = useState<false | true>(true);
+
+  const theme = useTheme();
+  const mobileQuery = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <Fade
@@ -23,20 +22,11 @@ const LandingHero = () => {
       in={showImage}
       timeout={2000}
     >
-      <ImageHeight>
-        <HeroWrapper
-          display={showImage ? 'default' : 'none'}
-        >
-          <Image
-            src='/hero.jpeg'
-            alt='hero'
-            layout='fill'
-            objectFit='cover'
-            priority
-            onLoadingComplete={() => setShowImage(true)}
-          />
-        </HeroWrapper>
-      </ImageHeight>
+      <Hero
+        sx={{
+          marginTop: mobileQuery ? '0' : '6rem'
+        }}
+      />
     </Fade>
   );
 }

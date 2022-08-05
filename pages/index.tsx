@@ -1,3 +1,4 @@
+import { Box } from '@mui/material';
 import type { NextPage } from 'next';
 import Layout from '../components/layout/Layout';
 import LandingContent from '../components/pages/landing/LandingContent';
