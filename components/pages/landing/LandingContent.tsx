@@ -8,7 +8,10 @@ const LandingContent = () => {
   return (
     <Container
       sx={{
-        minHeight: '16rem'
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        minHeight: '120vh'
       }}
     >
       <motion.div

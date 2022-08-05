@@ -87,13 +87,7 @@ const NavBar = ({ isAdmin }: { isAdmin: boolean }) => {
         gap='1.25rem'
         alignItems='center'
         height='inherit'
-        color={
-          isMainPage ?
-          theme.palette.mode === 'light' ?
-          textColor :
-          'text.primary' :
-          'text.primary'
-        }
+        color='text.primary'
       >
         <Link
           href='/'
@@ -112,13 +106,7 @@ const NavBar = ({ isAdmin }: { isAdmin: boolean }) => {
           <IconButton
             sx={{
               position: 'fixed',
-              right: '1rem',
-              color:
-                isMainPage ?
-                theme.palette.mode === 'light' ?
-                textColor :
-                'text.primary' :
-                'text.primary'
+              right: '1rem'
             }}
             onClick={handleOpenDrawer}
           >

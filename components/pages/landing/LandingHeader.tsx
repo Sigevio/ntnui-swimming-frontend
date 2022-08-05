@@ -1,15 +1,18 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { Fade } from 'react-awesome-reveal';
 import { useTranslation } from 'next-export-i18n';
 
 const LandingHeader = () => {
   const { t } = useTranslation();
 
+  const theme = useTheme();
+  const mobileQuery = useMediaQuery(theme.breakpoints.down('md'));
+
   return (
     <Box
       sx={{
-        position: 'absolute',
-        top: '7rem',
+        position: mobileQuery ? 'relative' : 'absolute',
+        top: mobileQuery ? '1rem' : '6rem',
         width: '95vw',
         maxWidth: '60rem',
         zIndex: '1'
@@ -24,10 +27,6 @@ const LandingHeader = () => {
           variant='h2'
           textAlign='center'
           fontWeight='bold'
-          color='#fff'
-          sx={{
-            textShadow: '0 0 1rem #000'
-          }}
         >
           {t('home.header')}
         </Typography>
@@ -40,12 +39,9 @@ const LandingHeader = () => {
       >
         <Typography
           textAlign='center'
-          color='#fff'
           fontWeight='bold'
           fontSize='large'
-          sx={{
-            textShadow: '0 0 1rem #000'
-          }}
+          color='text.secondary'
         >
           {t('home.headerDescription')}
         </Typography>
