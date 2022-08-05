@@ -27,6 +27,7 @@ const LandingHeader = () => {
           variant='h2'
           textAlign='center'
           fontWeight='bold'
+          fontFamily='montserrat'
         >
           {t('home.header')}
         </Typography>
@@ -42,6 +43,8 @@ const LandingHeader = () => {
           fontWeight='bold'
           fontSize='large'
           color='text.secondary'
+          marginTop='0.5rem'
+          marginLeft={mobileQuery ? '0' : '7rem'}
         >
           {t('home.headerDescription')}
         </Typography>

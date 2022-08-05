@@ -203,6 +203,11 @@
     "minimatch" "^3.0.4"
     "strip-json-comments" "^3.1.1"
 
+"@fontsource/montserrat@^4.5.11":
+  "integrity" "sha512-XAYZmprnZDVSLIeEiB3evVG2JD+yoR9aT+I6LCOcwZFQ6ro9UPpopDncqoqwv+j5M0/UjyAP6ov70+L/fmP8Gg=="
+  "resolved" "https://registry.npmjs.org/@fontsource/montserrat/-/montserrat-4.5.11.tgz"
+  "version" "4.5.11"
+
 "@fontsource/roboto@^4.5.5":
   "integrity" "sha512-Pe1p+gAO6K0aLxBXlLoJRHVx352tVc/v/7DOnvM3t+FYXb+KUga9aCD1NpnDfd0kKnWXqrZyAXguyyFWDDuphw=="
   "resolved" "https://registry.npmjs.org/@fontsource/roboto/-/roboto-4.5.5.tgz"
