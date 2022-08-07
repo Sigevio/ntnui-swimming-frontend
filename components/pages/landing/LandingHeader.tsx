@@ -28,6 +28,7 @@ const LandingHeader = () => {
           textAlign='center'
           fontWeight='bold'
           fontFamily='montserrat'
+          color='primary'
         >
           {t('home.header')}
         </Typography>
