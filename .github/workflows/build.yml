@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: install dependencies
-      run: sudo apt update && sudo apt install node && npm install --legacy-peer-deps
+      run: sudo apt update && sudo apt install npm && npm install
     - name: build site
       run: npm run build
     - name: create exportable build
