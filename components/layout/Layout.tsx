@@ -1,7 +1,7 @@
 import Footer from '../footer/Footer';
 import NavBar from '../navbar/NavBar';
 import { styled } from '@mui/material/styles';
-import { useContext } from 'react';
+import { ReactNode, useContext } from 'react';
 
 const ContentWrapper = styled('div')({
   display: 'flex',
@@ -11,7 +11,7 @@ const ContentWrapper = styled('div')({
   marginBottom: '6rem'
 });
 
-const Layout: React.FC = ({ children }) => {
+const Layout = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <NavBar

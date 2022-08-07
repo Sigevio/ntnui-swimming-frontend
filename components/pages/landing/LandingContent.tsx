@@ -1,5 +1,5 @@
 import { Container, Stack, Typography } from '@mui/material';
-import { motion } from 'framer-motion';
+import { Fade } from 'react-awesome-reveal';
 import { useTranslation } from 'next-export-i18n';
 
 const LandingContent = () => {
@@ -14,14 +14,11 @@ const LandingContent = () => {
         minHeight: '120vh'
       }}
     >
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{
-          delay: 0.2,
-          duration: 0.5
-        }}
+      <Fade
+        duration={1000}
+        triggerOnce
+        direction='up'
+        fraction={0.5}
       >
         <Stack
           gap='0.5rem'
@@ -43,7 +40,7 @@ const LandingContent = () => {
             {t('home.whoDescription')[1]}
           </Typography>
         </Stack>
-      </motion.div>
+      </Fade>
     </Container>
   );
 }

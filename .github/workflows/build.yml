@@ -10,8 +10,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: install dependencies
-      run: sudo apt update && sudo apt install yarn && yarn install
+      run: sudo apt update && sudo apt install npm && npm install
     - name: build site
-      run: yarn run build
+      run: npm run build
     - name: create exportable build
-      run: yarn run export
+      run: npm run export
