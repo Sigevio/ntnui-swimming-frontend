@@ -1,5 +1,5 @@
 import { Box, Card, CardContent, CardMedia, Divider, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
-import { motion } from 'framer-motion';
+import { Fade } from 'react-awesome-reveal';
 import { useTranslation } from 'next-export-i18n';
 
 const BoardMembers = () => {
@@ -15,21 +15,12 @@ const BoardMembers = () => {
       minHeight='100vh'
     >
       {Object.entries(t('board')).slice(1).map((member: any, i) => (
-      <motion.div
+      <Fade
         key={member[0]}
-        initial={{
-          opacity: 0,
-          translateX: mobileQuery ? 0 : i % 2 === 0 ? '2rem' : '-2rem'
-        }}
-        whileInView={{
-          opacity: 1,
-          translateX: 0
-        }}
-        viewport={{ once: true }}
-        transition={{
-          delay: mobileQuery ? 0.2 : i === 0 || i === 1 ? 0.5 : 0.2,
-          duration: 0.5
-        }}
+        duration={1000}
+        triggerOnce
+        direction={i % 2 === 0 ? 'left' : 'right'}
+        fraction={0.5}
       >
         <Card
           elevation={3}
@@ -109,7 +100,7 @@ const BoardMembers = () => {
             null}
           </Stack>
         </Card>
-      </motion.div>))}
+      </Fade>))}
     </Stack>
   );
 }
