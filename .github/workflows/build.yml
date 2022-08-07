@@ -1,0 +1,17 @@
+name: Build CI
+
+on: [pull_request, push]
+
+jobs:
+  build:
+  
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: install dependencies
+      run: sudo apt update && sudo apt install yarn && yarn install
+    - name: build site
+      run: yarn run build
+    - name: create exportable build
+      run: yarn run export
