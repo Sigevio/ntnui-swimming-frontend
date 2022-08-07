@@ -2,6 +2,8 @@
 
 The future frontend of the NTNUI Svømming website ([https://org.ntnu.no/svommer/](https://org.ntnu.no/svommer/)).
 
+![image](https://user-images.githubusercontent.com/92177978/183303598-ffc6f4a2-1883-4f7f-b81a-ff87c78d024a.jpeg)
+
 ### Built with
 
 * Next.js
