@@ -38,6 +38,7 @@ const FourOhFourContent = () => {
           <Image
             layout='fill'
             src={theme.palette.mode === 'dark' ? '404/dark-illustration.png' : '404/light-illustration.png'}
+            alt='404'
           />
         </ImageWrapper>
       </Container>

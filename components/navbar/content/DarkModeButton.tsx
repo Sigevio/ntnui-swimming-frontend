@@ -21,15 +21,14 @@ const DarkModeButton = () => {
       <Tooltip
         arrow
         title={theme.palette.mode === 'dark' ? 'Light mode' : 'Dark mode'}
-        children={
-          <IconButton
-            color='info'
-            onClick={colorMode.toggleColorMode}
-          >
-            {theme.palette.mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
-          </IconButton>
-        }
-      />}
+      >
+        <IconButton
+          color='info'
+          onClick={colorMode.toggleColorMode}
+        >
+          {theme.palette.mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
+        </IconButton>
+      </Tooltip>}
     </>
   );
 }

@@ -17,18 +17,12 @@ const LogoWrapper = styled(Box)({
 const NavBar = ({ isAdmin }: { isAdmin: boolean }) => {
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
   const [navColor, setNavColor] = useState<string>('#ffffff00');
-  const [textColor, setTextColor] = useState<string>('#fff');
   const [blur, setBlur] = useState<number>(0);
-
-  const [isMainPage, setIsMainPage] = useState<boolean>(false);
   
   const theme = useTheme();
   const mobileQuery = useMediaQuery(theme.breakpoints.down('md'));
 
   useEffect(() => {
-    if (window.location.pathname === '/' ) {
-      setIsMainPage(true);
-    }
     if (window.scrollY <= 65) {
       setNavColor(`${theme.palette.background.paper}${(window.scrollY*3 | 0) <= 15 ? '0' : ''}${(window.scrollY*3 | 0).toString(16)}`);
     } else {
@@ -43,13 +37,6 @@ const NavBar = ({ isAdmin }: { isAdmin: boolean }) => {
         setNavColor(`${theme.palette.background.paper}c3`);
       }
       if (window.scrollY <= 0) {
-        setTextColor('rgb(255, 255, 255)');
-      } else if (window.scrollY <= 17) {
-        setTextColor(`rgb(${255-window.scrollY*15}, ${255-window.scrollY*15}, ${255-window.scrollY*15})`);
-      } else {
-        setTextColor('#000');
-      }
-      if (window.scrollY <= 0) {
         setBlur(0);
       } else if (window.scrollY <= 25) {
         setBlur(window.scrollY/100);
@@ -57,7 +44,7 @@ const NavBar = ({ isAdmin }: { isAdmin: boolean }) => {
         setBlur(0.25);
       }
     });
-  }, [theme.palette.mode]);
+  }, [theme.palette.background.paper]);
 
   const handleOpenDrawer = () => {
     setDrawerOpen(true);
