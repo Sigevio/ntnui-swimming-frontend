@@ -7,9 +7,6 @@ jobs:
   
     runs-on: ubuntu-latest
 
-    env:
-      NEXT_PUBLIC_BASE_PATH: https://sigevio.github.io/ntnui-swimming-frontend
-
     steps:
     - uses: actions/checkout@v2
     - name: install dependencies
@@ -18,11 +15,10 @@ jobs:
       run: npm run build
     - name: create exportable build
       run: npm run export
-    - name: ugly hack
-      # path links in index.html
-      run: sed -i 's/\=\"\/_next\/static/\=\"https:\/\/\sigevio.github.io\/ntnui-swimming-frontend/g' ./out/index.html
-    - name: Deploy to gh pages
-      uses: peaceiris/actions-gh-pages@v3
+    - name: Add .nojekyll file
+      run: touch ./out/.nojekyll
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@v4.2.5
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./out
+        branch: gh-pages
+        folder: out
