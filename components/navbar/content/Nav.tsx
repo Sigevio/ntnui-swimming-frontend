@@ -6,7 +6,6 @@ import DrawerButton from './styled/mobile/DrawerButton';
 import { DrawerAccordion, DrawerAccordionDetails, DrawerAccordionSummary } from './styled/mobile/DrawerAccordion';
 import { useTranslation, useLanguageQuery } from 'next-export-i18n';
 import AdminNav from './AdminNav';
-import { prefix } from '../../../utils/prefix';
 
 const Nav = ({ isAdmin }: { isAdmin: boolean }) => {
   const { t } = useTranslation();
@@ -39,7 +38,6 @@ const Nav = ({ isAdmin }: { isAdmin: boolean }) => {
           <DrawerAccordionDetails>
             <Link
               href={{ pathname: '/activities', query: query }}
-              as={{ pathname: `${prefix}/activities`, query: query }}
               passHref
             >
               <DrawerButton>
@@ -48,7 +46,6 @@ const Nav = ({ isAdmin }: { isAdmin: boolean }) => {
             </Link>
             <Link
               href={{ pathname: '/practices', query: query }}
-              as={{ pathname: `${prefix}/practices`, query: query }}
               passHref
             >
               <DrawerButton>
@@ -64,7 +61,6 @@ const Nav = ({ isAdmin }: { isAdmin: boolean }) => {
 
       <Link
         href={{ pathname: '/enrollment', query: query }}
-        as={{ pathname: `${prefix}/enrollment`, query: query }}
         passHref
       >
         {mobileQuery ?
@@ -78,7 +74,6 @@ const Nav = ({ isAdmin }: { isAdmin: boolean }) => {
 
       <Link
         href={{ pathname: '/board', query: query }}
-        as={{ pathname: `${prefix}/board`, query: query }}
         passHref
       >
         {mobileQuery ?
@@ -92,7 +87,6 @@ const Nav = ({ isAdmin }: { isAdmin: boolean }) => {
 
       <Link
         href={{ pathname: '/faq', query: query }}
-        as={{ pathname: `${prefix}/faq`, query: query }}
         passHref
       >
         {mobileQuery ?
@@ -106,7 +100,6 @@ const Nav = ({ isAdmin }: { isAdmin: boolean }) => {
 
       <Link
         href={{ pathname: '/store', query: query }}
-        as={{ pathname: `${prefix}/store`, query: query }}
         passHref
       >
         {mobileQuery ?

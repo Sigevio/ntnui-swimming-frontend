@@ -79,7 +79,6 @@ const NavBar = ({ isAdmin }: { isAdmin: boolean }) => {
       >
         <Link
           href='/'
-          as={`${prefix}/`}
           passHref
         >
           <LogoWrapper>

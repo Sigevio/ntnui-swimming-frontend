@@ -4,8 +4,7 @@ import Link from 'next/link';
 import { styled } from '@mui/material';
 import { NavSelectText } from './NavText';
 import { KeyboardArrowLeft } from '@mui/icons-material';
-import { useTranslation, useLanguageQuery, LanguageSwitcher } from 'next-export-i18n';
-import { prefix } from '../../../../../utils/prefix';
+import { useLanguageQuery } from 'next-export-i18n';
 
 const darkBackground = '#2f2f2f';
 const lightBackground = '#e2e2e2';
@@ -144,7 +143,6 @@ function CustomRouteSelect({ options, placeholder }: Props) {
           <Link
             key={option.value}
             href={{ pathname: `/${option.value}`, query: query }}
-            as={{ pathname: `${prefix}/${option.value}`, query: query }}
             passHref
           >
             <li>
