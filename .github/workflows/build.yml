@@ -7,6 +7,9 @@ jobs:
   
     runs-on: ubuntu-latest
 
+    env:
+      NEXT_PUBLIC_BASE_PATH: https://sigevio.github.io/ntnui-swimming-frontend
+
     steps:
     - uses: actions/checkout@v2
     - name: install dependencies
