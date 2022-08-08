@@ -5,6 +5,6 @@ module.exports = {
     loader: 'akamai',
     path: '/',
   },
-  basePath: "/ntnui-swimming-frontend", 
-  assetPrefix: "/ntnui-swimming-frontend"
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH,
+  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH,
 }
