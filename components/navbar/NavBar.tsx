@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import LanguageButton from './content/LanguageSelect';
 import Nav from './content/Nav';
 import DarkModeButton from './content/DarkModeButton';
+import { prefix } from '../../utils/prefix';
 
 const LogoWrapper = styled(Box)({
   position: 'relative',
@@ -78,11 +79,12 @@ const NavBar = ({ isAdmin }: { isAdmin: boolean }) => {
       >
         <Link
           href='/'
+          as={`${prefix}/`}
           passHref
         >
           <LogoWrapper>
             <Image
-              src='/ntnui-logo.png'
+              src={`${prefix}/ntnui-logo.png`}
               alt='ntnui-logo'
               layout='fill'
               priority

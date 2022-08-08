@@ -1,6 +1,7 @@
 import { useMediaQuery, useTheme } from '@mui/material';
 import { useLanguageQuery, useTranslation } from 'next-export-i18n';
 import Link from 'next/link';
+import { prefix } from '../../../utils/prefix';
 import CustomRouteSelect from './styled/desktop/CustomRouteSelect';
 import { DrawerAccordion, DrawerAccordionDetails, DrawerAccordionSummary } from './styled/mobile/DrawerAccordion';
 import DrawerButton from './styled/mobile/DrawerButton';
@@ -45,6 +46,7 @@ const AdminNav = () => {
               <Link
                 key={option.value}
                 href={{ pathname: `/${option.value}`, query: query }}
+                as={{ pathname: `${prefix}/${option.value}`, query: query }}
                 passHref
               >
                 <DrawerButton>

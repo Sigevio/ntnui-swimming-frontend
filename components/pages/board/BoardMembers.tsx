@@ -1,6 +1,7 @@
 import { Box, Card, CardContent, CardMedia, Divider, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { Fade } from 'react-awesome-reveal';
 import { useTranslation } from 'next-export-i18n';
+import { prefix } from '../../../utils/prefix';
 
 const BoardMembers = () => {
   const { t } = useTranslation();
@@ -37,7 +38,7 @@ const BoardMembers = () => {
             {i % 2 === 0 && !mobileQuery ?
             <CardMedia
               component='img'
-              image={`/board/${member[0]}.jpeg`}
+              image={`${prefix}/board/${member[0]}.jpeg`}
               alt={`${member[0]}`}
               sx={{
                 width: '15rem'
@@ -91,7 +92,7 @@ const BoardMembers = () => {
             {i % 2 !== 0 || mobileQuery ?
             <CardMedia
               component='img'
-              image={`/board/${member[0]}.jpeg`}
+              image={`${prefix}/board/${member[0]}.jpeg`}
               alt={`${member[0]}`}
               sx={{
                 width: mobileQuery ? '100%' : '15rem'
