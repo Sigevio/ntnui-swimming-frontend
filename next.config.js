@@ -5,6 +5,6 @@ module.exports = {
     loader: 'akamai',
     path: '/',
   },
-  basePath: process.env.nextPublicBasePath, 
-  assetPrefix: process.env.nextPublicBasePath 
+  basePath: "https://sigevio.github.io/ntnui-swimming-frontend", 
+  assetPrefix: "https://sigevio.github.io/ntnui-swimming-frontend" 
 }
