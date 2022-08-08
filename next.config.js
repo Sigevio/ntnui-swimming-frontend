@@ -4,5 +4,6 @@ module.exports = {
   images: {
     loader: 'akamai',
     path: '/',
-  }
+  },
+  basePath: process.env.nextPublicBasePath 
 }
