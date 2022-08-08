@@ -18,6 +18,9 @@ jobs:
       run: npm run build
     - name: create exportable build
       run: npm run export
+    - name: ugly hack
+      # path links in index.html
+      run: sed -i 's/\=\"\/_next\/static/\=\"https:\/\/\sigevio.github.io\/ntnui-swimming-frontend/g' ./out/index.html
     - name: Deploy to gh pages
       uses: peaceiris/actions-gh-pages@v3
       with:
