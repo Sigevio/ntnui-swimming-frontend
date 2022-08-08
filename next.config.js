@@ -5,5 +5,6 @@ module.exports = {
     loader: 'akamai',
     path: '/',
   },
-  basePath: process.env.nextPublicBasePath 
+  basePath: process.env.nextPublicBasePath, 
+  assetPrefix: process.env.nextPublicBasePath 
 }
