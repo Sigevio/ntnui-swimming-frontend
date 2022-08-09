@@ -2,7 +2,7 @@ import { Fade, styled, useMediaQuery, useTheme } from '@mui/material';
 import { useEffect, useState } from 'react';
 
 const Hero = styled('div')(({ theme }) => ({
-  backgroundImage: `linear-gradient(to top, ${theme.palette.background.default}, ${theme.palette.background.default}60, ${theme.palette.background.default}20, ${theme.palette.background.default}80, ${theme.palette.background.default}), url(hero.jpeg)`,
+  backgroundImage: `linear-gradient(to top, ${theme.palette.background.default}, ${theme.palette.background.default}60, ${theme.palette.background.default}20, ${theme.palette.background.default}80, ${theme.palette.background.default}), url(/hero.jpeg)`,
   width: '100vw',
   aspectRatio: '5120 / 3413',
   backgroundSize: 'cover',
@@ -17,7 +17,7 @@ const LandingHero = () => {
   const mobileQuery = useMediaQuery(theme.breakpoints.down('md'));
 
   useEffect(() => {
-    let src = 'hero.jpeg';
+    let src = `/hero.jpeg`;
     let image = new Image();
     image.addEventListener('load', () => {
       setShowImage(true);

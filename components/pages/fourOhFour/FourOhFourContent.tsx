@@ -1,5 +1,6 @@
 import { Box, Container, Stack, styled, useTheme } from '@mui/material';
 import Image from 'next/image';
+import { prefix } from '../../../utils/prefix';
 
 const ImageWrapper = styled(Box)({
   position: 'relative',
@@ -37,7 +38,7 @@ const FourOhFourContent = () => {
         <ImageWrapper>
           <Image
             layout='fill'
-            src={theme.palette.mode === 'dark' ? '404/dark-illustration.png' : '404/light-illustration.png'}
+            src={theme.palette.mode === 'dark' ? `${prefix}/404/dark-illustration.png` : `${prefix}/404/light-illustration.png`}
             alt='404'
           />
         </ImageWrapper>
