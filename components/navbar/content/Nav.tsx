@@ -6,13 +6,16 @@ import DrawerButton from './styled/mobile/DrawerButton';
 import { DrawerAccordion, DrawerAccordionDetails, DrawerAccordionSummary } from './styled/mobile/DrawerAccordion';
 import { useTranslation, useLanguageQuery } from 'next-export-i18n';
 import AdminNav from './AdminNav';
+import { useAuth } from '../../../utils/auth/AuthContext';
 
-const Nav = ({ isAdmin }: { isAdmin: boolean }) => {
+const Nav = () => {
   const { t } = useTranslation();
 	const [query] = useLanguageQuery();
 
   const theme = useTheme();
   const mobileQuery = useMediaQuery(theme.breakpoints.down('md'));
+
+  const { user } = useAuth();
 
   const offersOptions = [
     {
@@ -111,7 +114,7 @@ const Nav = ({ isAdmin }: { isAdmin: boolean }) => {
           </NavText>}
       </Link>
       
-      {isAdmin ?
+      {user ?
         <AdminNav />:
         null}
 

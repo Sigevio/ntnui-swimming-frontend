@@ -18,6 +18,7 @@ import '@fontsource/montserrat/300.css';
 import '@fontsource/montserrat/400.css';
 import '@fontsource/montserrat/500.css';
 import '@fontsource/montserrat/700.css';
+import { AuthProvider } from '../utils/auth/AuthContext';
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -52,8 +53,10 @@ const MyApp = (props: MyAppProps) => {
       </Head>
       <ColorModeContext.Provider value={colorMode}>
         <ThemeProvider theme={resposiveTheme}>
-          <CssBaseline />
+          <AuthProvider>
+            <CssBaseline />
             <Component {...pageProps} />
+          </AuthProvider>
         </ThemeProvider>
       </ColorModeContext.Provider>
     </CacheProvider>

@@ -15,7 +15,7 @@ const LogoWrapper = styled(Box)({
   cursor: 'pointer'
 });
 
-const NavBar = ({ isAdmin }: { isAdmin: boolean }) => {
+const NavBar = () => {
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
   const [navColor, setNavColor] = useState<string>('#ffffff00');
   const [blur, setBlur] = useState<number>(0);
@@ -101,9 +101,7 @@ const NavBar = ({ isAdmin }: { isAdmin: boolean }) => {
             <Menu />
           </IconButton> :
           <>
-            <Nav
-              isAdmin={isAdmin}
-            />
+            <Nav />
             <Stack
               direction='row'
               alignItems='center'
@@ -130,9 +128,7 @@ const NavBar = ({ isAdmin }: { isAdmin: boolean }) => {
           }}
         >
           <Box>
-            <Nav
-              isAdmin={isAdmin}
-            />
+            <Nav />
           </Box>
           <Box>
             <LanguageButton />
