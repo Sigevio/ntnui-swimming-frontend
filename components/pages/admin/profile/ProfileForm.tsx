@@ -34,7 +34,8 @@ const ProfileForm = () => {
       elevation={3}
       sx={{
         width: '95vw',
-        maxWidth: '50rem'
+        maxWidth: '50rem',
+        marginBottom: '-6rem'
       }}
     >
       <form

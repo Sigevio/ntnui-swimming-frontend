@@ -1,9 +1,9 @@
 import { useMediaQuery, useTheme } from '@mui/material';
 import { useLanguageQuery, useTranslation } from 'next-export-i18n';
 import Link from 'next/link';
-import CustomRouteSelect from './styled/desktop/CustomRouteSelect';
-import { DrawerAccordion, DrawerAccordionDetails, DrawerAccordionSummary } from './styled/mobile/DrawerAccordion';
-import DrawerButton from './styled/mobile/DrawerButton';
+import CustomRouteSelect from '../navigation/content/CustomRouteSelect';
+import { DrawerAccordion, DrawerAccordionDetails, DrawerAccordionSummary } from '../styled/mobile/DrawerAccordion';
+import DrawerButton from '../styled/mobile/DrawerButton';
 
 const AdminNav = () => {
   const { t } = useTranslation();

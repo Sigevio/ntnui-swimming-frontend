@@ -1,5 +1,5 @@
 import { styled } from '@mui/material';
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
 import { useAuth } from '../../../../utils/auth/AuthContext';
 import Footer from '../../../footer/Footer';
 import NavBar from '../../../navbar/NavBar';
@@ -10,7 +10,8 @@ const ContentWrapper = styled('div')({
   flexDirection: 'column',
   alignItems: 'center',
   gap: '4rem',
-  marginBottom: '6rem'
+  marginBottom: '6rem',
+  minHeight: '100vh'
 });
 
 const AdminLayout = ({ children }: { children: ReactNode }) => {

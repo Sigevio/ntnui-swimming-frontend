@@ -1,9 +1,8 @@
 import { useMediaQuery, useTheme } from '@mui/material';
-import Link from 'next/link';
-import CustomLanguageSelect from './styled/desktop/CustomLanguageSelect';
-import { DrawerAccordion, DrawerAccordionDetails, DrawerAccordionSummary } from './styled/mobile/DrawerAccordion';
-import DrawerButton from './styled/mobile/DrawerButton';
-import { useTranslation, useLanguageQuery } from 'next-export-i18n';
+import CustomLanguageSelect from './content/CustomLanguageSelect';
+import { DrawerAccordion, DrawerAccordionDetails, DrawerAccordionSummary } from '../styled/mobile/DrawerAccordion';
+import DrawerButton from '../styled/mobile/DrawerButton';
+import { useTranslation, LanguageSwitcher } from 'next-export-i18n';
 
 const options = [
   {
@@ -24,9 +23,8 @@ const options = [
   }*/
 ]
 
-const LanguageButton = () => {
+const LanguageSelect = () => {
   const { t } = useTranslation();
-	const [query] = useLanguageQuery();
 
   const theme = useTheme();
 
@@ -43,15 +41,14 @@ const LanguageButton = () => {
         </DrawerAccordionSummary>
         <DrawerAccordionDetails>
           {options.filter(option => option.value !== t('language')).map(option => (
-            <Link
+            <LanguageSwitcher
               key={option.value}
-              href={{ pathname: t('/'), query: query }}
-              passHref
+              lang={option.value}
             >
               <DrawerButton>
                 {option.label}
               </DrawerButton>
-            </Link>
+            </LanguageSwitcher>
           ))}
         </DrawerAccordionDetails>
       </DrawerAccordion> :
@@ -63,4 +60,4 @@ const LanguageButton = () => {
   );
 }
 
-export default LanguageButton;
+export default LanguageSelect;

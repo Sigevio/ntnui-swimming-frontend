@@ -1,8 +1,8 @@
 import { Brightness4, Brightness7 } from '@mui/icons-material';
 import { IconButton, Tooltip, useMediaQuery, useTheme } from '@mui/material';
 import { useContext } from 'react';
-import { ColorModeContext } from '../../../pages/_app';
-import DrawerButton from './styled/mobile/DrawerButton';
+import { ColorModeContext } from '../../../../pages/_app';
+import DrawerButton from '../styled/mobile/DrawerButton';
 
 const DarkModeButton = () => {
   const theme = useTheme();
@@ -23,7 +23,7 @@ const DarkModeButton = () => {
         title={theme.palette.mode === 'dark' ? 'Light mode' : 'Dark mode'}
       >
         <IconButton
-          color='info'
+          color='default'
           onClick={colorMode.toggleColorMode}
         >
           {theme.palette.mode === 'dark' ? <Brightness7 /> : <Brightness4 />}

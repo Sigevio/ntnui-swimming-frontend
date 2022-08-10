@@ -1,19 +1,6 @@
-import { Menu } from '@mui/icons-material';
-import { AppBar, Box, Drawer, IconButton, Stack, styled, useMediaQuery, useTheme } from '@mui/material';
-import Image from 'next/image';
-import Link from 'next/link';
+import { AppBar, Stack, useMediaQuery, useTheme } from '@mui/material';
 import { useEffect, useState } from 'react';
-import LanguageButton from './content/LanguageSelect';
-import Nav from './content/Nav';
-import DarkModeButton from './content/DarkModeButton';
-import { prefix } from '../../utils/prefix';
-
-const LogoWrapper = styled(Box)({
-  position: 'relative',
-  width: '5.5rem',
-  aspectRatio: '1024/415',
-  cursor: 'pointer'
-});
+import { DesktopNavigation, Logo, MobileDrawer, MobileNavigation } from './content/NavBarComponents';
 
 const NavBar = () => {
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
@@ -77,65 +64,17 @@ const NavBar = () => {
         height='inherit'
         color='text.primary'
       >
-        <Link
-          href='/'
-          passHref
-        >
-          <LogoWrapper>
-            <Image
-              src={`${prefix}/ntnui-logo.png`}
-              alt='ntnui-logo'
-              layout='fill'
-              priority
-            />
-          </LogoWrapper>
-        </Link>
+        <Logo />
         {mobileQuery ?
-          <IconButton
-            sx={{
-              position: 'fixed',
-              right: '1rem'
-            }}
-            onClick={handleOpenDrawer}
-          >
-            <Menu />
-          </IconButton> :
-          <>
-            <Nav />
-            <Stack
-              direction='row'
-              alignItems='center'
-              gap='1rem'
-              position='absolute'
-              right='1rem'
-            >
-              <LanguageButton />
-              <DarkModeButton />
-            </Stack>
-          </>}
+          <MobileNavigation
+            handleOpenDrawer={handleOpenDrawer}
+          /> :
+          <DesktopNavigation />}
       </Stack>
-      <Drawer
-        open={drawerOpen}
-        onClose={handleCloseDrawer}
-        anchor='right'
-      >
-        <Stack
-          width='70vw'
-          height='100%'
-          justifyContent='space-between'
-          sx={{
-            maxWidth: '20rem'
-          }}
-        >
-          <Box>
-            <Nav />
-          </Box>
-          <Box>
-            <LanguageButton />
-            <DarkModeButton />
-          </Box>
-        </Stack>
-      </Drawer>
+      <MobileDrawer
+        drawerOpen={drawerOpen}
+        handleCloseDrawer={handleCloseDrawer}
+      />
     </AppBar>
   );
 }
