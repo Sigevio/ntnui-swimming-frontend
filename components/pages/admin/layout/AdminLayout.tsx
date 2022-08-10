@@ -1,5 +1,6 @@
 import { styled } from '@mui/material';
 import { ReactNode, useState } from 'react';
+import { useAuth } from '../../../../utils/auth/AuthContext';
 import Footer from '../../../footer/Footer';
 import NavBar from '../../../navbar/NavBar';
 import AdminLogin from './content/AdminLogin';
@@ -13,19 +14,18 @@ const ContentWrapper = styled('div')({
 });
 
 const AdminLayout = ({ children }: { children: ReactNode }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true); // CHANGE TO FALSE FOR ADMIN LOGIN
-  const [loginFailed, setLoginFailed] = useState<boolean>(false);
+  const { user } = useAuth();
 
   return (
     <>
-      <NavBar isAdmin={isLoggedIn} />
-      {isLoggedIn ?
+      <NavBar />
+      {user ?
         <>
           <ContentWrapper>
             {children}
           </ContentWrapper>
         </> :
-        <AdminLogin loginFailed={loginFailed} />}
+        <AdminLogin />}
       <Footer />
     </>
   );

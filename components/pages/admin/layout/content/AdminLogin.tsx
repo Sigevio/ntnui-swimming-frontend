@@ -2,14 +2,25 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { Button, Card, CardContent, FormControl, FormGroup, IconButton, InputAdornment, InputLabel, OutlinedInput, Stack, TextField, Typography } from '@mui/material';
 import { useTranslation } from 'next-export-i18n';
 import { useState } from 'react';
+import { useAuth } from '../../../../../utils/auth/AuthContext';
 
-const AdminLogin = ({ loginFailed }: { loginFailed: boolean }) => {
+type LoginFormType = {
+  username: string,
+  password: string,
+  showPassword: boolean,
+  loginFailed: boolean
+}
+
+const AdminLogin = () => {
   const { t } = useTranslation();
 
-  const [values, setValues] = useState({
+  const { user, login } = useAuth();
+
+  const [values, setValues] = useState<LoginFormType>({
     username: '',
     password: '',
-    showPassword: false
+    showPassword: false,
+    loginFailed: false
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,6 +32,14 @@ const AdminLogin = ({ loginFailed }: { loginFailed: boolean }) => {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
+    if (values.username === 'username' && values.password === 'password') {
+      login();
+    } else {
+      setValues({
+        ...values,
+        loginFailed: true
+      })
+    }
   }
 
   const handleClickShowPassword = () => {
@@ -108,7 +127,7 @@ const AdminLogin = ({ loginFailed }: { loginFailed: boolean }) => {
                 />
               </FormControl>
 
-              {loginFailed ?
+              {values.loginFailed ?
                 <Typography
                   color='error.main'
                   textAlign='center'
