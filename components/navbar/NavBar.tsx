@@ -1,5 +1,5 @@
 import { Menu } from '@mui/icons-material';
-import { AppBar, Box, Drawer, IconButton, Stack, styled, useMediaQuery, useTheme, Fade } from '@mui/material';
+import { AppBar, Box, Drawer, IconButton, Stack, styled, useMediaQuery, useTheme } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -86,6 +86,7 @@ const NavBar = ({ isAdmin }: { isAdmin: boolean }) => {
               src={`${prefix}/ntnui-logo.png`}
               alt='ntnui-logo'
               layout='fill'
+              priority
             />
           </LogoWrapper>
         </Link>
