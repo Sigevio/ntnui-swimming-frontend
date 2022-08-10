@@ -18,7 +18,7 @@ const LandingContent = () => {
         duration={1000}
         triggerOnce
         direction='up'
-        fraction={0.5}
+        fraction={0.25}
       >
         <Stack
           gap='0.5rem'
