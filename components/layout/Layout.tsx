@@ -14,9 +14,7 @@ const ContentWrapper = styled('div')({
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
     <>
-      <NavBar
-        isAdmin={true} // CHANGE TO FALSE TO HIDE ADMIN NAV
-      />
+      <NavBar />
       <ContentWrapper>
         {children}
       </ContentWrapper>
