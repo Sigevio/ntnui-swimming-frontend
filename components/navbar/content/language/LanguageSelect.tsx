@@ -1,8 +1,8 @@
 import { useMediaQuery, useTheme } from '@mui/material';
 import Link from 'next/link';
-import CustomLanguageSelect from './styled/desktop/CustomLanguageSelect';
-import { DrawerAccordion, DrawerAccordionDetails, DrawerAccordionSummary } from './styled/mobile/DrawerAccordion';
-import DrawerButton from './styled/mobile/DrawerButton';
+import CustomLanguageSelect from './content/CustomLanguageSelect';
+import { DrawerAccordion, DrawerAccordionDetails, DrawerAccordionSummary } from '../styled/mobile/DrawerAccordion';
+import DrawerButton from '../styled/mobile/DrawerButton';
 import { useTranslation, useLanguageQuery } from 'next-export-i18n';
 
 const options = [
@@ -24,7 +24,7 @@ const options = [
   }*/
 ]
 
-const LanguageButton = () => {
+const LanguageSelect = () => {
   const { t } = useTranslation();
 	const [query] = useLanguageQuery();
 
@@ -63,4 +63,4 @@ const LanguageButton = () => {
   );
 }
 
-export default LanguageButton;
+export default LanguageSelect;

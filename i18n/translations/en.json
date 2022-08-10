@@ -21,8 +21,7 @@
       "newPassword": "New password",
       "repeatNewPassword": "Repeat new password",
       "submitButton": "Submit",
-      "submitFailed": "Something was typed wrong...",
-      "signOutButton": "Sign out"
+      "submitFailed": "Something was typed wrong..."
     }
   },
   "nav": {
@@ -32,7 +31,8 @@
     "enrollment": "Enrollment",
     "board": "Board",
     "faq": "FAQ",
-    "store": "Store"
+    "store": "Store",
+    "signOut": "Sign out"
   },
   "home": {
     "header": "Swimming group",

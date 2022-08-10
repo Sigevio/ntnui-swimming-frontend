@@ -21,8 +21,7 @@
       "newPassword": "Nytt passord",
       "repeatNewPassword": "Gjenta nytt passord",
       "submitButton": "Send",
-      "submitFailed": "Noe ble skrevet feil...",
-      "signOutButton": "Logg ut"
+      "submitFailed": "Noe ble skrevet feil..."
     }
   },
   "nav": {
@@ -32,7 +31,8 @@
     "enrollment": "Innmelding",
     "board": "Styret",
     "faq": "FAQ",
-    "store": "Nettbutikk"
+    "store": "Nettbutikk",
+    "signOut": "Logg ut"
   },
   "home": {
     "header": "Svømmegruppa",

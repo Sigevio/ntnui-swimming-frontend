@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { useSelect, SelectOption } from '@mui/base';
+import Link from 'next/link';
 import { styled } from '@mui/material';
-import { NavSelectText } from './NavText';
+import { NavSelectText } from '../../styled/desktop/NavBarText';
 import { KeyboardArrowLeft } from '@mui/icons-material';
-import { LanguageSwitcher } from 'next-export-i18n';
+import { useLanguageQuery } from 'next-export-i18n';
 
 const darkBackground = '#2f2f2f';
 const lightBackground = '#e2e2e2';
@@ -17,7 +18,7 @@ const Root = styled('div')`
 const Toggle = styled('div')`
   box-sizing: border-box;
   min-height: 2.25rem;
-  min-width: 6rem;
+  min-width: 2rem;
   text-align: left;
   line-height: 1.5;
   color: inherit;
@@ -26,6 +27,11 @@ const Toggle = styled('div')`
   justify-content: center;
   cursor: default;
   text-transform: uppercase;
+
+  & > p {
+    padding-inline: 0.45rem;
+  }
+
 `;
 
 const Listbox = styled('ul')(
@@ -38,7 +44,7 @@ const Listbox = styled('ul')(
   position: absolute;
   height: auto;
   transition: opacity 0.1s ease;
-  width: 100%;
+  minWidth: 100%;
   box-shadow: 0 5px 13px -3px rgba(0,0,0,0.4);
   background-color: ${theme.palette.mode === 'dark' ? darkBackground : lightBackground};
   border-radius: 0.75em;
@@ -94,7 +100,7 @@ interface Props {
   placeholder?: string;
 }
 
-function CustomLanguageSelect({ options, placeholder }: Props) {
+function CustomRouteSelect({ options, placeholder }: Props) {
   const listboxRef = React.useRef<HTMLUListElement>(null);
   const [listboxVisible, setListboxVisible] = React.useState(false);
 
@@ -102,6 +108,8 @@ function CustomLanguageSelect({ options, placeholder }: Props) {
     listboxRef,
     options,
   });
+
+  const [query] = useLanguageQuery();
 
   React.useEffect(() => {
     if (listboxVisible) {
@@ -125,26 +133,28 @@ function CustomLanguageSelect({ options, placeholder }: Props) {
             color: 'inherit',
             transition: 'transform 0.25s ease',
             transform: listboxVisible ? 'rotate(-90deg)' : 'none',
-            filter: 'invert(0.2)'
+            filter: 'invert(0.2)',
+            marginLeft: '-0.5rem'
           }}
         />
       </Toggle>
       <Listbox {...getListboxProps()} className={listboxVisible ? '' : 'hidden'}>
         {options.map((option) => (
-          <LanguageSwitcher
+          <Link
             key={option.value}
-            lang={option.value}
+            href={{ pathname: `/${option.value}`, query: query }}
+            passHref
           >
             <li>
               <NavSelectText>
                 {option.label}
               </NavSelectText>
             </li>
-          </LanguageSwitcher>
+          </Link>
         ))}
       </Listbox>
     </Root>
   );
 }
 
-export default CustomLanguageSelect;
+export default CustomRouteSelect;
