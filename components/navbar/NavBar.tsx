@@ -19,7 +19,6 @@ const NavBar = ({ isAdmin }: { isAdmin: boolean }) => {
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
   const [navColor, setNavColor] = useState<string>('#ffffff00');
   const [blur, setBlur] = useState<number>(0);
-  const [showImage, setShowImage] = useState<boolean>(false);
   
   const theme = useTheme();
   const mobileQuery = useMediaQuery(theme.breakpoints.down('md'));
@@ -82,20 +81,13 @@ const NavBar = ({ isAdmin }: { isAdmin: boolean }) => {
           href='/'
           passHref
         >
-          <Fade
-            appear={false}
-            in={showImage}
-            timeout={2000}
-          >
-            <LogoWrapper>
-              <Image
-                src={`${prefix}/ntnui-logo.png`}
-                alt='ntnui-logo'
-                layout='fill'
-                onLoadingComplete={() => setShowImage(true)}
-              />
-            </LogoWrapper>
-          </Fade>
+          <LogoWrapper>
+            <Image
+              src={`${prefix}/ntnui-logo.png`}
+              alt='ntnui-logo'
+              layout='fill'
+            />
+          </LogoWrapper>
         </Link>
         {mobileQuery ?
           <IconButton
