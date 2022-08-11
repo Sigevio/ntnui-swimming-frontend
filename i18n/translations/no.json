@@ -156,6 +156,10 @@
   "store": {
     "header": ["Nettbutikk",
       "Svømmeprodukter og arrangementer"],
-    "buy": "Kjøp"
+    "buy": "Kjøp",
+    "checkout": {
+      "steps": ["Se gjennom", "Betalingsinformasjon", "Bekreftelse"],
+      "stepError": "Feil"
+    }
   }
 }

@@ -156,6 +156,10 @@
   "store": {
     "header": ["Store",
       "Swimming equipment and events"],
-    "buy": "Buy"
+    "buy": "Buy",
+    "checkout": {
+      "steps": ["Your item", "Payment information", "Confirmation"],
+      "stepError": "Error"
+    }
   }
 }

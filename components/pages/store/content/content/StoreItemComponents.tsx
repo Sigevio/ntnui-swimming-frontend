@@ -1,6 +1,8 @@
 import { ShoppingCartCheckout } from '@mui/icons-material';
 import { ButtonBase, Grid, IconButton, styled, Tooltip, Typography } from '@mui/material';
-import { useTranslation } from 'next-export-i18n';
+import { useLanguageQuery, useTranslation } from 'next-export-i18n';
+import Link from 'next/link';
+import { useEffect } from 'react';
 import { prefix } from '../../../../../utils/prefix';
 
 const Img = styled('img')({
@@ -28,8 +30,7 @@ type ItemDescriptionProps = {
 }
 
 type ItemCheckoutProps = {
-  item: ItemProps,
-  handleCheckout: () => void
+  item: ItemProps
 }
 
 const ItemPicture = (props: ItemPictureProps) => {
@@ -94,9 +95,10 @@ const ItemDescription = (props: ItemDescriptionProps) => {
 }
 
 const ItemCheckout = (props: ItemCheckoutProps) => {
-  const { item, handleCheckout } = props;
+  const { item } = props;
 
   const { t } = useTranslation();
+  const [query] = useLanguageQuery();
 
   return (
     <Grid
@@ -121,14 +123,18 @@ const ItemCheckout = (props: ItemCheckoutProps) => {
           </Typography>
         }
       >
-        <IconButton
-          edge='end'
-          onClick={handleCheckout}
+        <Link
+          href={{ pathname: '/store/checkout', query: {...query, item: item.id} }}
+          passHref
         >
-          <ShoppingCartCheckout
-            color='primary'
-          />
-        </IconButton>
+          <IconButton
+            edge='end'
+          >
+            <ShoppingCartCheckout
+              color='primary'
+            />
+          </IconButton>
+        </Link>
       </Tooltip>
     </Grid>
   )

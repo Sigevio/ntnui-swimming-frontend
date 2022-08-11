@@ -1,13 +1,12 @@
 import { Close } from '@mui/icons-material';
-import { Card, Dialog, DialogActions, DialogContent, Fade, Grid, IconButton, styled, Tooltip, Typography, useTheme } from '@mui/material';
+import { Card, Dialog, DialogActions, DialogContent, Grid, IconButton, styled } from '@mui/material';
 import { useState } from 'react';
 import Image from 'next/image';
 import { prefix } from '../../../../utils/prefix';
 import { ItemCheckout, ItemDescription, ItemPicture, ItemProps } from './content/StoreItemComponents';
 
 type StoreItemProps = {
-  item: ItemProps,
-  handleCheckout: () => void
+  item: ItemProps
 }
 
 const DialogImageWrapper = styled('div')({
@@ -16,7 +15,7 @@ const DialogImageWrapper = styled('div')({
 })
 
 const StoreItem = (props: StoreItemProps) => {
-  const { item, handleCheckout } = props;
+  const { item } = props;
 
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
   const [aspectRatio, setAspectRatio] = useState(16/9);
@@ -54,7 +53,6 @@ const StoreItem = (props: StoreItemProps) => {
             />
             <ItemCheckout
               item={item}
-              handleCheckout={handleCheckout}
             />
           </Grid>
         </Grid>
