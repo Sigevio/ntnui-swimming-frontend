@@ -163,6 +163,15 @@
       "nextStep": "Continue",
       "myItem": {
         "comment": "Comment"
+      },
+      "payment": {
+        "name": "Name",
+        "phone": "Phone number",
+        "email": "Email",
+        "pay": "Perform payment",
+        "performPayment": "Performing payment...",
+        "success": "Payment success.",
+        "fail": "Payment failed."
       }
     }
   }

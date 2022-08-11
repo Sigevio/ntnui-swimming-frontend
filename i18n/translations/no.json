@@ -163,6 +163,15 @@
       "nextStep": "Fortsett",
       "myItem": {
         "comment": "Kommentar"
+      },
+      "payment": {
+        "name": "Navn",
+        "phone": "Telefonnummer",
+        "email": "Email",
+        "pay": "Utfør betaling",
+        "performPayment": "Utfører betaling...",
+        "success": "Betaling vellykket.",
+        "fail": "Betaling mislykket."
       }
     }
   }
