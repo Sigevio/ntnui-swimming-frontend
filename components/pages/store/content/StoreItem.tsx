@@ -72,20 +72,20 @@ const StoreItem = (props: StoreItemProps) => {
           </DialogActions>
 
           <DialogContent>
-          <DialogImageWrapper
-            sx={{
-              minHeight: `calc(min(30rem, 80vw) / ${aspectRatio})`
-            }}
-          >
-            <Image
-              src={`${prefix}/store/${item.id}.${item.filetype}`}
-              alt={item.header[1]}
-              layout='fill'
-              objectFit='contain'
-              onLoadingComplete={({ naturalWidth, naturalHeight }) => 
-                setAspectRatio(naturalWidth / naturalHeight)}
-            />
-          </DialogImageWrapper>
+            <DialogImageWrapper
+              sx={{
+                minHeight: `calc(min(30rem, 80vw) / ${aspectRatio})`
+              }}
+            >
+              <Image
+                src={`${prefix}/store/${item.id}.${item.filetype}`}
+                alt={item.header[1]}
+                layout='fill'
+                objectFit='contain'
+                onLoadingComplete={({ naturalWidth, naturalHeight }) => 
+                  setAspectRatio(naturalWidth / naturalHeight)}
+              />
+            </DialogImageWrapper>
           </DialogContent>
 
       </Dialog>

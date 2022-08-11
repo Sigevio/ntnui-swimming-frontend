@@ -1,4 +1,5 @@
-import { Button, Card, CardActions, CardContent, CardHeader, TextField, Typography } from '@mui/material';
+import { Button, Card, CardActions, CardContent, CardHeader, styled, TextField, Typography } from '@mui/material';
+import { useTranslation } from 'next-export-i18n';
 import { ItemProps } from '../../../content/content/StoreItemComponents';
 
 type MyItemProps = {
@@ -6,8 +7,15 @@ type MyItemProps = {
   nextStep: () => void
 }
 
+const TextFieldWrapper = styled('div')({
+  width: '100%',
+  maxWidth: '30rem'
+});
+
 const MyItem = (props: MyItemProps) => {
   const { item, nextStep } = props;
+
+  const { t } = useTranslation();
 
   return (
     <Card>
@@ -23,18 +31,31 @@ const MyItem = (props: MyItemProps) => {
         <Typography>
 
         </Typography>
-        <TextField />
       </CardContent>
       <CardActions
         sx={{
           display: 'flex',
-          justifyContent: 'flex-end'
+          justifyContent: 'space-between',
+          alignItems: 'flex-end',
+          gap: '1rem'
         }}
       >
+        <TextFieldWrapper>
+          <TextField
+            label={t('store.checkout.myItem.comment')}
+            fullWidth
+            multiline
+            rows={3}
+          />
+        </TextFieldWrapper>
         <Button
+          variant='contained'
           onClick={nextStep}
+          sx={{
+            color: 'text.secondary'
+          }}
         >
-          Next
+          {t('store.checkout.nextStep')}
         </Button>
       </CardActions>
     </Card>

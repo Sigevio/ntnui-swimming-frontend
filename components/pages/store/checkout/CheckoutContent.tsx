@@ -1,9 +1,8 @@
-import { Check, Paid, ShoppingCart, ThumbsUpDown } from '@mui/icons-material';
-import { Button, Container, Stack, Step, StepConnector, stepConnectorClasses, StepIconProps, StepLabel, Stepper, styled, Typography } from '@mui/material';
+import { Check, Paid, ShoppingCart, ThumbUp } from '@mui/icons-material';
+import { Stack, Step, StepConnector, stepConnectorClasses, StepIconProps, StepLabel, Stepper, styled } from '@mui/material';
 import { useTranslation } from 'next-export-i18n';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import { ItemProps } from '../content/content/StoreItemComponents';
+import { useState } from 'react';
 import { items } from '../items';
 import Confimation from './components/confirmation/Confirmation';
 import MyItem from './components/myItem/MyItem';
@@ -11,25 +10,23 @@ import Payment from './components/payment/Payment';
 
 const QontoConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
-    top: 10,
-    left: 'calc(-50% + 16px)',
-    right: 'calc(50% + 16px)',
+    top: 10
   },
   [`&.${stepConnectorClasses.active}`]: {
     [`& .${stepConnectorClasses.line}`]: {
-      borderColor: '#784af4',
-    },
+      borderColor: '#784af4'
+    }
   },
   [`&.${stepConnectorClasses.completed}`]: {
     [`& .${stepConnectorClasses.line}`]: {
-      borderColor: '#784af4',
-    },
+      borderColor: '#784af4'
+    }
   },
   [`& .${stepConnectorClasses.line}`]: {
     borderColor: theme.palette.mode === 'dark' ? theme.palette.grey[800] : theme.palette.grey[300],
     borderTopWidth: 3,
-    borderRadius: 1,
-  },
+    borderRadius: 1
+  }
 }));
 
 const QontoStepIconRoot = styled('div')<{ ownerState: { active?: boolean } }>(
@@ -39,20 +36,20 @@ const QontoStepIconRoot = styled('div')<{ ownerState: { active?: boolean } }>(
     height: 22,
     alignItems: 'center',
     ...(ownerState.active && {
-      color: '#784af4',
+      color: '#784af4'
     }),
     '& .QontoStepIcon-completedIcon': {
       color: '#784af4',
       zIndex: 1,
-      fontSize: 18,
+      fontSize: 18
     },
     '& .QontoStepIcon-circle': {
       width: 8,
       height: 8,
       borderRadius: '50%',
-      backgroundColor: 'currentColor',
-    },
-  }),
+      backgroundColor: 'currentColor'
+    }
+  })
 );
 
 function QontoStepIcon(props: StepIconProps) {
@@ -61,8 +58,8 @@ function QontoStepIcon(props: StepIconProps) {
   const icons: { [index: string]: React.ReactElement } = {
     1: <ShoppingCart />,
     2: <Paid />,
-    3: <ThumbsUpDown />,
-  };
+    3: <ThumbUp />
+  }
 
   return (
     <QontoStepIconRoot ownerState={{ active }} className={className}>
@@ -113,7 +110,9 @@ const CheckoutContent = () => {
           item={items[item]}
           nextStep={nextStep}
         /> : activeStep === 1 ?
-        <Payment /> :
+        <Payment
+          nextStep={nextStep}
+        /> :
         <Confimation />}
 
     </Stack>

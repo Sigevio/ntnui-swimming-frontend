@@ -114,19 +114,19 @@ const ItemCheckout = (props: ItemCheckoutProps) => {
       >
         NOK {item.price}
       </Typography>
-      <Tooltip
-        arrow
-        disableInteractive
-        title={
-          <Typography>
-            {t('store.buy')}
-          </Typography>
-        }
-      >
-        <Link
+      <Link
           href={{ pathname: '/store/checkout', query: {...query, item: item.id} }}
           passHref
         >
+        <Tooltip
+          arrow
+          disableInteractive
+          title={
+            <Typography>
+              {t('store.buy')}
+            </Typography>
+          }
+        >   
           <IconButton
             edge='end'
           >
@@ -134,8 +134,8 @@ const ItemCheckout = (props: ItemCheckoutProps) => {
               color='primary'
             />
           </IconButton>
-        </Link>
-      </Tooltip>
+        </Tooltip>
+      </Link>
     </Grid>
   )
 }
