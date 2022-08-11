@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, CardMedia, Divider, Fade, Stack, styled, Typography } from '@mui/material';
+import { Box, Card, CardContent, CardMedia, Divider, Fade, Skeleton, Stack, styled, Typography } from '@mui/material';
 import Image from 'next/image';
 import { useState } from 'react';
 import { prefix } from '../../../../utils/prefix';
@@ -54,13 +54,23 @@ const BoardCard = (props: BoardCardProps) => {
 const BoardCardMedia = (props: BoardCardMediaProps) => {
   const { mobileQuery, member } = props;
 
-  const [showImage, setShowImage] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   return (
     <CardMedia>
+
+      {isLoading ?
+        <Skeleton
+          variant='rectangular'
+          animation='wave'
+          width='100%'
+          height='100%'
+        /> :
+        null}
+
       <Fade
         appear={false}
-        in={showImage}
+        in={!isLoading}
         timeout={2000}
       >
         <ImageWrapper
@@ -74,10 +84,11 @@ const BoardCardMedia = (props: BoardCardMediaProps) => {
             alt={member[0]}
             layout='fill'
             objectFit='cover'
-            onLoadingComplete={() => setShowImage(true)}
+            onLoadingComplete={() => setIsLoading(false)}
           />
         </ImageWrapper>
       </Fade>
+
     </CardMedia>
   );
 }

@@ -156,10 +156,23 @@
   "store": {
     "header": ["Store",
       "Swimming equipment and events"],
-    "modifyCart": ["Add to cart",
-      "Remove from cart"],
-    "items": ["item",
-      "items"],
-    "checkout": "To checkout"
+    "buy": "Buy",
+    "checkout": {
+      "steps": ["Product", "Payment", "Confirmation"],
+      "stepError": "Error",
+      "nextStep": "Continue",
+      "myItem": {
+        "comment": "Comment"
+      },
+      "payment": {
+        "name": "Name",
+        "phone": "Phone number",
+        "email": "Email",
+        "pay": "Perform payment",
+        "performPayment": "Performing payment...",
+        "success": "Payment success.",
+        "fail": "Payment failed."
+      }
+    }
   }
 }

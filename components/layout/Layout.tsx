@@ -8,7 +8,8 @@ const ContentWrapper = styled('div')({
   flexDirection: 'column',
   alignItems: 'center',
   gap: '4rem',
-  marginBottom: '6rem'
+  marginBottom: '6rem',
+  minHeight: 'calc(100vh - 6rem)'
 });
 
 const Layout = ({ children }: { children: ReactNode }) => {

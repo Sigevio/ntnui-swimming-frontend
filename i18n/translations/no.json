@@ -156,10 +156,23 @@
   "store": {
     "header": ["Nettbutikk",
       "Svømmeprodukter og arrangementer"],
-      "modifyCart": ["Legg til i handlekurv",
-        "Fjern fra handlekurv"],
-      "items": ["produkt",
-        "produkter"],
-      "checkout": "Til betaling"
+    "buy": "Kjøp",
+    "checkout": {
+      "steps": ["Produkt", "Betaling", "Bekreftelse"],
+      "stepError": "Feil",
+      "nextStep": "Fortsett",
+      "myItem": {
+        "comment": "Kommentar"
+      },
+      "payment": {
+        "name": "Navn",
+        "phone": "Telefonnummer",
+        "email": "Email",
+        "pay": "Utfør betaling",
+        "performPayment": "Utfører betaling...",
+        "success": "Betaling vellykket.",
+        "fail": "Betaling mislykket."
+      }
+    }
   }
 }
