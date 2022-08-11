@@ -10,7 +10,7 @@ import { QontoConnector, QontoStepIcon } from './styled/CustomStepper';
 
 const CheckoutContent = () => {
   useEffect(() => {
-    setItemId(parseInt(Router.query.itemId as string, 10));
+    setItemId(parseInt(Router.query.itemId as string, 10)-1);
   }, []);
 
   const [activeStep, setActiveStep] = useState<number>(0);
