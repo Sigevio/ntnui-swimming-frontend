@@ -1,81 +1,20 @@
-import { Check, Paid, ShoppingCart, ThumbUp } from '@mui/icons-material';
-import { Stack, Step, StepConnector, stepConnectorClasses, StepIconProps, StepLabel, Stepper, styled } from '@mui/material';
+import { Stack, Step, StepLabel, Stepper } from '@mui/material';
 import { useTranslation } from 'next-export-i18n';
-import { useRouter } from 'next/router';
-import { useState } from 'react';
+import Router from 'next/router';
+import { useEffect, useState } from 'react';
 import { items } from '../items';
 import Confimation from './components/confirmation/Confirmation';
 import MyItem from './components/myItem/MyItem';
 import Payment from './components/payment/Payment';
-
-const QontoConnector = styled(StepConnector)(({ theme }) => ({
-  [`&.${stepConnectorClasses.alternativeLabel}`]: {
-    top: 10
-  },
-  [`&.${stepConnectorClasses.active}`]: {
-    [`& .${stepConnectorClasses.line}`]: {
-      borderColor: '#784af4'
-    }
-  },
-  [`&.${stepConnectorClasses.completed}`]: {
-    [`& .${stepConnectorClasses.line}`]: {
-      borderColor: '#784af4'
-    }
-  },
-  [`& .${stepConnectorClasses.line}`]: {
-    borderColor: theme.palette.mode === 'dark' ? theme.palette.grey[800] : theme.palette.grey[300],
-    borderTopWidth: 3,
-    borderRadius: 1
-  }
-}));
-
-const QontoStepIconRoot = styled('div')<{ ownerState: { active?: boolean } }>(
-  ({ theme, ownerState }) => ({
-    color: theme.palette.mode === 'dark' ? theme.palette.grey[700] : theme.palette.grey[400],
-    display: 'flex',
-    height: 22,
-    alignItems: 'center',
-    ...(ownerState.active && {
-      color: '#784af4'
-    }),
-    '& .QontoStepIcon-completedIcon': {
-      color: '#784af4',
-      zIndex: 1,
-      fontSize: 18
-    },
-    '& .QontoStepIcon-circle': {
-      width: 8,
-      height: 8,
-      borderRadius: '50%',
-      backgroundColor: 'currentColor'
-    }
-  })
-);
-
-function QontoStepIcon(props: StepIconProps) {
-  const { active, completed, className } = props;
-
-  const icons: { [index: string]: React.ReactElement } = {
-    1: <ShoppingCart />,
-    2: <Paid />,
-    3: <ThumbUp />
-  }
-
-  return (
-    <QontoStepIconRoot ownerState={{ active }} className={className}>
-      {completed ? (
-        <Check className="QontoStepIcon-completedIcon" />
-      ) : (
-        icons[String(props.icon)]
-      )}
-    </QontoStepIconRoot>
-  );
-}
+import { QontoConnector, QontoStepIcon } from './styled/CustomStepper';
 
 const CheckoutContent = () => {
-  const item = parseInt(useRouter().query.item as string, 10) - 1;
+  useEffect(() => {
+    setItemId(parseInt(Router.query.itemId as string, 10));
+  }, []);
 
   const [activeStep, setActiveStep] = useState<number>(0);
+  const [itemId, setItemId] = useState(-1);
 
   const { t } = useTranslation();
 
@@ -83,6 +22,12 @@ const CheckoutContent = () => {
 
   const nextStep = () => {
     setActiveStep(prev => prev === 0 ? 1 : prev === 1 ? 4 : 4)
+  }
+
+  if (!(itemId in [0, 1, 2, 3, 4])) {
+    return (
+      <></>
+    )
   }
 
   return (
@@ -107,7 +52,7 @@ const CheckoutContent = () => {
 
       {activeStep === 0 ?
         <MyItem
-          item={items[item]}
+          item={items[itemId]}
           nextStep={nextStep}
         /> : activeStep === 1 ?
         <Payment

@@ -2,6 +2,7 @@ import { ShoppingCartCheckout } from '@mui/icons-material';
 import { ButtonBase, Grid, IconButton, styled, Tooltip, Typography } from '@mui/material';
 import { useLanguageQuery, useTranslation } from 'next-export-i18n';
 import Link from 'next/link';
+import Router from 'next/router';
 import { useEffect } from 'react';
 import { prefix } from '../../../../../utils/prefix';
 
@@ -100,6 +101,16 @@ const ItemCheckout = (props: ItemCheckoutProps) => {
   const { t } = useTranslation();
   const [query] = useLanguageQuery();
 
+  const handleCheckout = () => {
+    Router.push({
+      pathname: '/store/checkout',
+      query: {
+        ...query,
+        itemId: item.id
+      }
+    });
+  }
+
   return (
     <Grid
       item
@@ -114,28 +125,24 @@ const ItemCheckout = (props: ItemCheckoutProps) => {
       >
         NOK {item.price}
       </Typography>
-      <Link
-          href={{ pathname: '/store/checkout', query: {...query, item: item.id} }}
-          passHref
+      <Tooltip
+        arrow
+        disableInteractive
+        title={
+          <Typography>
+            {t('store.buy')}
+          </Typography>
+        }
+      >   
+        <IconButton
+          edge='end'
+          onClick={handleCheckout}
         >
-        <Tooltip
-          arrow
-          disableInteractive
-          title={
-            <Typography>
-              {t('store.buy')}
-            </Typography>
-          }
-        >   
-          <IconButton
-            edge='end'
-          >
-            <ShoppingCartCheckout
-              color='primary'
-            />
-          </IconButton>
-        </Tooltip>
-      </Link>
+          <ShoppingCartCheckout
+            color='primary'
+          />
+        </IconButton>
+      </Tooltip>
     </Grid>
   )
 }
