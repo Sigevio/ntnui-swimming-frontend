@@ -1,4 +1,4 @@
-import { Stack, Step, StepLabel, Stepper } from '@mui/material';
+import { Stack, Step, StepLabel, Stepper, Typography } from '@mui/material';
 import { useTranslation } from 'next-export-i18n';
 import Router from 'next/router';
 import { useEffect, useState } from 'react';
@@ -15,6 +15,8 @@ const CheckoutContent = () => {
 
   const [activeStep, setActiveStep] = useState<number>(0);
   const [itemId, setItemId] = useState(-1);
+
+  const [wasPaymentError, setWasPaymentError] = useState<boolean>(false);
 
   const { t } = useTranslation();
 
@@ -43,11 +45,21 @@ const CheckoutContent = () => {
         activeStep={activeStep}
         connector={<QontoConnector />}
       >
-        {steps.map((label) => (
-          <Step key={label}>
-            <StepLabel StepIconComponent={QontoStepIcon}>{label}</StepLabel>
-          </Step>
-        ))}
+        {steps.map((label, index) => {
+          const labelProps: {
+            optional?: React.ReactNode;
+            error?: boolean;
+          } = {};
+          if (index === 1 && wasPaymentError) {
+            labelProps.error = true;
+          }
+
+          return (
+            <Step key={label}>
+              <StepLabel StepIconComponent={QontoStepIcon} {...labelProps}>{label}</StepLabel>
+            </Step>
+          );
+        })}
       </Stepper>
 
       {activeStep === 0 ?
@@ -57,6 +69,7 @@ const CheckoutContent = () => {
         /> : activeStep === 1 ?
         <Payment
           nextStep={nextStep}
+          sendPaymentError={() => setWasPaymentError(true)}
         /> :
         <Confimation />}
 

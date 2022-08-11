@@ -1,4 +1,4 @@
-import { Check, Paid, ShoppingCart, ThumbUp } from '@mui/icons-material';
+import { Check, Paid, ShoppingCart, ThumbUp, Warning } from '@mui/icons-material';
 import { StepConnector, stepConnectorClasses, StepIconProps, styled } from '@mui/material';
 
 const QontoConnector = styled(StepConnector)(({ theme }) => ({
@@ -46,7 +46,7 @@ const QontoStepIconRoot = styled('div')<{ ownerState: { active?: boolean } }>(
 );
 
 const QontoStepIcon = (props: StepIconProps) => {
-  const { active, completed, className } = props;
+  const { active, completed, className, error } = props;
 
   const icons: { [index: string]: React.ReactElement } = {
     1: <ShoppingCart />,
@@ -64,7 +64,7 @@ const QontoStepIcon = (props: StepIconProps) => {
           className="QontoStepIcon-completedIcon"
         />
       ) : (
-        icons[String(props.icon)]
+        error ? <Warning color='error' /> : icons[String(props.icon)]
       )}
     </QontoStepIconRoot>
   );

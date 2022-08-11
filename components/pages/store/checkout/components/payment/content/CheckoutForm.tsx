@@ -1,20 +1,21 @@
-import { Close } from '@mui/icons-material';
-import { Button, Card, CardActions, CardContent, CircularProgress, Dialog, DialogActions, DialogContent, DialogContentText, IconButton, Stack, styled, TextField, Typography, useTheme } from '@mui/material';
+import { Check, Close } from '@mui/icons-material';
+import { Button, Card, CardActions, CardContent, CircularProgress, Dialog, DialogContent, DialogContentText, Stack, styled, TextField, Typography, useTheme } from '@mui/material';
 import {useStripe, useElements, CardElement} from '@stripe/react-stripe-js';
-import { StripeCardElementChangeEvent } from '@stripe/stripe-js';
 import { useTranslation } from 'next-export-i18n';
 import { FormEvent, useState } from 'react';
 
 type CheckoutFormProps = {
-  nextStep: () => void
+  nextStep: () => void,
+  sendPaymentError: () => void
 }
 
-const CardElementWrapper = styled('div')({
-  border: '1px solid #ccc',
+const CardElementWrapper = styled('div')(({ theme }) => ({
+  border: '1px solid',
+  borderColor: theme.palette.mode === 'dark' ? theme.palette.grey[700] : theme.palette.grey[400],
   borderRadius: '0.25rem',
   padding: '0.5rem',
-  maxHeight: '3rem'
-});
+  maxHeight: '2.75rem'
+}));
 
 const PaymentDialogContent = styled(DialogContent)({
   display: 'flex',
@@ -29,7 +30,7 @@ const PaymentDialogContent = styled(DialogContent)({
 });
 
 const CheckoutForm = (props: CheckoutFormProps) => {
-  const { nextStep } = props;
+  const { nextStep, sendPaymentError } = props;
 
   const testing = true;
 
@@ -49,7 +50,7 @@ const CheckoutForm = (props: CheckoutFormProps) => {
     event.preventDefault();
 
     if (testing) {
-      let error = false; // set to false to test failed payment
+      let error = false; // set to true to test failed payment
       setIsDialogOpen(true);
 
       if (!stripe || !elements) {
@@ -96,8 +97,22 @@ const CheckoutForm = (props: CheckoutFormProps) => {
       setIsDialogOpen(false);
       if (!error) {
         nextStep();
+      } else {
+        sendPaymentError();
       }
     }, 4000);
+  }
+
+  if (!isDialogOpen && isPaymentError) {
+    return (
+      <Card>
+        <CardContent>
+          <Typography>
+            Noe gikk galt. Vennligst ta kontakt med noen på blablabla@mail.org
+          </Typography>
+        </CardContent>
+      </Card>
+    );
   }
 
   return (
@@ -121,14 +136,17 @@ const CheckoutForm = (props: CheckoutFormProps) => {
               </CardElementWrapper>
               <TextField
                 name='name'
+                type='text'
                 label={t('store.checkout.payment.name')}
               />
               <TextField
                 name='phone'
+                type='tel'
                 label={t('store.checkout.payment.phone')}
               />
               <TextField
                 name='email'
+                type='email'
                 label={t('store.checkout.payment.email')}
               />
             </Stack>
@@ -166,9 +184,15 @@ const CheckoutForm = (props: CheckoutFormProps) => {
                 >
                   {t(`store.checkout.payment.${isPaymentError ? 'fail' : 'success'}`)}
                 </DialogContentText>
-                <CircularProgress
-                  color={isPaymentError ? 'error' : 'primary'}
-                />
+                {isPaymentError ?
+                <Close
+                  fontSize='large'
+                  color='error'
+                /> :
+                <Check
+                  fontSize='large'
+                  color='success'
+                />}
               </>
             ) : (
               <>

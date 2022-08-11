@@ -3,13 +3,14 @@ import { loadStripe } from '@stripe/stripe-js';
 import CheckoutForm from './content/CheckoutForm';
 
 type PaymentProps = {
-  nextStep: () => void
+  nextStep: () => void,
+  sendPaymentError: () => void
 }
 
 const stripePromise = loadStripe('pk_test_4S689YmLDvfASO91mS8jUFT9');
 
 const Payment = (props: PaymentProps) => {
-  const { nextStep } = props;
+  const { nextStep, sendPaymentError } = props;
 
   const options = {
     // passing the client secret obtained from the server
@@ -23,6 +24,7 @@ const Payment = (props: PaymentProps) => {
     >
       <CheckoutForm
         nextStep={nextStep}
+        sendPaymentError={sendPaymentError}
       />
     </Elements>
   );

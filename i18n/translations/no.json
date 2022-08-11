@@ -158,7 +158,7 @@
       "Svømmeprodukter og arrangementer"],
     "buy": "Kjøp",
     "checkout": {
-      "steps": ["Se gjennom", "Betaling", "Bekreftelse"],
+      "steps": ["Produkt", "Betaling", "Bekreftelse"],
       "stepError": "Feil",
       "nextStep": "Fortsett",
       "myItem": {

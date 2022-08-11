@@ -158,7 +158,7 @@
       "Swimming equipment and events"],
     "buy": "Buy",
     "checkout": {
-      "steps": ["Your item", "Payment", "Confirmation"],
+      "steps": ["Product", "Payment", "Confirmation"],
       "stepError": "Error",
       "nextStep": "Continue",
       "myItem": {
