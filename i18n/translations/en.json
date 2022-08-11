@@ -156,10 +156,6 @@
   "store": {
     "header": ["Store",
       "Swimming equipment and events"],
-    "modifyCart": ["Add to cart",
-      "Remove from cart"],
-    "items": ["item",
-      "items"],
-    "checkout": "To checkout"
+    "buy": "Buy"
   }
 }

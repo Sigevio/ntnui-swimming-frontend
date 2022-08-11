@@ -156,10 +156,6 @@
   "store": {
     "header": ["Nettbutikk",
       "Svømmeprodukter og arrangementer"],
-      "modifyCart": ["Legg til i handlekurv",
-        "Fjern fra handlekurv"],
-      "items": ["produkt",
-        "produkter"],
-      "checkout": "Til betaling"
+    "buy": "Kjøp"
   }
 }
