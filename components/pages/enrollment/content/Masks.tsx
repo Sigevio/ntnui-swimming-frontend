@@ -53,31 +53,7 @@ const DateMask = forwardRef<NumberFormat<any>, InputProps>(
   }
 );
 
-const PhoneMask = forwardRef<NumberFormat<any>, InputProps>(
-  function PhoneMask(props, ref) {
-    const { onChange, ...other } = props;
-
-    return (
-      <NumberFormat
-        {...other}
-        getInputRef={ref}
-        onValueChange={(values) => {
-          onChange({
-            target: {
-              name: props.name,
-              value: values.value,
-            },
-          });
-        }}
-        format='### ## ### ## ## ## ## ## ## ## ## ## ## ##'
-        isNumericString
-      />
-    );
-  }
-);
-
 export {
   ZIPMask,
-  DateMask,
-  PhoneMask
+  DateMask
 };

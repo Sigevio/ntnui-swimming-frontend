@@ -7,7 +7,7 @@ const BirthdateInput = ({ translation, handleChangeToParent }: IInputType) => {
     <TextField
       required
       fullWidth
-      name='birthdate'
+      name='birthDate'
       InputProps={{
         inputComponent: DateMask as any
       }}

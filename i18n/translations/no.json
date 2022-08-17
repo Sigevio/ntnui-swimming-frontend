@@ -84,7 +84,6 @@
       "Ugyldig kjønn!"],
     "genderMale": "Mann",
     "genderFemale": "Kvinne",
-    "countryCode": "Landskode",
     "phone": ["Telefonnummer",
       "Ugyldig telefonnummer!"],
     "birth": ["Fødselsdato",
@@ -98,7 +97,11 @@
     "licence": ["Jeg har en gyldig og aktiv svømmelisens.",
       "NB! La være tom dersom du er usikker."],
     "disclaimer": "Ved å bli medlem i NTNUI-Svømming godtar du vår Personvernserklæring og de regler for medlemskapet. Opplysningene i skjemaet er nødvendig for å melde deg inn i svømmeklubben og registrere deg i norsk svømming. Send en epost til teknisk leder hvis du ønsker innsyn, endring, sletting av dine opplysninger. Dette kan gjøres når som helst og uten begrunnelse.",
-    "button": "Send"
+    "button": "Registrer",
+    "working": "Sender..",
+    "errorMessage": ["Noe gikk galt.", "Vennligst prøv igjen eller ta kontakt med oss."],
+    "successMessage": ["Innmelding vellykket!", "Vi ses på kanten ;)"],
+    "closeButton": "Lukk"
   },
   "faq": {
     "header": "Ofte stilte spørsmål",

@@ -1,7 +1,7 @@
 export default interface IEnrollmentType {
   gender: string;
   name: string;
-  birthdate: string;
+  birthDate: string;
   phone: string;
   zip: string;
   address: string;

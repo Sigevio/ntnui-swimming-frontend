@@ -84,7 +84,6 @@
       "Invalid gender!"],
     "genderMale": "Male",
     "genderFemale": "Female",
-    "countryCode": "Country code",
     "phone": ["Phone number",
       "Invalid phone number!"],
     "birth": ["Date of birth",
@@ -98,7 +97,10 @@
     "licence": ["I have an active license in a Norwegian swimming club.",
       "NB! Leave empty if you are unsure."],
     "disclaimer": "By joining NTNUI-Svømming, you accept our Privacy policy and terms of membership. Send a message to our technician if you want to know, change or delete your personal information. This can be done at any time and without reason.",
-    "button": "Register"
+    "button": "Enroll",
+    "working": "Sending..",
+    "errorMessage": ["Something went wrong.", "Please try again or contact us."],
+    "closeButton": "Close"
   },
   "faq": {
     "header": "Frequently asked questions",
