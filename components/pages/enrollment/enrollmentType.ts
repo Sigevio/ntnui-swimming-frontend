@@ -1,4 +1,4 @@
-export default interface IEnrollmentType {
+export default interface IEnrollment {
   gender: string;
   name: string;
   birthDate: string;
@@ -6,6 +6,5 @@ export default interface IEnrollmentType {
   zip: string;
   address: string;
   email: string;
-  countryCode: string;
   licence: string;
 }

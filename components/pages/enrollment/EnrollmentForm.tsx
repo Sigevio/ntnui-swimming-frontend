@@ -1,6 +1,6 @@
 import { Button, Card, CardActions, CardContent, Container, Dialog, DialogActions, DialogContent, DialogContentText, FormGroup, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
 import React, { useState } from 'react';
-import EnrollmentType from './enrollmentType';
+import IEnrollment from './enrollmentType';
 import GenderButtons from './content/inputs/GenderButtons';
 import NameInput from './content/inputs/NameInput';
 import BirthdateInput from './content/inputs/BirthdateInput';
@@ -15,7 +15,7 @@ import { enrollmentApi } from './content/api';
 const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
 const EnrollmentForm = () => {
-  const [values, setValues] = useState<EnrollmentType>({
+  const [values, setValues] = useState<IEnrollment>({
     gender: '',
     name: '',
     birthDate: '',
@@ -23,7 +23,6 @@ const EnrollmentForm = () => {
     zip: '',
     address: '',
     email: '',
-    countryCode: '',
     licence: ''
   });
   const [emailError, setEmailError] = useState<boolean>(false);
@@ -44,28 +43,20 @@ const EnrollmentForm = () => {
     if (emailError) {
       setEmailError(false);
     }
-    console.log(values)
   };
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setIsEnrolling(true);
+    console.log(values)
     if (!emailRegex.test(values.email)) {
       setEmailError(true);
     }
     else {
-      await enrollmentApi.enroll({
-        name: values.name,
-        birthDate: values.birthDate,
-        phone: values.countryCode + values.phone,
-        gender: values.gender,
-        email: values.email,
-        address: values.address,
-        zip: values.zip,
-        licence: values.licence
-      })
+      await enrollmentApi.enroll(values)
         .then(res => {
           console.log('Enrollment successful!');
+          console.log(values);
         })
         .catch(err => {
           if (err.response) {
@@ -192,7 +183,6 @@ const EnrollmentForm = () => {
                     || values.zip === ''
                     || values.address === ''
                     || values.email === ''
-                    || values.countryCode === ''
                     || values.birthDate.length !== 8
                 }
               >

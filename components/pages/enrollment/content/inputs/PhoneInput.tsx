@@ -14,7 +14,21 @@ const PhoneInput = ({ translation, handleChangeToParent }: IInputType) => {
   const inputStyle = {
     backgroundColor: '#ffffff00',
     color: theme.palette.text.primary,
-    width: '100%'
+    width: '100%',
+    '&.special-label': {
+      background: '#ffffff00',
+      color: theme.palette.text.secondary,
+      cursor: 'none'
+    },
+    '&.form-control': {
+      '&:focus': {
+        borderColor: theme.palette.primary.main,
+        boxShadow: `0 0 0 1px ${theme.palette.primary.main}`,
+        '&+div:before': {
+          color: theme.palette.primary.main
+        }
+      }
+    }
   }
 
   const dropdownStyle = {
