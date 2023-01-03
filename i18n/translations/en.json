@@ -97,6 +97,8 @@
       "Invalid email!"],
     "licence": ["I have an active license in a Norwegian swimming club.",
       "NB! Leave empty if you are unsure."],
+    "memberSystem": "I confirm that I have sent a request to join the swimming group in the NTNUI Membership System at https://medlem.ntnui.no/groups/svomming/ . This is required to be a member as it is how we verify that you have a valid NTNUI membership.",
+    "spond": "I confirm that I have downloaded the Spond app and sent a request to join the swimming group with the code HJAVO in the app. Spond is our official communication channel, along with being where you sign up for practices, parties, etc.",
     "disclaimer": "By joining NTNUI-Svømming, you accept our Privacy policy and terms of membership. Send a message to our technician if you want to know, change or delete your personal information. This can be done at any time and without reason.",
     "button": "Register"
   },

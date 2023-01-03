@@ -1,4 +1,4 @@
-import { Button, Card, CardActions, CardContent, Container, FormGroup, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Button, Card, CardActions, CardContent, Container, FormGroup, Stack, Typography, useMediaQuery, useTheme, Checkbox } from '@mui/material';
 import React, { useState } from 'react';
 import EnrollmentType from './enrollmentType';
 import GenderButtons from './content/inputs/GenderButtons';
@@ -27,6 +27,10 @@ const EnrollmentForm = () => {
     licence: ''
   });
   const [emailError, setEmailError] = useState<false | true>(false);
+  const [checkboxStatus, setCheckboxStatus] = useState({
+    membCheckbox: false,
+    spondCheckbox: false
+  });
 
   const { t } = useTranslation();
   const theme = useTheme();
@@ -36,6 +40,10 @@ const EnrollmentForm = () => {
     setValues({
       ...values,
       [event.target.name]: event.target.value
+    });
+    setCheckboxStatus({
+      ...checkboxStatus,
+      [event.target.name]: event.target.checked
     });
     if (emailError) {
       setEmailError(false);
@@ -135,6 +143,36 @@ const EnrollmentForm = () => {
                 value={values.licence}
               />
 
+              <Stack
+                direction={mobileQuery ? 'column' : 'row'}
+                gap={mobileQuery ? '2rem' : '1rem'}
+              >
+                <Checkbox
+                  onChange={handleChange}
+                  name="membCheckbox"
+                />
+                <Container>
+                  <Typography>
+                    {t('enrollment.memberSystem')}
+                  </Typography>
+                </Container>
+              </Stack>
+
+              <Stack
+                direction={mobileQuery ? 'column' : 'row'}
+                gap={mobileQuery ? '2rem' : '1rem'}
+              >
+                <Checkbox
+                  onChange={handleChange}
+                  name="spondCheckbox"
+                />
+                <Container>
+                  <Typography>
+                    {t('enrollment.spond')}
+                  </Typography>
+                </Container>
+              </Stack>
+
               <Container>
                 <Typography>
                   {t('enrollment.disclaimer')}
@@ -167,6 +205,8 @@ const EnrollmentForm = () => {
                   || values.email === ''
                   || values.countryCode === ''
                   || values.birthdate.length !== 8
+                  || checkboxStatus.membCheckbox === false
+                  || checkboxStatus.spondCheckbox === false
               }
             >
               {t('enrollment.button')}

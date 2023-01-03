@@ -97,6 +97,8 @@
       "Ugyldig e-postadresse!"],
     "licence": ["Jeg har en gyldig og aktiv svømmelisens.",
       "NB! La være tom dersom du er usikker."],
+    "memberSystem": "Jeg bekrefter at jeg har sendt en forespørsel om å bli med i svømmegruppa på medlemssystemet til NTNUI her: https://medlem.ntnui.no/groups/svomming/ . Dette er nødvendig da det er slik vi kan bekrefte at du har et gyldig NTNUI medlemskap.",
+    "spond": "Jeg bekrefter at jeg har lastet ned appen Spond og sendt en forespørsel om å bli med i svømmegruppen på appen med kode HJAVO. Spond er vår offisielle kommunikasjonskanal, og det er også der du melder deg på treninger, fester, osv.",
     "disclaimer": "Ved å bli medlem i NTNUI-Svømming godtar du vår Personvernserklæring og de regler for medlemskapet. Opplysningene i skjemaet er nødvendig for å melde deg inn i svømmeklubben og registrere deg i norsk svømming. Send en epost til teknisk leder hvis du ønsker innsyn, endring, sletting av dine opplysninger. Dette kan gjøres når som helst og uten begrunnelse.",
     "button": "Send"
   },
